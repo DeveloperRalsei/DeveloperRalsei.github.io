@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/developerRalsei.github.io/static/css/main.3059e40e.css",
-    "main.js": "/developerRalsei.github.io/static/js/main.a2194ac9.js",
-    "static/js/453.1407b060.chunk.js": "/developerRalsei.github.io/static/js/453.1407b060.chunk.js",
-    "static/media/deltarune.ttf": "/developerRalsei.github.io/static/media/deltarune.c16367575ce7ec8ebae9.ttf",
-    "index.html": "/developerRalsei.github.io/index.html",
-    "main.3059e40e.css.map": "/developerRalsei.github.io/static/css/main.3059e40e.css.map",
-    "main.a2194ac9.js.map": "/developerRalsei.github.io/static/js/main.a2194ac9.js.map",
-    "453.1407b060.chunk.js.map": "/developerRalsei.github.io/static/js/453.1407b060.chunk.js.map"
+    "main.css": "/static/css/main.fc957dce.css",
+    "main.js": "/static/js/main.309d5516.js",
+    "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
+    "static/media/deltarune.ttf": "/static/media/deltarune.c16367575ce7ec8ebae9.ttf",
+    "index.html": "/index.html",
+    "main.fc957dce.css.map": "/static/css/main.fc957dce.css.map",
+    "main.309d5516.js.map": "/static/js/main.309d5516.js.map",
+    "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3059e40e.css",
-    "static/js/main.a2194ac9.js"
+    "static/css/main.fc957dce.css",
+    "static/js/main.309d5516.js"
   ]
 }
