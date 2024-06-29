@@ -1,0 +1,26 @@
+*{
+  font-family: 'deltarune',sans-serif;
+}
+
+:root{
+  --white: #fff9fe;
+  --light-pink: #fe96e0;
+  --pink: #ff3eb7;
+  --light-green: #4dcc8e;
+  --green: #38705e
+}
+
+body{
+  min-height: 200vh;
+}
+
+.container{
+  position: sticky;
+  top: 0;
+  width: 80%;
+  max-height: 50px;
+  padding: 20px 30px;
+  margin: auto;
+  border-radius: 15px;
+  background-color: var(--light-green);
+}
