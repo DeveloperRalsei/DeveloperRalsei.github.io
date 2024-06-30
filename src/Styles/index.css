@@ -5,6 +5,38 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "undertale";
+  src: url("./fonts/DeterminationSansWebRegular-369X.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "undertaleX";
+  src: url("./fonts/DeterminationMonoWebRegular-Z5oq.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root{
+  --white: #fff9fe;
+  --light-pink: #fe96e0;
+  --pink: #ff3eb7;
+  --light-green: #4dcc8e;
+  --green: #38705e;
+  --default-font: "undertaleX";
+  --deltarune-font: "deltarune";
+}
+
+*{
+  font-family: var(--default-font),sans-serif;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

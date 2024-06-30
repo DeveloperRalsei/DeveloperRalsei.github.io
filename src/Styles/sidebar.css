@@ -1,0 +1,15 @@
+#sidebar{
+  height: 100vh;
+  z-index: 0;
+  position: fixed;
+  left: -200px;
+  top: 0;
+  width: 0;
+  background: #38705e;
+  transition: .3s ease;
+}
+
+#sidebar.active{
+  left: 0;
+  width: 200px;
+}

@@ -1,26 +1,19 @@
-*{
-  font-family: 'deltarune',sans-serif;
+::-webkit-scrollbar{
+  width: 30px;
+  background: black;
 }
 
-:root{
-  --white: #fff9fe;
-  --light-pink: #fe96e0;
-  --pink: #ff3eb7;
-  --light-green: #4dcc8e;
-  --green: #38705e
-}
-
-body{
-  min-height: 200vh;
-}
-
-.container{
-  position: sticky;
-  top: 0;
-  width: 80%;
-  max-height: 50px;
-  padding: 20px 30px;
-  margin: auto;
-  border-radius: 15px;
+#header{
+  min-height: 100vh;
   background-color: var(--light-green);
+}
+
+#aboutme{
+  min-height: 100vh;
+  background-color: var(--white);
+}
+
+#contactme{
+  min-height: 100vh;
+  background-color: var(--pink);
 }

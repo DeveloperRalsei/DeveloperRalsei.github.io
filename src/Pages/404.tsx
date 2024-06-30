@@ -6,7 +6,9 @@ interface Props{
 
 const Err404: React.FC<Props> = ({ message }) => {
   return (
-    <div>{message}</div>
+    <div className=''>
+      
+    </div>
   )
 }
 

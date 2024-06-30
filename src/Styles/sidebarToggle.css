@@ -1,0 +1,18 @@
+.toggle-sidebar{
+  font-size: 30px;
+  color: var(--white);
+  display: none;
+}
+
+@media (max-width:850px) {
+  .toggle-sidebar{
+    display: block;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:330px) {
+  .toggle-sidebar{
+    font-size: 20px;
+  }  
+}
