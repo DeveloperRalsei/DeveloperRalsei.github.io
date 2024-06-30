@@ -45,7 +45,7 @@
   }
 
   .navbar img{
-    width: 14px;
+    width: 20px;
   }
 
   .navbar div a.navbar-brand {
@@ -54,7 +54,11 @@
 }
 
 @media (max-width:330px) {
+  .navbar img{
+    width: 15px;
+  }
+
   .navbar div a.navbar-brand {
-    font-size: 15px;
+    font-size: 17px;
   }
 }

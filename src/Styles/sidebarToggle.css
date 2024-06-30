@@ -1,13 +1,12 @@
 .toggle-sidebar{
   font-size: 30px;
   color: var(--white);
-  display: none;
+  display: none !important;
 }
 
 @media (max-width:850px) {
   .toggle-sidebar{
-    display: block;
-    cursor: pointer;
+    display: block !important;
   }
 }
 
