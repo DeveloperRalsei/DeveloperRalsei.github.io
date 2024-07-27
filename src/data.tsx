@@ -1,14 +1,16 @@
-import { DefaultMantineColor, useMantineTheme } from "@mantine/core"
-import { IconBrandCss3, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandTypescript, IconGitMerge } from "@tabler/icons-react"
+import { DefaultMantineColor,Image } from "@mantine/core"
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandGmail, IconBrandHtml5, IconBrandJavascript, IconBrandMantine,  IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandOpenSource, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandX, IconGitMerge, IconMail } from "@tabler/icons-react"
 import React from "react"
-
-export const theme = () => {
-  const theme = useMantineTheme()
-  return theme
-}
 
 export namespace Types {
   export type Icon = {
+    label: string
+    icon: React.ReactNode
+    href: string
+    color: DefaultMantineColor
+  }
+
+  export type ProfileLink = {
     label: string
     icon: React.ReactNode
     href: string
@@ -90,12 +92,64 @@ export const IconLinks: Types.Icon[] = [
     href: "https://github.com",
     color: "#fff"
   },
+  {
+    label: "Mantine",
+    icon: <IconBrandMantine />,
+    href: "https://mantine.dev",
+    color: "#339af0"
+  },
+  
 ]
+
+export const ProfileLinks = [
+  {
+    label: "Discord",
+    icon: <IconBrandDiscord/>,
+    href: "https://discord.com/users/718798893445283863",
+    color: "cyan"
+  },
+  {
+    label: "X",
+    icon: <IconBrandX/>,
+    href: "https://x.com/HugPrinceRalsei",
+    color: "#fff"
+  },
+  {
+    label: "Playlist",
+    icon: <IconBrandSpotify/>,
+    href: "https://open.spotify.com/playlist/0sekcZeuwtAomcoRwkrPcS",
+    color: "green"
+  },
+  {
+    label: "Github",
+    icon: <IconBrandGithub/>,
+    href: "https://github.com/DeveloperRalsei/",
+    color: "#fff"
+  },
+  {
+    label: "NameMC",
+    icon: <Image src="/images/namemc.png" alt="namemc" w={25} radius={3} />,
+    href: "https://namemc.com/profile/1riza",
+    color: "#fff"
+  },
+  {
+    label: "GMail",
+    icon: <IconBrandGmail/>,
+    href: "mailto:fluffycutegoatboi@gmail.com",
+    color: "orange"
+  },
+  {
+    label: "osu!",
+    icon: <Image src={"/images/osu.png"} alt="osu" w={25}/>,
+    href: "https://osu.ppy.sh/users/27076843",
+    color: "pink"
+  },
+] as Types.ProfileLink[]
 
 export const Projects: Types.Project[] = [
   {
     name: "This Web Site",
-    status: "wip",
+    status: "done",
     techs: ["ts", 'react'],
     desc: "My own Website",
     buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }, { type: "link", url: '/' }],

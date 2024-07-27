@@ -106,10 +106,10 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
             <ProjectButton
               href={b.url}
               key={i}
-              iconRight={b.url && <IconExternalLink />}
+              iconRight={b.type === 'link' && <IconExternalLink />}
               icon={b.type === 'github' && <IconBrandGithub />}
             >
-              {b.type === 'github' ? <>Open in Github</> : <></>}
+              {b.type === 'github' ? <>Open in Github</> : <>Open {p.name}</>}
             </ProjectButton>
           ))}
         </Group>
@@ -119,7 +119,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
             <ProjectButton
               href={b.url}
               key={i}
-              iconRight={b.url && <IconExternalLink />}
+              iconRight={b.type === "link" && <IconExternalLink />}
               icon={b.type === 'github' && <IconBrandGithub />}
             >
               {b.type === 'github' && <>Open in Github</>}

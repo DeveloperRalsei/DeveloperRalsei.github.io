@@ -17,4 +17,5 @@ body{
 
 ::-webkit-scrollbar-thumb{
   background: var(--mantine-color-pink-4);
+  border-radius: 100px;
 }
