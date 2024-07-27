@@ -11,7 +11,7 @@ export const StatusBadge = () => {
   const isOnline = status?.discord_status === 'online' || status?.discord_status === 'dnd' ? true && "active" : false;
   const idle = status?.discord_status === 'idle'
 
-  if(!status){
+  if (!status) {
     return <Text c={"gray"}>Loading...</Text>
   }
 
@@ -22,8 +22,8 @@ export const StatusBadge = () => {
   } else {
     return <Text c={"gray"}>Offline</Text>
   }
-
 }
+
 const Status: React.FC = () => {
   const { status } = useLanyard({
     userId: '718798893445283863',
@@ -38,25 +38,17 @@ const Status: React.FC = () => {
     status.discord_status === 'dnd' ||
     status.discord_status === 'idle';
 
-  if (isOnline) {
-    return (
-      <Paper p="md" withBorder>
+
+  return (
+    <Paper p="md" withBorder>
+      {isOnline ?
         <Group w="100%">
-          <Stack>
-            <Group w="100%">
-              {status.activities && status.activities[1] ? (
-                <Text>Playing a game: {status.activities[1].name}</Text>
-              ) : <Text c="green">Online</Text>}
-            </Group>
-          </Stack>
-        </Group>
-      </Paper>
-    )
-  } else {
-    return (
-      ""
-    )
-  }
+          {status.activities && status.activities[1] ? (
+            <Text>Playing a game: {status.activities[1].name}</Text>
+          ) : <Text c="green">Online</Text>}
+        </Group> : "Offline"}
+    </Paper>
+  )
 };
 
 export default Status;
