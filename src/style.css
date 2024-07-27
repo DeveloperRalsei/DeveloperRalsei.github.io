@@ -1,0 +1,20 @@
+@font-face {
+  font-family: undertale;
+  src: url(/fonts/undertale.ttf);
+}
+
+body{
+  font-size: 22px;
+  font-family: 'undertale',sans-serif;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background: var(--mantine-color-pink-4);
+}
