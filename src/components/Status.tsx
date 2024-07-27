@@ -11,6 +11,10 @@ export const StatusBadge = () => {
   const isOnline = status?.discord_status === 'online' || status?.discord_status === 'dnd' ? true && "active" : false;
   const idle = status?.discord_status === 'idle'
 
+  if(!status){
+    return <Text c={"gray"}>Loading...</Text>
+  }
+
   if (isOnline === 'active') {
     return <Text c={"green"}>Online</Text>
   } else if (idle) {

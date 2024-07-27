@@ -1,5 +1,5 @@
 import { DefaultMantineColor,Image } from "@mantine/core"
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandGmail, IconBrandHtml5, IconBrandJavascript, IconBrandMantine,  IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandOpenSource, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandX, IconGitMerge, IconMail } from "@tabler/icons-react"
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandGmail, IconBrandHtml5, IconBrandJavascript, IconBrandMantine,  IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandX, IconGitMerge,  } from "@tabler/icons-react"
 import React from "react"
 
 export namespace Types {
