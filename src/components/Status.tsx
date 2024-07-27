@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Paper, Stack, Text } from '@mantine/core';
+import { Group, Paper, Text } from '@mantine/core';
 import { useLanyard, LanyardWebsocket } from 'react-use-lanyard';
 
 export const StatusBadge = () => {
