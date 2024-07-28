@@ -1,6 +1,6 @@
 import React from 'react';
 import { Group, Paper, Text } from '@mantine/core';
-import { useLanyard, LanyardWebsocket } from 'react-use-lanyard';
+import { useLanyard, LanyardWebsocket, Activity } from 'react-use-lanyard';
 
 export const StatusBadge = () => {
   const { status } = useLanyard({
@@ -38,14 +38,19 @@ const Status: React.FC = () => {
     status.discord_status === 'dnd' ||
     status.discord_status === 'idle';
 
+  console.log(status.activities[0])
+
+  const activities: Activity[] = status.activities
 
   return (
     <Paper p="md" withBorder>
       {isOnline ?
         <Group w="100%">
-          {status.activities && status.activities[1] ? (
-            <Text>Playing a game: {status.activities[1].name}</Text>
-          ) : <Text c="green">Online</Text>}
+          {activities[0] && activities[0].name === 'Custom Status' && activities[1] ? 
+            "Playing a game: "+activities[1].name
+          :
+            activities[0] === undefined ? <Text c={"green"}>Online</Text> : "Playing a game: "+ activities[0].name
+          }
         </Group> : "Offline"}
     </Paper>
   )
