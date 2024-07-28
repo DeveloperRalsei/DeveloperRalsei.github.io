@@ -9,7 +9,7 @@ const MySituation = () => {
   return <Card title="Some useless info" icon={<IconBook2 />} tcolor='blue' withBorder>
     <Space h={10} />
     <Group>
-      <Title order={5}>Status</Title>: <StatusBadge />
+      <Title order={5}>Status</Title>: <StatusBadge/>
     </Group>
     <Space h={10} />
     <Status />

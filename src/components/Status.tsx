@@ -9,7 +9,7 @@ export const StatusBadge = () => {
   }) as LanyardWebsocket;
 
   const isOnline = status?.discord_status === 'online' || status?.discord_status === 'dnd' ? true && "active" : false;
-  const idle = status?.discord_status === 'idle'
+  const isIdle = status?.discord_status === 'idle'
 
   if (!status) {
     return <Text c={"gray"}>Loading...</Text>
@@ -17,9 +17,9 @@ export const StatusBadge = () => {
 
   if (isOnline === 'active') {
     return <Text c={"green"}>Online</Text>
-  } else if (idle) {
+  } if (isIdle) {
     return <Text c={"yellow"}>AFK</Text>
-  } else {
+  } if(!isOnline && !isIdle) {
     return <Text c={"gray"}>Offline</Text>
   }
 }
