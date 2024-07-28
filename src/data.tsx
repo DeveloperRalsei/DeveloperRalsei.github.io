@@ -160,5 +160,21 @@ export const Projects: Types.Project[] = [
     desc: "My own Website",
     buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }, { type: "link", url: '/' }],
     url: "https://github.com/developerRalsei/developerRalsei.github.io"
-  }
+  },
+  {
+    name: "This Web Site",
+    status: "done",
+    techs: ["ts", 'react'],
+    desc: "My own Website",
+    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }, { type: "link", url: '/' }],
+    url: "https://github.com/developerRalsei/developerRalsei.github.io"
+  },
+  {
+    name: "This Web Site",
+    status: "done",
+    techs: ["ts", 'react'],
+    desc: "My own Website",
+    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }, { type: "link", url: '/' }],
+    url: "https://github.com/developerRalsei/developerRalsei.github.io"
+  },
 ]

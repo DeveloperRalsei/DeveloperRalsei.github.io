@@ -62,8 +62,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   return (
     <Paper
-      p={"md"}
-      m={"md"}
+      p={{base: "xs",md: "md"}}
       withBorder
     >
       <Stack>
