@@ -9,11 +9,17 @@ const MySituation = () => {
   return <Card title="Some useless info" icon={<IconBook2 />} tcolor='blue' withBorder>
     <Space h={10} />
     <Group>
-      <Title order={5}>Status</Title>: <StatusBadge/>
+      <Title order={5}>Status</Title>: <StatusBadge />
     </Group>
     <Space h={10} />
     <Status />
     <br />
+    <Group gap={6}> 
+      <Text>Currently learning: </Text>
+      <Text c={"lightblue"}>Docker,</Text>
+      <Text c={"teal"}>MongoDb</Text>
+    </Group>
+    <Space h={20}/>
     <Title order={4} c={"grape"}>I Use These</Title>
     <Divider />
     <Flex mt={10} gap={"lg"} wrap={"wrap"} justify={"center"}>
@@ -25,7 +31,7 @@ const MySituation = () => {
           </Stack>
         </Anchor>))}
     </Flex>
-    
+
   </Card>
 }
 

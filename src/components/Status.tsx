@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Paper, Text } from '@mantine/core';
+import { Box, Group, Paper, Text } from '@mantine/core';
 import { useLanyard, LanyardWebsocket, Activity } from 'react-use-lanyard';
 
 export const StatusBadge = () => {
@@ -46,8 +46,10 @@ const Status: React.FC = () => {
         <Group w="100%">
           {activities && activities[0] ?
             activities[0].name === 'Custom Status' ?
-              activities[1] ? "Playing a game: " + activities[1].name : <Text c={"green"}>Online</Text> : "Playing a game: " + activities[0].name
-            : <Text c={"green"}>Online</Text>}
+              activities[1] ? <Box>
+                Playing a game: <Text c={"red"} display={"inline"}>{activities[1].name}</Text>
+              </Box> : <Text>I'm not currently doing anything</Text> : "Playing a game: " + activities[0].name
+            : <Text>I'm not currently doing anything</Text>}
         </Group> : "Offline"}
     </Paper>
   )

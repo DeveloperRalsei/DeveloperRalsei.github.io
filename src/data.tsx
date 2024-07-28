@@ -1,5 +1,5 @@
-import { DefaultMantineColor,Image } from "@mantine/core"
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandGmail, IconBrandHtml5, IconBrandJavascript, IconBrandMantine,  IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandX, IconGitMerge,  } from "@tabler/icons-react"
+import { DefaultMantineColor,Image, Text, Tooltip } from "@mantine/core"
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine,  IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconGitMerge, IconMail,  } from "@tabler/icons-react"
 import React from "react"
 
 export namespace Types {
@@ -63,6 +63,12 @@ export const IconLinks: Types.Icon[] = [
     color: "green"
   },
   {
+    label: "NPM",
+    icon: <IconBrandNpm />,
+    href: "https://npmjs.com",
+    color: "red"
+  },
+  {
     label: "React",
     icon: <IconBrandReact />,
     href: "https://react.dev/",
@@ -73,12 +79,6 @@ export const IconLinks: Types.Icon[] = [
     icon: <IconBrandMysql />,
     href: "https://mysql.com",
     color: "cyan"
-  },
-  {
-    label: "NPM",
-    icon: <IconBrandNpm />,
-    href: "https://npmjs.com",
-    color: "red"
   },
   {
     label: "Git",
@@ -97,6 +97,12 @@ export const IconLinks: Types.Icon[] = [
     icon: <IconBrandMantine />,
     href: "https://mantine.dev",
     color: "#339af0"
+  },
+  {
+    label: "Linux",
+    icon: <Tooltip label="Debian/Ubuntu or Arch"><IconBrandUbuntu /></Tooltip>,
+    href: "https://mantine.dev",
+    color: "yellow"
   },
   
 ]
@@ -133,14 +139,14 @@ export const ProfileLinks = [
     color: "#fff"
   },
   {
-    label: "GMail",
-    icon: <IconBrandGmail/>,
+    label: "G-Mail",
+    icon: <IconMail/>,
     href: "mailto:fluffycutegoatboi@gmail.com",
     color: "orange"
   },
   {
     label: "osu!",
-    icon: <Image src={"/images/osu.png"} alt="osu" w={25}/>,
+    icon: <Tooltip label={<Text display={"inline"}>6 DIGIT &#x1f480;</Text>}><Image src={"/images/osu.png"} alt="osu" w={25}/></Tooltip>,
     href: "https://osu.ppy.sh/users/27076843",
     color: "pink"
   },

@@ -7,12 +7,11 @@ import ProjectList from './ProjectList'
 const Main: React.FC = () => {
 
   return <AppShell.Main px={"xl"}>
-    <Container size={'lg'} mb={30}>
+    <Container size={"lg"} mb={30}>
       <SimpleGrid cols={{ md: 2, xs: 1 }}>
         <AboutMe />
         <UselessInfo/>
       </SimpleGrid>
-
       <SimpleGrid mt={15} cols={1}>
         <ProjectList/>
       </SimpleGrid>

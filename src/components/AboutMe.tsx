@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title } from '@mantine/core'
 import Card from './Card'
 import { ProfileLinks } from '../data'
 
 const AboutMe: React.FC = () => {
-  const [TURKIYEEEEE, setTURKIYEEEEE] = useState<string>("Turkey")
-
   const theme = useMantineTheme()
   return <Card
     title='About Me'
@@ -33,11 +31,11 @@ const AboutMe: React.FC = () => {
           <Text>Single</Text>
         </Tooltip>
       </List.Item>
-      <List.Item >From <span onMouseEnter={() => setTURKIYEEEEE("Türkiye")}>
-        {TURKIYEEEEE}
-        &nbsp;
-      </span>
-        <Image display={"inline"} src={"/images/as-bayraklari-as.png"} alt='as-bayraklari-as' w={15} />
+      <List.Item>
+        From <Tooltip label="Turkiye! Actually" position='right'>
+          <span>Turkey &nbsp;</span>
+        </Tooltip>
+        <Image src={"/images/as-bayraklari-as.png"} alt='turkiye' display={"inline"} w={15}/>
       </List.Item>
       <List.Item>using <Anchor href="https://archlinux.org" target='_blank'>arch</Anchor> btw :P</List.Item>
       <List.Item>and I like ice cream&#127848;<Text size='xs' display={"inline"} c={theme.colors.gray[6]}>(it would better if it was chocolate)</Text></List.Item>

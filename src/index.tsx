@@ -10,7 +10,8 @@ const theme = createTheme({
   components: {
     Tooltip: {
       defaultProps: {
-        color: "dark"
+        color: "dark",
+        arrowSize: 13
       }
     }
   }
