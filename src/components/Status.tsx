@@ -15,13 +15,9 @@ export const StatusBadge = () => {
     return <Text c={"gray"}>Loading...</Text>
   }
 
-  if (isOnline === 'active') {
-    return <Text c={"green"}>Online</Text>
-  } if (isIdle) {
-    return <Text c={"yellow"}>AFK</Text>
-  } if(!isOnline && !isIdle) {
-    return <Text c={"gray"}>Offline</Text>
-  }
+  if(!isOnline) return <Text c={"gray"}>Offline</Text>
+  if(isIdle) return <Text c={"yellow"}>AFK</Text>; else return <Text c={"green"}>Online</Text>
+
 }
 
 const Status: React.FC = () => {
