@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Types } from '../data'
 import { Paper, Group, Title, Stack, Badge, Tooltip, SimpleGrid, Text, Box, LoadingOverlay, Image } from '@mantine/core'
-import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink } from '@tabler/icons-react'
+import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2 } from '@tabler/icons-react'
 import { ProjectButton } from './ProjectButton'
 
 const StatusRenderers: Record<any, React.ReactNode> = {
@@ -54,6 +54,11 @@ const TechRenderers: Record<any, React.ReactNode> = {
       <IconBrandNodejs />
     </Tooltip>
   ),
+  bash: (
+    <Tooltip label="Bash">
+      <IconTerminal2/>
+    </Tooltip>
+  )
 }
 
 
@@ -62,7 +67,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   return (
     <Paper
-      p={{base: "xs",md: "md"}}
+      p={"xs"}
       withBorder
     >
       <Stack>
@@ -106,9 +111,11 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
               href={b.url}
               key={i}
               iconRight={b.type === 'link' && <IconExternalLink />}
-              icon={b.type === 'github' && <IconBrandGithub />}
+              icon={b.type === 'custom' && b.icon || b.type === 'github' && <IconBrandGithub/>}
             >
-              {b.type === 'github' ? <>Open in Github</> : <>Open {p.name}</>}
+              {b.type === 'custom' && b.label}
+              {b.type === 'github' && "Open in Github"}
+              {b.type === 'link' && `Open ${p.name}`}
             </ProjectButton>
           ))}
         </Group>
@@ -119,10 +126,11 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
               href={b.url}
               key={i}
               iconRight={b.type === "link" && <IconExternalLink />}
-              icon={b.type === 'github' && <IconBrandGithub />}
+              icon={b.type === 'custom' && b.icon || b.type === 'github' && <IconBrandGithub/>}
             >
-              {b.type === 'github' && <>Open in Github</>}
-              {b.type === 'link' && <>Open {p.name}</>}
+              {b.type === 'github' && "Open in Github"}
+              {b.type === 'link' && `Open ${p.name}`}
+              {b.type === 'custom' && b.label}
             </ProjectButton>
           ))}
         </Stack>

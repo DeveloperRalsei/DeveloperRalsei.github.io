@@ -1,5 +1,5 @@
-import { DefaultMantineColor,Image, Text, Tooltip } from "@mantine/core"
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine,  IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconGitMerge, IconMail,  } from "@tabler/icons-react"
+import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core"
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconGitMerge, IconMail } from "@tabler/icons-react"
 import React from "react"
 
 export namespace Types {
@@ -18,7 +18,11 @@ export namespace Types {
   }
 
   type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongoDb' | 'bash' | 'react'
-  type ProjectButton = { type: 'link' | 'github', url: string, color?: DefaultMantineColor, icon?: React.ReactNode }
+  type ProjectButton = {
+    type: 'link' | 'github' | 'custom',
+    url: string, color?: DefaultMantineColor,
+    icon?: React.ReactNode, label?: string
+  }
 
   export interface Project {
     name: string
@@ -104,31 +108,31 @@ export const IconLinks: Types.Icon[] = [
     href: "https://mantine.dev",
     color: "yellow"
   },
-  
+
 ]
 
 export const ProfileLinks = [
   {
     label: "Discord",
-    icon: <IconBrandDiscord/>,
+    icon: <IconBrandDiscord />,
     href: "https://discord.com/users/718798893445283863",
     color: "cyan"
   },
   {
     label: "X",
-    icon: <IconBrandX/>,
+    icon: <IconBrandX />,
     href: "https://x.com/HugPrinceRalsei",
     color: "#fff"
   },
   {
     label: "Playlist",
-    icon: <IconBrandSpotify/>,
+    icon: <IconBrandSpotify />,
     href: "https://open.spotify.com/playlist/0sekcZeuwtAomcoRwkrPcS",
     color: "green"
   },
   {
     label: "Github",
-    icon: <IconBrandGithub/>,
+    icon: <IconBrandGithub />,
     href: "https://github.com/DeveloperRalsei/",
     color: "#fff"
   },
@@ -140,13 +144,13 @@ export const ProfileLinks = [
   },
   {
     label: "G-Mail",
-    icon: <IconMail/>,
+    icon: <IconMail />,
     href: "mailto:fluffycutegoatboi@gmail.com",
     color: "orange"
   },
   {
     label: "osu!",
-    icon: <Tooltip label={<Text display={"inline"}>6 DIGIT &#x1f480;</Text>}><Image src={"/images/osu.png"} alt="osu" w={25}/></Tooltip>,
+    icon: <Tooltip label={<Text display={"inline"}>6 DIGIT &#x1f480;</Text>}><Image src={"/images/osu.png"} alt="osu" w={25} /></Tooltip>,
     href: "https://osu.ppy.sh/users/27076843",
     color: "pink"
   },
