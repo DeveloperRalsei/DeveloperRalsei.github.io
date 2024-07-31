@@ -44,7 +44,9 @@ const Status: React.FC = () => {
             activities[0].name === 'Custom Status' ?
               activities[1] ? <Box>
                 Playing a game: <Text c={"red"} display={"inline"}>{activities[1].name}</Text>
-              </Box> : <Text>I'm not currently doing anything</Text> : "Playing a game: " + activities[0].name
+              </Box> : <Text>I'm not currently doing anything</Text> : <Box>
+                Playing a game: <Text c={"red"} display={"inline"}>{activities[0].name}</Text>
+              </Box>
             : <Text>I'm not currently doing anything</Text>}
         </Group> : "Offline"}
     </Paper>
