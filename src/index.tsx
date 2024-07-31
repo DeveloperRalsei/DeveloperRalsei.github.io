@@ -11,7 +11,12 @@ const theme = createTheme({
     Tooltip: {
       defaultProps: {
         color: "dark",
-        arrowSize: 13
+        withArrow: true
+      }
+    },
+    Anchor: {
+      defaultProps: {
+        target: "_blank"
       }
     }
   }

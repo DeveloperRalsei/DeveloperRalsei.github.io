@@ -1,5 +1,5 @@
 import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core"
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconGitMerge, IconMail } from "@tabler/icons-react"
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react"
 import React from "react"
 
 export namespace Types {
@@ -154,6 +154,18 @@ export const ProfileLinks = [
     href: "https://osu.ppy.sh/users/27076843",
     color: "pink"
   },
+  {
+    label: "My Desktop",
+    icon: (
+      <Tooltip label={(
+        <Image src={"/images/desktop.png"} alt="MyDesktop" w={600}/>
+        )}>
+          <IconDeviceDesktop/>
+      </Tooltip>
+    ),
+    href: "/images/desktop.png",
+    color: "lime"
+  },
 ] as Types.ProfileLink[]
 
 export const Projects: Types.Project[] = [
@@ -162,7 +174,7 @@ export const Projects: Types.Project[] = [
     status: "done",
     techs: ["ts", 'react'],
     desc: "My own Website",
-    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }, { type: "link", url: '/' }],
+    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }],
     url: "https://github.com/developerRalsei/developerRalsei.github.io"
   },
 ]

@@ -24,7 +24,7 @@ const MySituation = () => {
     <Divider />
     <Flex mt={10} gap={"lg"} wrap={"wrap"} justify={"center"}>
       {IconLinks.map((l, i) => (
-        <Anchor key={i} href={l.href} c={l.color || theme.primaryColor} target='_blank'>
+        <Anchor key={i} href={l.href} c={l.color || theme.primaryColor}>
           <Stack align='center'>
             {l.icon}
             <Text size='sm'>{l.label}</Text>

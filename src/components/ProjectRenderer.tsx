@@ -56,7 +56,7 @@ const TechRenderers: Record<any, React.ReactNode> = {
   ),
   bash: (
     <Tooltip label="Bash">
-      <IconTerminal2/>
+      <IconTerminal2 />
     </Tooltip>
   )
 }
@@ -93,7 +93,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
           <Box style={{ alignSelf: "end" }}>
             {p.imgUrl && (
               <Box pos={"relative"}>
-                <LoadingOverlay visible={!isLoaded} pos={"absolute"} overlayProps={{ backgroundOpacity: 0 }} />
+                <LoadingOverlay visible={!isLoaded} pos={"absolute"} />
                 <Image
                   src={p.imgUrl}
                   radius={"md"}
@@ -111,7 +111,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
               href={b.url}
               key={i}
               iconRight={b.type === 'link' && <IconExternalLink />}
-              icon={b.type === 'custom' && b.icon || b.type === 'github' && <IconBrandGithub/>}
+              icon={b.type === 'custom' && b.icon || b.type === 'github' && <IconBrandGithub />}
             >
               {b.type === 'custom' && b.label}
               {b.type === 'github' && "Open in Github"}
@@ -120,13 +120,12 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
           ))}
         </Group>
         <Stack hiddenFrom='sm'>
-        {!p.buttons.length && <></>}
           {p.buttons.map((b, i) => (
             <ProjectButton
               href={b.url}
               key={i}
               iconRight={b.type === "link" && <IconExternalLink />}
-              icon={b.type === 'custom' && b.icon || b.type === 'github' && <IconBrandGithub/>}
+              icon={b.type === 'custom' && b.icon || b.type === 'github' && <IconBrandGithub />}
             >
               {b.type === 'github' && "Open in Github"}
               {b.type === 'link' && `Open ${p.name}`}
