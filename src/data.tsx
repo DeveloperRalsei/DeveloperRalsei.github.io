@@ -17,7 +17,7 @@ export namespace Types {
     color: DefaultMantineColor
   }
 
-  type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongoDb' | 'bash' | 'react'
+  type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react'
   type ProjectButton = {
     type: 'link' | 'github' | 'custom',
     url: string, color?: DefaultMantineColor,
@@ -158,9 +158,9 @@ export const ProfileLinks = [
     label: "My Desktop",
     icon: (
       <Tooltip label={(
-        <Image src={"/images/desktop.png"} alt="MyDesktop" w={600}/>
-        )}>
-          <IconDeviceDesktop/>
+        <Image src={"/images/desktop.png"} alt="MyDesktop" w={600} />
+      )}>
+        <IconDeviceDesktop />
       </Tooltip>
     ),
     href: "/images/desktop.png",
@@ -177,4 +177,11 @@ export const Projects: Types.Project[] = [
     buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }],
     url: "https://github.com/developerRalsei/developerRalsei.github.io"
   },
+  {
+    name: "Simple Blog App",
+    status: "wip",
+    techs: ["react", "mongodb", "nodejs"],
+    desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
+    buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
+  }
 ]
