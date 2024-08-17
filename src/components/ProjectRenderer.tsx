@@ -69,6 +69,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
     <Paper
       p={"xs"}
       withBorder
+      h={"fit-content"}
     >
       <Stack>
         <Group justify='space-between'>
@@ -83,7 +84,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
           </Group>
         </Group>
         <SimpleGrid cols={{ base: 1, lg: (p.imgUrl ? 2 : 1) }}>
-          <Stack h={50} mah={50} style={{overflow: "auto"}}>
+          <Stack h={"100%"} style={{overflow: "auto"}}>
             <Stack>
               {p.desc && <Text fz={"sm"}>
                 {p.desc}

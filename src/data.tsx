@@ -170,19 +170,12 @@ export const ProfileLinks = [
 
 export const Projects: Types.Project[] = [
   {
-    name: "This Web Site",
-    status: "done",
-    techs: ["ts", 'react'],
-    desc: "My own Website",
-    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }],
-    url: "https://github.com/developerRalsei/developerRalsei.github.io"
-  },
-  {
     name: "Simple Blog App",
     status: "wip",
     techs: ["react", "mongodb", "nodejs"],
     desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
+    imgUrl: "/images/projects/MERN_Blog_App.png"
   },
   {
     name: "Node Web Starter Script",
@@ -190,5 +183,13 @@ export const Projects: Types.Project[] = [
     techs: ["bash"],
     desc: "This project somehow helps you to quickly start a simple web application using nodejs expressjs and ejs.",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/NodeJS-Web-App-Bash-Script" }],
+  },
+  {
+    name: "This Web Site",
+    status: "done",
+    techs: ["ts", 'react'],
+    desc: "My own Website",
+    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }],
+    url: "https://github.com/developerRalsei/developerRalsei.github.io"
   },
 ]
