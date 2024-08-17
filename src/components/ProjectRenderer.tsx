@@ -83,7 +83,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
           </Group>
         </Group>
         <SimpleGrid cols={{ base: 1, lg: (p.imgUrl ? 2 : 1) }}>
-          <Stack>
+          <Stack h={50} mah={50} style={{overflow: "auto"}}>
             <Stack>
               {p.desc && <Text fz={"sm"}>
                 {p.desc}
