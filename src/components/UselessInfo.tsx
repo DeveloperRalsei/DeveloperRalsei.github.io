@@ -17,7 +17,8 @@ const MySituation = () => {
     <Group gap={6}> 
       <Text>Currently learning: </Text>
       <Text c={"lightblue"}>Docker,</Text>
-      <Text c={"teal"}>MongoDb</Text>
+      <Text c={"teal"}>MongoDb,</Text>
+      <Text c={"green"}>C++</Text>
     </Group>
     <Space h={20}/>
     <Title order={4} c={"grape"}>I Use These</Title>
