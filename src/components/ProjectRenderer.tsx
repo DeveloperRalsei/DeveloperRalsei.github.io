@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { Types } from '../data'
-import { Paper, Group, Title, Stack, Badge, Tooltip, SimpleGrid, Text, Box, LoadingOverlay, Image } from '@mantine/core'
-import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2 } from '@tabler/icons-react'
-import { ProjectButton } from './ProjectButton'
+import React, { useState } from 'react';
+import { Types } from '../data';
+import { Paper, Group, Title, Stack, Badge, Tooltip, SimpleGrid, Text, Box, LoadingOverlay, Image } from '@mantine/core';
+import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2 } from '@tabler/icons-react';
+import { IoLogoElectron } from 'react-icons/io5';
+import { ProjectButton } from './ProjectButton';
 
 const StatusRenderers: Record<any, React.ReactNode> = {
   done: <></>,
@@ -13,15 +14,15 @@ const StatusRenderers: Record<any, React.ReactNode> = {
   abandoned: <Tooltip label="Abandoned Project">
     <Badge variant='light' color='red'>Dead</Badge>
   </Tooltip>
-}
+};
 
-const StatusRender = ({ status }: { status: any }) => {
-  return StatusRenderers[status]
-}
+const StatusRender = ({ status }: { status: any; }) => {
+  return StatusRenderers[status];
+};
 
-const TechRender = ({ tech }: { tech: any }) => {
-  return TechRenderers[tech]
-}
+const TechRender = ({ tech }: { tech: any; }) => {
+  return TechRenderers[tech];
+};
 
 const TechRenderers: Record<any, React.ReactNode> = {
   react: (
@@ -58,13 +59,18 @@ const TechRenderers: Record<any, React.ReactNode> = {
     <Tooltip label="Bash">
       <IconTerminal2 />
     </Tooltip>
+  ),
+  electron: (
+    <Tooltip label="ElectronJS">
+      <IoLogoElectron size={25} stroke='200'/>
+    </Tooltip>
   )
-}
+};
 
 
 
-const ProjectRenderer = ({ p }: { p: Types.Project }) => {
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+const ProjectRenderer = ({ p }: { p: Types.Project; }) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <Paper
       p={"xs"}
@@ -84,7 +90,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
           </Group>
         </Group>
         <SimpleGrid cols={{ base: 1, lg: (p.imgUrl ? 2 : 1) }}>
-          <Stack h={"100%"} style={{overflow: "auto"}}>
+          <Stack h={"100%"} style={{ overflow: "auto" }}>
             <Stack>
               {p.desc && <Text fz={"sm"}>
                 {p.desc}
@@ -136,7 +142,7 @@ const ProjectRenderer = ({ p }: { p: Types.Project }) => {
         </Stack>
       </Stack>
     </Paper>
-  )
-}
+  );
+};
 
-export default ProjectRenderer
+export default ProjectRenderer;

@@ -1,37 +1,37 @@
-import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core"
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react"
-import React from "react"
+import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core";
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
+import React from "react";
 
 export namespace Types {
   export type Icon = {
-    label: string
-    icon: React.ReactNode
-    href: string
-    color: DefaultMantineColor
-  }
+    label: string;
+    icon: React.ReactNode;
+    href: string;
+    color: DefaultMantineColor;
+  };
 
   export type ProfileLink = {
-    label: string
-    icon: React.ReactNode
-    href: string
-    color: DefaultMantineColor
-  }
+    label: string;
+    icon: React.ReactNode;
+    href: string;
+    color: DefaultMantineColor;
+  };
 
-  type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react'
+  type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron';
   type ProjectButton = {
     type: 'link' | 'github' | 'custom',
     url: string, color?: DefaultMantineColor,
-    icon?: React.ReactNode, label?: string
-  }
+    icon?: React.ReactNode, label?: string;
+  };
 
   export interface Project {
-    name: string
-    desc?: string
-    status: 'done' | 'wip' | 'forgotten' | 'abandoned'
-    imgUrl?: string
-    techs: Tech[]
-    buttons: ProjectButton[]
-    url?: string
+    name: string;
+    desc?: string;
+    status: 'done' | 'wip' | 'forgotten' | 'abandoned';
+    imgUrl?: string;
+    techs: Tech[];
+    buttons: ProjectButton[];
+    url?: string;
   }
 }
 
@@ -109,7 +109,7 @@ export const IconLinks: Types.Icon[] = [
     color: "yellow"
   },
 
-]
+];
 
 export const ProfileLinks = [
   {
@@ -166,9 +166,17 @@ export const ProfileLinks = [
     href: "/images/desktop.png",
     color: "lime"
   },
-] as Types.ProfileLink[]
+] as Types.ProfileLink[];
 
 export const Projects: Types.Project[] = [
+  {
+    name: "This Web Site",
+    status: "done",
+    techs: ["ts", 'react'],
+    desc: "My own Website :3",
+    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }],
+    url: "https://github.com/developerRalsei/developerRalsei.github.io"
+  },
   {
     name: "Node Web Starter Script",
     status: "done",
@@ -177,19 +185,17 @@ export const Projects: Types.Project[] = [
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/NodeJS-Web-App-Bash-Script" }],
   },
   {
-    name: "This Web Site",
-    status: "done",
-    techs: ["ts", 'react'],
-    desc: "My own Website",
-    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }],
-    url: "https://github.com/developerRalsei/developerRalsei.github.io"
-  },
-  {
     name: "Simple Blog App",
     status: "wip",
     techs: ["react", "mongodb", "nodejs"],
     desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
-    imgUrl: "/images/projects/MERN_Blog_App.png"
   },
-]
+  {
+    name: "Omsu!",
+    status: "wip",
+    techs: ["ts","react"],
+    desc: "A project helps you to create or edit osu/mania skins. I'm thinking of integrating electron and making this a desktop application soon.",
+    buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/omsu/" }, { type: "link", url: "http://omsu.onrender.com/" }]
+  },
+];
