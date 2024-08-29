@@ -191,11 +191,4 @@ export const Projects: Types.Project[] = [
     desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
   },
-  {
-    name: "Omsu!",
-    status: "wip",
-    techs: ["ts","react"],
-    desc: "A project helps you to create or edit osu/mania skins. I'm thinking of integrating electron and making this a desktop application soon.",
-    buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/omsu/" }, { type: "link", url: "http://omsu.onrender.com/" }]
-  },
 ];
