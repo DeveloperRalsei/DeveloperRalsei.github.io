@@ -21,7 +21,7 @@ const AboutMe: React.FC = () => {
     I'm: <br />
     <List listStyleType='disc' >
       <List.Item>
-        <Tooltip label="she/her" withArrow position='right-end' arrowSize={10}>
+        <Tooltip label="She/Them" withArrow position='right-end' arrowSize={10}>
           <Text>
             <Text display={"inline"} c={"#74dfff"}>T</Text>
             <Text display={"inline"} c={"#74dfff"}>r</Text>
