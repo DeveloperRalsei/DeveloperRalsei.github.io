@@ -37,6 +37,9 @@ const AboutMe: React.FC = () => {
           </Text>
         </Tooltip>
       </List.Item>
+      <List.Item>
+        I'm a fullstack web developer
+      </List.Item>
       <List.Item>18 Years Old<Text size='xs' c={theme.colors.gray[6]} display={"inline"}> (11 Apr 2006)</Text></List.Item>
       <List.Item>
         <Tooltip label={<span>&#128557;</span>} withArrow position='right' >

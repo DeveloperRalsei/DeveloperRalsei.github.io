@@ -12,6 +12,7 @@ const ProjectList = () => {
     Projects.filter(p => [
       p.name,
       p.desc,
+      p.techs
     ].filter(x => x).join(" ").toLowerCase().includes(search.toLowerCase()))
   ) : Projects);
 
