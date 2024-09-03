@@ -3,6 +3,18 @@ import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Fl
 import Card from './Card';
 import { ProfileLinks } from '../data';
 
+const transgender = (<><Text display={"inline"} c={"#74dfff"}>T</Text>
+  <Text display={"inline"} c={"#74dfff"}>r</Text>
+  <Text display={"inline"} c={"#fff"}>a</Text>
+  <Text display={"inline"} c={"#ffb5d7"}>n</Text>
+  <Text display={"inline"} c={"#ffb5d7"}>s</Text>
+  <Text display={"inline"} c={"#fe8dbf"}>g</Text>
+  <Text display={"inline"} c={"#ffb5d7"}>e</Text>
+  <Text display={"inline"} c={"#ffb5d7"}>n</Text>
+  <Text display={"inline"} c={"#fff"}>d</Text>
+  <Text display={"inline"} c={"#74dfff"}>e</Text>
+  <Text display={"inline"} c={"#74dfff"}>r</Text></>);
+
 const AboutMe: React.FC = () => {
   const theme = useMantineTheme();
   return <Card
@@ -23,17 +35,7 @@ const AboutMe: React.FC = () => {
       <List.Item>
         <Tooltip label="She/Them" withArrow position='right-end' arrowSize={10}>
           <Text>
-            <Text display={"inline"} c={"#74dfff"}>T</Text>
-            <Text display={"inline"} c={"#74dfff"}>r</Text>
-            <Text display={"inline"} c={"#fff"}>a</Text>
-            <Text display={"inline"} c={"#ffb5d7"}>n</Text>
-            <Text display={"inline"} c={"#ffb5d7"}>s</Text>
-            <Text display={"inline"} c={"#fe8dbf"}>g</Text>
-            <Text display={"inline"} c={"#ffb5d7"}>e</Text>
-            <Text display={"inline"} c={"#ffb5d7"}>n</Text>
-            <Text display={"inline"} c={"#fff"}>d</Text>
-            <Text display={"inline"} c={"#74dfff"}>e</Text>
-            <Text display={"inline"} c={"#74dfff"}>r</Text>
+            {transgender}
           </Text>
         </Tooltip>
       </List.Item>
@@ -43,7 +45,7 @@ const AboutMe: React.FC = () => {
       <List.Item>18 Years Old<Text size='xs' c={theme.colors.gray[6]} display={"inline"}> (11 Apr 2006)</Text></List.Item>
       <List.Item>
         <Tooltip label={<span>&#128557;</span>} withArrow position='right' >
-          <Text>Alone</Text>
+          <Text>Single</Text>
         </Tooltip>
       </List.Item>
       <List.Item>

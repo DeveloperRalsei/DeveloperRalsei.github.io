@@ -191,4 +191,14 @@ export const Projects: Types.Project[] = [
     desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
   },
+  {
+    name: "Public To-Do",
+    status: "done",
+    techs: ["ts", "mongodb","react","nodejs"],
+    desc: "The public To-Do app that everyones can see what listing. ",
+    buttons: [
+      {type: "github", url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine"},
+      {type: "link", url: "https://ralseistods.onrender.com/"}
+    ]
+  }
 ];

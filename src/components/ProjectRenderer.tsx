@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Types } from '../data';
 import { Paper, Group, Title, Stack, Badge, Tooltip, SimpleGrid, Text, Box, LoadingOverlay, Image } from '@mantine/core';
-import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2 } from '@tabler/icons-react';
+import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2, IconBrandMongodb } from '@tabler/icons-react';
 import { IoLogoElectron } from 'react-icons/io5';
 import { ProjectButton } from './ProjectButton';
 
@@ -63,6 +63,11 @@ const TechRenderers: Record<any, React.ReactNode> = {
   electron: (
     <Tooltip label="ElectronJS">
       <IoLogoElectron size={25} stroke='200'/>
+    </Tooltip>
+  ),
+  mongodb: (
+    <Tooltip label="Mongo DB">
+      <IconBrandMongodb/>
     </Tooltip>
   )
 };
