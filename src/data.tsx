@@ -195,7 +195,7 @@ export const Projects: Types.Project[] = [
     name: "Public To-Do",
     status: "done",
     techs: ["ts", "mongodb","react","nodejs"],
-    desc: "The public To-Do app that everyones can see what listing. ",
+    desc: "The public To-Do app that everyones can see what listing.",
     buttons: [
       {type: "github", url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine"},
       {type: "link", url: "https://ralseistods.onrender.com/"}
