@@ -1,39 +1,48 @@
-import { Group, Space, Title, Divider, Anchor, Flex, Stack, Text, useMantineTheme } from '@mantine/core'
-import Card from './Card'
-import Status, { StatusBadge } from './Status'
-import { IconBook2 } from '@tabler/icons-react'
-import { IconLinks } from '../data'
+import { Group, Space, Title, Divider, Anchor, Flex, Stack, Text, useMantineTheme, Button } from '@mantine/core';
+import Card from './Card';
+import Status, { StatusBadge } from './Status';
+import { IconArrowRight, IconBook2 } from '@tabler/icons-react';
+import { IconLinks } from '../data';
 
-const MySituation = () => {
-  const theme = useMantineTheme()
+const MySituation = ({ changePage }: { changePage: () => void; }) => {
+  const theme = useMantineTheme();
   return <Card title="Some useless info" icon={<IconBook2 />} tcolor='blue' withBorder>
     <Space h={10} />
-    <Group>
-      <Title order={5}>Status</Title>: <StatusBadge />
-    </Group>
-    <Space h={10} />
-    <Status />
-    <br />
-    <Group gap={6}> 
-      <Text>Currently learning: </Text>
-      <Text c={"lightblue"}>Docker,</Text>
-      <Text c={"teal"}>MongoDb,</Text>
-      <Text c={"green"}>C++</Text>
-    </Group>
-    <Space h={20}/>
-    <Title order={4} c={"grape"}>I Use These</Title>
-    <Divider />
-    <Flex mt={10} gap={"lg"} wrap={"wrap"} justify={"center"}>
-      {IconLinks.map((l, i) => (
-        <Anchor key={i} href={l.href} c={l.color || theme.primaryColor}>
-          <Stack align='center'>
-            {l.icon}
-            <Text size='sm'>{l.label}</Text>
-          </Stack>
-        </Anchor>))}
-    </Flex>
+    <Stack gap={2}>
+      <Group>
+        <Title order={5}>Status</Title>: <StatusBadge />
+      </Group>
+      <Space h={10} />
+      <Status />
+      <br />
+      <Group gap={6}>
+        <Text>Currently learning: </Text>
+        <Text c={"lightblue"}>Docker,</Text>
+        <Text c={"teal"}>MongoDb,</Text>
+        <Text c={"green"}>C++</Text>
+      </Group>
+      <Space h={20} />
+      <Title order={4} c={"grape"}>I Use These</Title>
+      <Divider />
+      <Flex mt={10} gap={"lg"} wrap={"wrap"} justify={"center"}>
+        {IconLinks.map((l, i) => (
+          <Anchor key={i} href={l.href} c={l.color || theme.primaryColor}>
+            <Stack align='center'>
+              {l.icon}
+              <Text size='sm'>{l.label}</Text>
+            </Stack>
+          </Anchor>))}
+      </Flex>
+      <Group h={80} align="end" justify='end'>
+        <Button onClick={changePage} variant='subtle'>
+          <Text>Look at my Projects</Text> &nbsp;
+          <IconArrowRight/>
+        </Button>
+      </Group>
+    </Stack>
 
-  </Card>
-}
 
-export default MySituation
+  </Card>;
+};
+
+export default MySituation;

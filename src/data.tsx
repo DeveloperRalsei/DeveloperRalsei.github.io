@@ -2,40 +2,38 @@ import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core";
 import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
 import React from "react";
 
-export namespace Types {
-  export type Icon = {
-    label: string;
-    icon: React.ReactNode;
-    href: string;
-    color: DefaultMantineColor;
-  };
+export type Icon = {
+  label: string;
+  icon: React.ReactNode;
+  href: string;
+  color: DefaultMantineColor;
+};
 
-  export type ProfileLink = {
-    label: string;
-    icon: React.ReactNode;
-    href: string;
-    color: DefaultMantineColor;
-  };
+export type ProfileLink = {
+  label: string;
+  icon: React.ReactNode;
+  href: string;
+  color: DefaultMantineColor;
+};
 
-  type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron';
-  type ProjectButton = {
-    type: 'link' | 'github' | 'custom',
-    url: string, color?: DefaultMantineColor,
-    icon?: React.ReactNode, label?: string;
-  };
+type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron';
+type ProjectButton = {
+  type: 'link' | 'github' | 'custom',
+  url: string, color?: DefaultMantineColor,
+  icon?: React.ReactNode, label?: string;
+};
 
-  export interface Project {
-    name: string;
-    desc?: string;
-    status: 'done' | 'wip' | 'forgotten' | 'abandoned';
-    imgUrl?: string;
-    techs: Tech[];
-    buttons: ProjectButton[];
-    url?: string;
-  }
+export interface Project {
+  name: string;
+  desc?: string;
+  status: 'done' | 'wip' | 'forgotten' | 'abandoned';
+  imgUrl?: string;
+  techs: Tech[];
+  buttons: ProjectButton[];
+  url?: string;
 }
 
-export const IconLinks: Types.Icon[] = [
+export const IconLinks: Icon[] = [
   {
     label: "HTML",
     icon: <IconBrandHtml5 />,
@@ -166,9 +164,9 @@ export const ProfileLinks = [
     href: "/images/desktop.png",
     color: "lime"
   },
-] as Types.ProfileLink[];
+] as ProfileLink[];
 
-export const Projects: Types.Project[] = [
+export const Projects: Project[] = [
   {
     name: "This Web Site",
     status: "done",
@@ -194,11 +192,11 @@ export const Projects: Types.Project[] = [
   {
     name: "Public To-Do",
     status: "done",
-    techs: ["ts", "mongodb","react","nodejs"],
+    techs: ["ts", "mongodb", "react", "nodejs"],
     desc: "The public To-Do app that everyones can see what listing.",
     buttons: [
-      {type: "github", url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine"},
-      {type: "link", url: "https://ralseistods.onrender.com/"}
+      { type: "github", url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine" },
+      { type: "link", url: "https://ralseistods.onrender.com/" }
     ]
   }
 ];

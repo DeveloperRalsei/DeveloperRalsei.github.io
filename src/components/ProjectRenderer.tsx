@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Types } from '../data';
-import { Paper, Group, Title, Stack, Badge, Tooltip, SimpleGrid, Text, Box, LoadingOverlay, Image } from '@mantine/core';
+import { Project   } from '../data';
+import { Paper, Group, Title, Stack, Badge, Tooltip, SimpleGrid, Text, Box, LoadingOverlay, Image, PaperProps } from '@mantine/core';
 import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2, IconBrandMongodb } from '@tabler/icons-react';
 import { IoLogoElectron } from 'react-icons/io5';
 import { ProjectButton } from './ProjectButton';
@@ -74,13 +74,14 @@ const TechRenderers: Record<any, React.ReactNode> = {
 
 
 
-const ProjectRenderer = ({ p }: { p: Types.Project; }) => {
+const ProjectRenderer = ({ p, props }: { p: Project, props?: PaperProps }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <Paper
       p={"xs"}
       withBorder
       h={"fit-content"}
+      {...props}
     >
       <Stack>
         <Group justify='space-between'>
