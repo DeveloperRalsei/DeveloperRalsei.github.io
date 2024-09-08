@@ -35,7 +35,7 @@ const MySituation = ({ changePage }: { changePage: () => void; }) => {
       </Flex>
       <Group h={80} align="end" justify='end'>
         <Button onClick={changePage} variant='subtle'>
-          <Text>Look at my Projects</Text> &nbsp;
+          <Text>Look at Projects i made</Text> &nbsp;
           <IconArrowRight/>
         </Button>
       </Group>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Group, Menu, Paper, Text, Tooltip } from '@mantine/core';
+import { Box, Group, Menu, Paper, Text } from '@mantine/core';
 import { useLanyard, LanyardWebsocket, Activity } from 'react-use-lanyard';
 import { IconBrandSpotifyFilled } from '@tabler/icons-react';
 
@@ -59,12 +59,12 @@ const Status: React.FC = () => {
               </Box>
             : <Text>I'm not currently doing anything</Text>}
 
-          {status.listening_to_spotify ? <Menu position='left'>
+          {status.listening_to_spotify ? <Menu position='left' trigger='click-hover'>
             <Menu.Target>
               <IconBrandSpotifyFilled color='lightgreen' cursor={"pointer"} />
             </Menu.Target>
 
-            <Menu.Dropdown p={20}>
+            <Menu.Dropdown p={20} bg={"dark"}>
               <Text c={"green"}>Listening</Text>
               <Menu.Divider/>
               <Text display={"block"}>
@@ -78,11 +78,17 @@ const Status: React.FC = () => {
               </Text>
             </Menu.Dropdown>
 
-          </Menu> : <Tooltip label={"Not Listening Anything"}>
+          </Menu> : <Menu trigger='click-hover' position='left'>
 
-            <IconBrandSpotifyFilled color={"gray"} />
+            <Menu.Target>
+              <IconBrandSpotifyFilled color={"gray"} cursor={"pointer"} />
+            </Menu.Target>
 
-          </Tooltip>}
+            <Menu.Dropdown bg={"dark"}>
+              <Text c={"gray"}>Not Listening Anything</Text>
+            </Menu.Dropdown>
+
+          </Menu>}
 
         </Group> : "Offline"}
     </Paper>
