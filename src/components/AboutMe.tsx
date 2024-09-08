@@ -17,6 +17,13 @@ const transgender = (<><Text display={"inline"} c={"#74dfff"}>T</Text>
 
 const AboutMe: React.FC = () => {
   const theme = useMantineTheme();
+
+  // :3
+  const myBirthDay = new Date(2006, 3, 11).getTime()
+  const currentDay = Date.now()
+
+  const myAge = Math.floor((currentDay - myBirthDay) / (1000 * 60 * 60 * 24 * 365.25))
+
   return <Card
     title='About Me'
     icon={
@@ -42,7 +49,7 @@ const AboutMe: React.FC = () => {
       <List.Item>
         a fullstack web developer
       </List.Item>
-      <List.Item>18 Years Old<Text size='xs' c={theme.colors.gray[6]} display={"inline"}> (11 Apr 2006)</Text></List.Item>
+      <List.Item>{myAge} Years Old<Text size='xs' c={theme.colors.gray[6]} display={"inline"}> (11 Apr 2006)</Text></List.Item>
       <List.Item>
         <Tooltip label={<span>&#128557;</span>} withArrow position='right' >
           <Text>Single</Text>

@@ -71,7 +71,7 @@ const Status: React.FC = () => {
                 Song: <Text c={"lime"} display={"inline"}>{spotify?.song}</Text>
               </Text>
               <Text display={"block"}>
-                Artist: <Text c={"blue"} display={"inline"} td={"underline"} component='a' href={`https://google.com/search?q="${spotify?.artist}"`}>{spotify?.artist}</Text>
+                Artist: <Text c={"blue"} display={"inline"} td={"underline"} component='a' href={`https://google.com/search?q="${spotify?.artist}" artist`}>{spotify?.artist}</Text>
               </Text>
               <Text display={"block"}>
                 Duration: <Text display="inline">{songMinutes}</Text> minutes <Text display="inline">{songSeconds}</Text> seconds
