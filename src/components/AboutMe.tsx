@@ -18,10 +18,10 @@ const transgender = (<><Text display={"inline"} c={"#74dfff"}>T</Text>
 const AboutMe: React.FC = () => {
   const theme = useMantineTheme();
 
-  // :3
   const myBirthDay = new Date(2006, 3, 11).getTime()
   const currentDay = Date.now()
-
+  
+  // :3
   const myAge = Math.floor((currentDay - myBirthDay) / (1000 * 60 * 60 * 24 * 365.25))
 
   return <Card

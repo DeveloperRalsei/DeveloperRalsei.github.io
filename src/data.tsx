@@ -184,7 +184,7 @@ export const Projects: Project[] = [
   },
   {
     name: "Simple Blog App",
-    status: "wip",
+    status: "forgotten",
     techs: ["react", "mongodb", "nodejs"],
     desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
