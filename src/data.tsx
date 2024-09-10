@@ -1,5 +1,5 @@
 import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core";
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMongodb, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
 import React from "react";
 
 export type Icon = {
@@ -101,12 +101,17 @@ export const IconLinks: Icon[] = [
     color: "#339af0"
   },
   {
+    label: "MongoDb",
+    icon: <IconBrandMongodb/>,
+    href: "https://www.mongodb.com/",
+    color: "#00ff00"
+  },
+  {
     label: "Linux",
     icon: <Tooltip label="Debian/Ubuntu or Arch"><IconBrandUbuntu /></Tooltip>,
     href: "https://mantine.dev",
     color: "yellow"
   },
-
 ];
 
 export const ProfileLinks = [

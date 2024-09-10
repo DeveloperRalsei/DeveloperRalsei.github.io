@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ActionIcon, AppShell, Avatar, Box, Container, Group, SimpleGrid, Space, Title, Tooltip } from '@mantine/core';
+import React, { Suspense, useState } from 'react';
+import { ActionIcon, AppShell, Avatar, Box, Container, Group, Loader, ScrollArea, SimpleGrid, Space, Title, Tooltip } from '@mantine/core';
 import AboutMe from './components/AboutMe.tsx';
 import Card from './components/Card.tsx';
 import UselessInfo from './components/UselessInfo.tsx';
@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [page, setPage] = useState<page>("home");
 
   return <AppShell
-    header={{ height: 70 }}
+    header={{ height: 70, offset: true }}
   >
     <AppShell.Header withBorder={false}>
       <Group align='center' h={"100%"} justify='center'>
@@ -26,6 +26,7 @@ const App: React.FC = () => {
           DeveloperRalsei
         </Title>
       </Group>
+
     </AppShell.Header>
 
     {
@@ -42,21 +43,27 @@ const App: React.FC = () => {
     }
     {
       page === "projects" && (
-        <AppShell.Main >
-          <Container size={"xs"}>
-            <Card title='Projects' icon={<ActionIcon
-              variant='subtle'
-              onClick={() => setPage("home")}
-            >
-              <IconArrowLeft />
-            </ActionIcon>}>
-              <ProjectList />
-            </Card>
-          </Container>
-          <Space h="5vh"/>
-        </AppShell.Main>
+        <Suspense fallback={<Loader />}>
+          <AppShell.Main >
+            <Container size={"xs"}>
+              <Card title='Projects' icon={<ActionIcon
+                variant='subtle'
+                onClick={() => setPage("home")}
+              >
+                <IconArrowLeft />
+              </ActionIcon>}>
+                <ScrollArea h={"74vh"} >
+                  <ProjectList />
+                </ScrollArea>
+              </Card>
+            </Container>
+            <Space h="5vh" />
+          </AppShell.Main>
+        </Suspense>
       )
     }
+
+
 
   </AppShell>;
 };

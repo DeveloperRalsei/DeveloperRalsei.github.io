@@ -1,8 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import { createTheme, MantineProvider } from '@mantine/core';
-import App from './App'
-import './style.css'
-import '@mantine/core/styles.css'
+import { Notifications } from '@mantine/notifications';
+import App from './App';
+import './style.css';
+import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
+import { MusicPlayerProvider } from './components/provider/MusicPlayerProvider';
 
 const theme = createTheme({
   primaryColor: "teal",
@@ -18,12 +21,20 @@ const theme = createTheme({
       defaultProps: {
         target: "_blank"
       }
+    },
+    UnstyledButton: {
+      defaultProps: {
+
+      }
     }
   }
-})
+});
 
 createRoot(document.getElementById("root")!).render(
   <MantineProvider theme={theme} defaultColorScheme="dark">
-    <App />
+    <MusicPlayerProvider>
+      <Notifications />
+      <App />
+    </MusicPlayerProvider>
   </MantineProvider>
-)
+);

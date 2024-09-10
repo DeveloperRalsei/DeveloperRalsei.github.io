@@ -3,22 +3,23 @@ import Card from './Card';
 import Status, { StatusBadge } from './Status';
 import { IconArrowRight, IconBook2 } from '@tabler/icons-react';
 import { IconLinks } from '../data';
+import MusicPlayer from './provider/MusicPlayer';
 
 const MySituation = ({ changePage }: { changePage: () => void; }) => {
   const theme = useMantineTheme();
+
   return <Card title="Some useless info" icon={<IconBook2 />} tcolor='blue' withBorder>
     <Space h={10} />
     <Stack gap={2}>
-      <Group>
-        <Title order={5}>Status</Title>: <StatusBadge />
+      <Group justify='space-between'>
+        <Group gap={7}><Title order={5}>Status</Title>:<StatusBadge /></Group>
       </Group>
       <Space h={10} />
       <Status />
       <br />
       <Group gap={6}>
         <Text>Currently learning: </Text>
-        <Text c={"lightblue"}>Docker,</Text>
-        <Text c={"teal"}>MongoDb,</Text>
+        <Text c={"blue"}>NextJs,</Text>
         <Text c={"green"}>C++</Text>
       </Group>
       <Space h={20} />
@@ -33,14 +34,14 @@ const MySituation = ({ changePage }: { changePage: () => void; }) => {
             </Stack>
           </Anchor>))}
       </Flex>
-      <Group h={80} align="end" justify='end'>
+      <Group h={80} align="end" justify='space-between'>
+        <MusicPlayer />
         <Button onClick={changePage} variant='subtle'>
           <Text>Look at Projects i made</Text> &nbsp;
           <IconArrowRight/>
         </Button>
       </Group>
     </Stack>
-
 
   </Card>;
 };
