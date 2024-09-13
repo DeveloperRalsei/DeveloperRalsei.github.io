@@ -1,4 +1,4 @@
-import { Group, Tooltip, UnstyledButton } from "@mantine/core";
+import { Box, Group, Tooltip, UnstyledButton } from "@mantine/core";
 import { IconPlayerSkipBackFilled, IconPlayerPlayFilled, IconPlayerSkipForwardFilled, IconPlayerPauseFilled } from "@tabler/icons-react";
 import { useMusicPlayer } from "./MusicPlayerProvider";
 import { useEffect } from "react";
@@ -12,7 +12,7 @@ export default function MusicPlayer() {
 
   return (
     <Tooltip label="Let's Play Some Music">
-      <Group bg={"transparent"}>
+      <Box>
         <Group w={"100%"} justify="space-evenly" gap={5}>
           <UnstyledButton onClick={previousTrack} p={0}>
             <IconPlayerSkipBackFilled />
@@ -24,7 +24,7 @@ export default function MusicPlayer() {
             <IconPlayerSkipForwardFilled />
           </UnstyledButton>
         </Group>
-      </Group>
+      </Box>
     </Tooltip>
   );
 }

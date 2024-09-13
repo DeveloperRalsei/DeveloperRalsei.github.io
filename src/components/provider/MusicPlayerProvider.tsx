@@ -17,7 +17,7 @@ const tracks = [
     {audio: new Audio("/musics/my_castle_town.mp3"), name: "My Castle Town"},
     {audio: new Audio("/musics/you_can_always_come_home.mp3"), name: "You can always come home"},
 ];
-tracks.forEach(song => song.audio.volume = .1)
+tracks.forEach(song => song.audio.volume = .5)
 
 export const MusicPlayerProvider = ({ children }: { children: React.ReactNode; }) => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -29,7 +29,7 @@ export const MusicPlayerProvider = ({ children }: { children: React.ReactNode; }
             track.audio.currentTime = 0;
         });
         setCurrentTrack(index);
-        tracks[index].audio.volume = 0.1;
+        tracks[index].audio.volume = 0.5;
         tracks[index].audio.play();
         setIsPlaying(true);
         notifications.show({
