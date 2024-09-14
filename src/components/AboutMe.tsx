@@ -77,12 +77,12 @@ const AboutMe: React.FC = () => {
             </Anchor>
           </List.Item>
           <List.Item>
-            <Anchor href='https://minecraft.net/' target='_blank'>
+            <Anchor href='https://undertale.com/' target='_blank'>
               Undertale
             </Anchor>
           </List.Item>
           <List.Item>
-            <Anchor href='https://minecraft.net/' target='_blank'>
+            <Anchor href='https://deltarune.com/' target='_blank'>
               Deltarune
             </Anchor>
           </List.Item>
