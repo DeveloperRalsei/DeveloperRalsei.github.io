@@ -5,7 +5,7 @@ import App from './App';
 import './style.css';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
-import { MusicPlayerProvider } from './components/provider/MusicPlayerProvider';
+import { MusicPlayerProvider } from './components/context/MusicPlayerProvider';
 
 const theme = createTheme({
   primaryColor: "teal",

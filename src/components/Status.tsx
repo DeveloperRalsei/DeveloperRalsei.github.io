@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Group, Menu, Paper, Text } from '@mantine/core';
+import { Box, Group, Loader, Menu, Paper, Text } from '@mantine/core';
 import { useLanyard, LanyardWebsocket, Activity } from 'react-use-lanyard';
 import { IconBrandSpotifyFilled } from '@tabler/icons-react';
 
@@ -13,7 +13,7 @@ export const StatusBadge = () => {
   const isIdle = status?.discord_status === 'idle';
 
   if (!status) {
-    return <Text c={"gray"}>Loading...</Text>;
+    return <Loader type='dots'/>;
   }
 
   if (isIdle) return <Text c={"yellow"}>AFK</Text>;
@@ -28,7 +28,7 @@ const Status: React.FC = () => {
   }) as LanyardWebsocket;
 
   if (!status) {
-    return <Text>Loading...</Text>;
+    return <Loader type='dots'/>;
   }
 
   const isOnline = status.discord_status === 'online' ||

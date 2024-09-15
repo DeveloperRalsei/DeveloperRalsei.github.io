@@ -1,9 +1,9 @@
-import React, { Suspense, useState } from 'react';
-import { ActionIcon, AppShell, Avatar, Box, Container, Group, Loader, ScrollArea, SimpleGrid, Space, Title, Tooltip } from '@mantine/core';
-import AboutMe from './components/AboutMe.tsx';
+import React, { useState } from 'react';
+import { ActionIcon, AppShell, Avatar, Box, Container, Group, SimpleGrid, Space, Title, Tooltip } from '@mantine/core';
+import AboutMe from './sections/AboutMe.tsx';
 import Card from './components/Card.tsx';
-import UselessInfo from './components/UselessInfo.tsx';
-import ProjectList from './components/ProjectList.tsx';
+import UselessInfo from './sections/UselessInfo.tsx';
+import ProjectList from './sections/ProjectList.tsx';
 import { IconArrowLeft } from '@tabler/icons-react';
 
 export type page = "home" | "projects";
@@ -43,23 +43,20 @@ const App: React.FC = () => {
     }
     {
       page === "projects" && (
-        <Suspense fallback={<Loader />}>
-          <AppShell.Main >
-            <Container size={"xs"}>
-              <Card title='Projects' icon={<ActionIcon
-                variant='subtle'
-                onClick={() => setPage("home")}
-              >
-                <IconArrowLeft />
-              </ActionIcon>}>
-                <ScrollArea h={"74vh"} >
-                  <ProjectList />
-                </ScrollArea>
-              </Card>
-            </Container>
-            <Space h="5vh" />
-          </AppShell.Main>
-        </Suspense>
+        <AppShell.Main >
+          <Container size={"xs"}>
+            <Card title='Projects' icon={<ActionIcon
+              variant='subtle'
+              onClick={() => setPage("home")}
+            >
+              <IconArrowLeft />
+            </ActionIcon>}>
+              <ProjectList />
+            </Card>
+              <Space h={"10vh"}/>
+          </Container>
+          <Space h="5vh" />
+        </AppShell.Main>
       )
     }
 

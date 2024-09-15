@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title } from '@mantine/core';
-import Card from './Card';
+import Card from '../components/Card';
 import { ProfileLinks } from '../data';
 
 const transgender = (<><Text display={"inline"} c={"#74dfff"}>T</Text>

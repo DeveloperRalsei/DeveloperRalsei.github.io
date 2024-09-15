@@ -1,5 +1,5 @@
 import { Tooltip, TextInput, Space, Text } from '@mantine/core';
-import ProjectRenderer from './ProjectRenderer';
+import ProjectRenderer from '../components/ProjectRenderer';
 import { useState } from 'react';
 import { Projects } from '../data';
 

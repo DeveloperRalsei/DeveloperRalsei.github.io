@@ -1,9 +1,9 @@
 import { Group, Space, Title, Divider, Anchor, Flex, Stack, Text, useMantineTheme, Button } from '@mantine/core';
-import Card from './Card';
-import Status, { StatusBadge } from './Status';
+import Card from '../components/Card';
+import Status, { StatusBadge } from '../components/Status';
 import { IconArrowRight, IconBook2 } from '@tabler/icons-react';
 import { IconLinks } from '../data';
-import MusicPlayer from './provider/MusicPlayer';
+import MusicPlayer from '../components/context/MusicPlayer';
 
 const MySituation = ({ changePage }: { changePage: () => void; }) => {
   const theme = useMantineTheme();
@@ -13,9 +13,10 @@ const MySituation = ({ changePage }: { changePage: () => void; }) => {
     <Stack gap={2}>
       <Group justify='space-between'>
         <Group gap={7}><Title order={5}>Status</Title>:<StatusBadge /></Group>
+        <MusicPlayer/>
       </Group>
       <Space h={10} />
-      <Status />
+        <Status />
       <br />
       <Group gap={6}>
         <Text>Currently learning: </Text>
@@ -34,8 +35,7 @@ const MySituation = ({ changePage }: { changePage: () => void; }) => {
             </Stack>
           </Anchor>))}
       </Flex>
-      <Group h={80} align="end" justify='space-between'>
-        <MusicPlayer />
+      <Group h={80} align="end" justify='end'>
         <Button onClick={changePage} variant='subtle'>
           <Text>Look at Projects i made</Text> &nbsp;
           <IconArrowRight/>
