@@ -1,28 +1,16 @@
 import React from 'react';
-import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title } from '@mantine/core';
+import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title, Box } from '@mantine/core';
 import Card from '../components/Card';
 import { ProfileLinks } from '../data';
-
-const transgender = (<><Text display={"inline"} c={"#74dfff"}>T</Text>
-  <Text display={"inline"} c={"#74dfff"}>r</Text>
-  <Text display={"inline"} c={"#fff"}>a</Text>
-  <Text display={"inline"} c={"#ffb5d7"}>n</Text>
-  <Text display={"inline"} c={"#ffb5d7"}>s</Text>
-  <Text display={"inline"} c={"#fe8dbf"}>g</Text>
-  <Text display={"inline"} c={"#ffb5d7"}>e</Text>
-  <Text display={"inline"} c={"#ffb5d7"}>n</Text>
-  <Text display={"inline"} c={"#fff"}>d</Text>
-  <Text display={"inline"} c={"#74dfff"}>e</Text>
-  <Text display={"inline"} c={"#74dfff"}>r</Text></>);
 
 const AboutMe: React.FC = () => {
   const theme = useMantineTheme();
 
-  const myBirthDay = new Date(2006, 3, 11).getTime()
-  const currentDay = Date.now()
-  
+  const myBirthDay = new Date(2006, 3, 11).getTime();
+  const currentDay = Date.now();
+
   // :3
-  const myAge = Math.floor((currentDay - myBirthDay) / (1000 * 60 * 60 * 24 * 365.25))
+  const myAge = Math.floor((currentDay - myBirthDay) / (1000 * 60 * 60 * 24 * 365.25));
 
   return <Card
     title='About Me'
@@ -40,11 +28,11 @@ const AboutMe: React.FC = () => {
     I'm: <br />
     <List listStyleType='disc' >
       <List.Item>
-        <Tooltip label="She/Them" withArrow position='right-end' arrowSize={10}>
-          <Text>
-            {transgender}
-          </Text>
-        </Tooltip>
+            <Text display={"inline-block"}>
+              a feminine boy <Text display={"inline"} c={theme.colors.gray[6]} size='sm'>(femboy)</Text> :3
+            </Text>
+            <Image src={"/images/trans.png"} alt='trans-flag-image' display={"inline-block"} ml={10}  w={20}/>
+            
       </List.Item>
       <List.Item>
         a fullstack web developer
