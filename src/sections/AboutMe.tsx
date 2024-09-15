@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title, Box } from '@mantine/core';
+import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title } from '@mantine/core';
 import Card from '../components/Card';
 import { ProfileLinks } from '../data';
 
