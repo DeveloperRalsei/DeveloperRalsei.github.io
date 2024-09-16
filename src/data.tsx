@@ -18,13 +18,10 @@ export type ProfileLink = {
 
 type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron';
 type ProjectButton = {
-  type: 'link' | 'github',
+  type: 'link' | 'github' | 'custom',
   url: string, color?: DefaultMantineColor,
-} | {
-  type: 'custom',
-  icon: React.ReactNode, label?: string;
-};
-
+  icon?: React.ReactNode, label?: string;
+} 
 export interface Project {
   name: string;
   desc?: string;
