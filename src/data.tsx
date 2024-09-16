@@ -18,9 +18,11 @@ export type ProfileLink = {
 
 type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron';
 type ProjectButton = {
-  type: 'link' | 'github' | 'custom',
+  type: 'link' | 'github',
   url: string, color?: DefaultMantineColor,
-  icon?: React.ReactNode, label?: string;
+} | {
+  type: 'custom',
+  icon: React.ReactNode, label?: string;
 };
 
 export interface Project {
@@ -181,6 +183,27 @@ export const Projects: Project[] = [
     url: "https://github.com/developerRalsei/developerRalsei.github.io"
   },
   {
+    name: "Omsu",
+    status: "wip",
+    techs: ["ts","react"],
+    url: "https://omsu.onrender.com/",
+    desc: "An easy data viewer for osu! players",
+    buttons: [
+      {type: "github", url: "https://github.com/developerRalsei/omsu"},
+      {type: "link", url: "https://omsu.onrender.com/"}
+    ]
+  },
+  {
+    name: "Public To-Do",
+    status: "done",
+    techs: ["ts", "mongodb", "react", "nodejs"],
+    desc: "The public To-Do app that everyones can see what listing.",
+    buttons: [
+      { type: "github", url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine" },
+      { type: "link", url: "https://ralseistods.onrender.com/" }
+    ]
+  },
+  {
     name: "Node Web Starter Script",
     status: "done",
     techs: ["bash"],
@@ -194,14 +217,4 @@ export const Projects: Project[] = [
     desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
   },
-  {
-    name: "Public To-Do",
-    status: "done",
-    techs: ["ts", "mongodb", "react", "nodejs"],
-    desc: "The public To-Do app that everyones can see what listing.",
-    buttons: [
-      { type: "github", url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine" },
-      { type: "link", url: "https://ralseistods.onrender.com/" }
-    ]
-  }
 ];
