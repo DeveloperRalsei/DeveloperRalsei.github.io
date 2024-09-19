@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title } from '@mantine/core';
+import { Tooltip, List, Text, Image, useMantineTheme, Anchor, Space, Divider, Flex, Stack, Title, Group } from '@mantine/core';
 import Card from '../components/Card';
 import { ProfileLinks } from '../data';
 
@@ -11,6 +11,36 @@ const AboutMe: React.FC = () => {
 
   // :3
   const myAge = Math.floor((currentDay - myBirthDay) / (1000 * 60 * 60 * 24 * 365.25));
+
+  type genderColors = {
+    letter: string,
+    color: string;
+  };
+
+  const transgender: genderColors[] = [
+    { letter: "T", color: "#74dfff" },
+    { letter: "r", color: "#74dfff" },
+    { letter: "a", color: "#fff" },
+    { letter: "n", color: "#ffb5d7" },
+    { letter: "s", color: "#ffb5d7" },
+    { letter: "g", color: "#fe8dbf" },
+    { letter: "e", color: "#ffb5d7" },
+    { letter: "n", color: "#ffb5d7" },
+    { letter: "d", color: "#fff" },
+    { letter: "e", color: "#74dfff" },
+    { letter: "r", color: "#74dfff" },
+  ];
+
+  const bisexual: genderColors[] = [
+    { letter: "B", color: "#d70071" },
+    { letter: "i", color: "#d70071" },
+    { letter: "s", color: "#d70071" },
+    { letter: "e", color: "#9c4e97" },
+    { letter: "x", color: "#9c4e97" },
+    { letter: "u", color: "#0035aa" },
+    { letter: "a", color: "#0035aa" },
+    { letter: "l", color: "#0035aa" },
+  ];
 
   return <Card
     title='About Me'
@@ -28,11 +58,31 @@ const AboutMe: React.FC = () => {
     I'm: <br />
     <List listStyleType='disc' >
       <List.Item>
-            <Text display={"inline-block"}>
-              a feminine boy <Text display={"inline"} c={theme.colors.gray[6]} size='sm'>(femboy)</Text> :3
-            </Text>
-            <Image src={"/images/trans.png"} alt='trans-flag-image' display={"inline-block"} ml={10}  w={20}/>
-            
+        <Group gap={6}>
+          <Text inline>using</Text> <Text c={theme.colors.pink[5]} inline>she/them</Text> :3
+        </Group>
+        <List icon='-'>
+          <List.Item>
+            <Group>
+              <Flex>
+                {transgender.map(({ color, letter }, i) => (
+                  <Text key={i} c={color} inline>{letter}</Text>
+                ))}
+              </Flex>
+              <Image src={"/images/trans.png"} alt='trans-flag' w={25} />
+            </Group>
+          </List.Item>
+          <List.Item>
+            <Group>
+              <Flex>
+                {bisexual.map(({ color, letter }, i) => (
+                  <Text key={i} c={color} inline>{letter}</Text>
+                ))}
+              </Flex>
+              <Image src={"/images/bi.png"} alt='trans-flag' w={25} />
+            </Group>
+          </List.Item>
+        </List>
       </List.Item>
       <List.Item>
         a fullstack web developer
