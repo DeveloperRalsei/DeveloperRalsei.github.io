@@ -1,5 +1,5 @@
 import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core";
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMongodb, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
+import { IconBrandCss3, IconBrandDeno, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMongodb, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
 import React from "react";
 
 export type Icon = {
@@ -16,7 +16,7 @@ export type ProfileLink = {
   color: DefaultMantineColor;
 };
 
-type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron';
+type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron' | 'nextjs';
 type ProjectButton = {
   type: 'link' | 'github' | 'custom',
   url: string, color?: DefaultMantineColor,
@@ -62,6 +62,12 @@ export const IconLinks: Icon[] = [
     icon: <IconBrandNodejs />,
     href: "https://nodejs.org/",
     color: "green"
+  },
+  {
+    label: "DenoJs",
+    icon: <IconBrandDeno />,
+    href: "https://deno.com/",
+    color: "gray"
   },
   {
     label: "NPM",
@@ -182,13 +188,23 @@ export const Projects: Project[] = [
   {
     name: "Omsu",
     status: "wip",
-    techs: ["ts","react"],
+    techs: ["ts", "js","react", "nodejs"],
     url: "https://omsu.onrender.com/",
     desc: "An easy data viewer for osu! players",
     buttons: [
       {type: "github", url: "https://github.com/developerRalsei/omsu"},
       {type: "link", url: "https://omsu.onrender.com/"}
     ]
+  },
+  {
+    name: "Product Managmant System",
+    status: "wip",
+    techs: ["ts","nextjs"],
+    desc: "A product managment system for my company. Also my first nextjs project that haves authorisation system.",
+    buttons: [
+      {type: "github", url: "https://github.com/DeveloperRalsei/Product-Managment-Template"},
+      {type: "link", url: "https://product-managment-template.vercel.app/"}
+    ],
   },
   {
     name: "Public To-Do",
@@ -209,9 +225,9 @@ export const Projects: Project[] = [
   },
   {
     name: "Simple Blog App",
-    status: "forgotten",
+    status: "abandoned",
     techs: ["react", "mongodb", "nodejs"],
-    desc: "A simple blog viewer app with an admin panel that you can manage all blogs you see. Using MongoDB, ExpressJS, React, NodeJS",
+    desc: "I'm gonna rewrite a new one with nextjs",
     buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
   },
 ];

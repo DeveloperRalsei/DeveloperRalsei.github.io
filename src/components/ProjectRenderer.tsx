@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Project   } from '../data';
 import { Paper, Group, Title, Stack, Badge, Tooltip, SimpleGrid, Text, Box, LoadingOverlay, Image, PaperProps } from '@mantine/core';
-import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2, IconBrandMongodb } from '@tabler/icons-react';
+import { IconBrandReact, IconBrandTypescript, IconBrandNodejs, IconBrandJavascript, IconBrandHtml5, IconBrandCss3, IconBrandGithub, IconExternalLink, IconTerminal2, IconBrandMongodb, IconBrandNextjs } from '@tabler/icons-react';
 import { IoLogoElectron } from 'react-icons/io5';
 import { ProjectButton } from './ProjectButton';
 
@@ -68,6 +68,11 @@ const TechRenderers: Record<any, React.ReactNode> = {
   mongodb: (
     <Tooltip label="Mongo DB">
       <IconBrandMongodb/>
+    </Tooltip>
+  ),
+  nextjs: (
+    <Tooltip label="NextJS">
+      <IconBrandNextjs/>
     </Tooltip>
   )
 };
