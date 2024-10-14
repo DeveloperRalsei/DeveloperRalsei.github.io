@@ -40,7 +40,8 @@ const MySituation = ({ changePage }: { changePage: () => void }) => {
         <Group gap={6}>
           <Text>Currently learning: </Text>
           <Text c={"blue"}>NextJs,</Text>
-          <Text c={"green"}>C++</Text>
+          <Text c={"green"}>C++,</Text>
+          <Text c={"gray"}>DenoJs,</Text>
         </Group>
         <Space h={20} />
         <Title order={4} c={"grape"}>

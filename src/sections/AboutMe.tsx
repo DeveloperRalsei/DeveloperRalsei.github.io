@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Tooltip,
   List,
@@ -71,15 +71,15 @@ const AboutMe: React.FC = () => {
   //   <Text key={i} c={color} inline>{letter}</Text>
   // ));
 
-  const furDes = [
-    "I'guess",
-    "I'm not sure",
-    "Maybe",
-    "Uhhh...",
-    "Okay maybe I might be"
-  ]
+  // const furDes = [
+  //   "I'guess",
+  //   "I'm not sure",
+  //   "Maybe",
+  //   "Uhhh...",
+  //   "Okay maybe I might be"
+  // ]
 
-  const [furryDesicion, setFurryDesicion] = useState(furDes[0])
+  // const [furryDesicion, setFurryDesicion] = useState(furDes[0])
 
   return (
     <Card
@@ -95,27 +95,6 @@ const AboutMe: React.FC = () => {
         </Tooltip>
       }
       withBorder>
-      <Text p={"sm"}>
-        First of all, I'm not a cat or a dog or a penguin or a... I don't know
-        but{" "}
-        <Text display={"inline"} c={"red"}>
-          I'M NOT A FURRY
-        </Text>
-        <Text
-          display={"inline"}
-          onClick={() => {
-            const currentIndex = furDes.indexOf(furryDesicion)
-
-            const nextIndex = (currentIndex + 1) % furDes.length
-
-            setFurryDesicion(furDes[nextIndex])
-          }}
-          style={{ cursor: "pointer" }}>
-          ... {furryDesicion}. I'm just a goat who want to
-          hug
-        </Text>
-      </Text>
-      <Divider />
       I'm: <br />
       <List listStyleType="disc">
         <List.Item>
@@ -216,6 +195,11 @@ const AboutMe: React.FC = () => {
         </List.Item>
         
       </List>
+
+      <Divider />
+      <Text p={"sm"}>
+      Discord is currently closed in my country for a reason I don't know. So it's a little difficult to contact me right now.
+      </Text>
     </Card>
   );
 };

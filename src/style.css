@@ -19,3 +19,15 @@ body{
   background: var(--mantine-color-pink-4);
   border-radius: 100px;
 }
+
+#ILEFT {
+  font-family: "undertale";
+  font-size: 28px;
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: grid;
+  place-items: center;
+}

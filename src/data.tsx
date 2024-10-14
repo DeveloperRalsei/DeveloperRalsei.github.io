@@ -1,5 +1,5 @@
 import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core";
-import { IconBrandCss3, IconBrandDeno, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMongodb, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
+import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMongodb, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
 import React from "react";
 
 export type Icon = {
@@ -62,12 +62,6 @@ export const IconLinks: Icon[] = [
     icon: <IconBrandNodejs />,
     href: "https://nodejs.org/",
     color: "green"
-  },
-  {
-    label: "DenoJs",
-    icon: <IconBrandDeno />,
-    href: "https://deno.com/",
-    color: "gray"
   },
   {
     label: "NPM",
