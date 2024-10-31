@@ -1,5 +1,24 @@
 import { DefaultMantineColor, Image, Text, Tooltip } from "@mantine/core";
-import { IconBrandCss3, IconBrandDiscord, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandMantine, IconBrandMongodb, IconBrandMysql, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandSpotify, IconBrandTypescript, IconBrandUbuntu, IconBrandX, IconDeviceDesktop, IconGitMerge, IconMail } from "@tabler/icons-react";
+import {
+  IconBrandCss3,
+  IconBrandDiscord,
+  IconBrandGithub,
+  IconBrandHtml5,
+  IconBrandJavascript,
+  IconBrandMantine,
+  IconBrandMongodb,
+  IconBrandMysql,
+  IconBrandNodejs,
+  IconBrandNpm,
+  IconBrandReact,
+  IconBrandSpotify,
+  IconBrandTypescript,
+  IconBrandUbuntu,
+  IconBrandX,
+  IconDeviceDesktop,
+  IconGitMerge,
+  IconMail,
+} from "@tabler/icons-react";
 import React from "react";
 
 export type Icon = {
@@ -16,16 +35,41 @@ export type ProfileLink = {
   color: DefaultMantineColor;
 };
 
-type Tech = 'html' | 'css' | 'js' | 'ts' | 'nodejs' | 'mysql' | 'mongodb' | 'bash' | 'react' | 'electron' | 'nextjs';
-type ProjectButton = {
-  type: 'link' | 'github' | 'custom',
-  url: string, color?: DefaultMantineColor,
-  icon?: React.ReactNode, label?: string;
-} 
+export type Tech =
+  | "???"
+  | "html"
+  | "css"
+  | "js"
+  | "ts"
+  | "nodejs"
+  | "mysql"
+  | "mongodb"
+  | "bash"
+  | "react"
+  | "electron"
+  | "nextjs";
+
+type ProjectButtonDefaults = {
+  color?: DefaultMantineColor;
+  icon?: React.ReactNode;
+  label?: string;
+};
+
+type ProjectButton = ProjectButtonDefaults &
+  (
+    | {
+        type: "link" | "github";
+        url: string;
+      }
+    | {
+        type: "custom";
+        onClick: (...params: any) => void;
+      }
+  );
 export interface Project {
   name: string;
   desc?: string;
-  status: 'done' | 'wip' | 'forgotten' | 'abandoned';
+  status: "done" | "wip" | "forgotten" | "abandoned" | "???";
   imgUrl?: string;
   techs: Tech[];
   buttons: ProjectButton[];
@@ -37,79 +81,83 @@ export const IconLinks: Icon[] = [
     label: "HTML",
     icon: <IconBrandHtml5 />,
     href: "#",
-    color: "orange"
+    color: "orange",
   },
   {
     label: "CSS",
     icon: <IconBrandCss3 />,
     href: "#",
-    color: "var(--mantine-color-blue-3)"
+    color: "var(--mantine-color-blue-3)",
   },
   {
     label: "JS",
     icon: <IconBrandJavascript />,
     href: "#",
-    color: "var(--mantine-color-yellow-5)"
+    color: "var(--mantine-color-yellow-5)",
   },
   {
     label: "TS",
     icon: <IconBrandTypescript />,
     href: "https://typescriptlang.org/",
-    color: "#2f74c0"
+    color: "#2f74c0",
   },
   {
     label: "NodeJS",
     icon: <IconBrandNodejs />,
     href: "https://nodejs.org/",
-    color: "green"
+    color: "green",
   },
   {
     label: "NPM",
     icon: <IconBrandNpm />,
     href: "https://npmjs.com",
-    color: "red"
+    color: "red",
   },
   {
     label: "React",
     icon: <IconBrandReact />,
     href: "https://react.dev/",
-    color: "blue"
+    color: "blue",
   },
   {
     label: "MySQL",
     icon: <IconBrandMysql />,
     href: "https://mysql.com",
-    color: "cyan"
+    color: "cyan",
   },
   {
     label: "Git",
     icon: <IconGitMerge />,
     href: "https://git-scm.com",
-    color: "#ff0000"
+    color: "#ff0000",
   },
   {
     label: "GitHub",
     icon: <IconBrandGithub />,
     href: "https://github.com",
-    color: "#fff"
+    color: "#fff",
   },
   {
     label: "Mantine",
     icon: <IconBrandMantine />,
     href: "https://mantine.dev",
-    color: "#339af0"
+    color: "#339af0",
   },
   {
     label: "MongoDb",
-    icon: <IconBrandMongodb/>,
+    icon: <IconBrandMongodb />,
     href: "https://www.mongodb.com/",
-    color: "#00ff00"
+    color: "#00ff00",
   },
   {
     label: "Linux",
-    icon: <Tooltip label="Debian/Ubuntu or Arch"><IconBrandUbuntu /></Tooltip>,
+    icon: (
+      <Tooltip label="Debian/Ubuntu or Arch">
+        <IconBrandUbuntu />
+      </Tooltip>
+    ),
     href: "https://mantine.dev",
-    color: "yellow"
+    color: "yellow",
   },
 ];
 
@@ -118,55 +166,58 @@ export const ProfileLinks = [
     label: "Discord",
     icon: <IconBrandDiscord />,
     href: "https://discord.com/users/718798893445283863",
-    color: "cyan"
+    color: "cyan",
   },
   {
     label: "X",
     icon: <IconBrandX />,
     href: "https://x.com/HugPrinceRalsei",
-    color: "#fff"
+    color: "#fff",
   },
   {
     label: "Playlist",
     icon: <IconBrandSpotify />,
     href: "https://open.spotify.com/playlist/0sekcZeuwtAomcoRwkrPcS",
-    color: "green"
+    color: "green",
   },
   {
     label: "Github",
     icon: <IconBrandGithub />,
     href: "https://github.com/DeveloperRalsei/",
-    color: "#fff"
+    color: "#fff",
   },
   {
     label: "NameMC",
     icon: <Image src="/images/namemc.png" alt="namemc" w={25} radius={3} />,
     href: "https://namemc.com/profile/1riza",
-    color: "#fff"
+    color: "#fff",
   },
   {
     label: "G-Mail",
     icon: <IconMail />,
     href: "mailto:fluffycutegoatboi@gmail.com",
-    color: "orange"
+    color: "orange",
   },
   {
     label: "osu!",
-    icon: <Tooltip label={<Text display={"inline"}>6 DIGIT &#x1f480;</Text>}><Image src={"/images/osu.png"} alt="osu" w={25} /></Tooltip>,
+    icon: (
+      <Tooltip label={<Text display={"inline"}>6 DIGIT &#x1f480;</Text>}>
+        <Image src={"/images/osu.png"} alt="osu" w={25} />
+      </Tooltip>
+    ),
     href: "https://osu.ppy.sh/users/27076843",
-    color: "pink"
+    color: "pink",
   },
   {
     label: "My Desktop",
     icon: (
-      <Tooltip label={(
-        <Image src={"/images/desktop.png"} alt="MyDesktop" w={600} />
-      )}>
+      <Tooltip
+        label={<Image src={"/images/desktop.png"} alt="MyDesktop" w={600} />}>
         <IconDeviceDesktop />
       </Tooltip>
     ),
     href: "/images/desktop.png",
-    color: "lime"
+    color: "lime",
   },
 ] as ProfileLink[];
 
@@ -174,30 +225,38 @@ export const Projects: Project[] = [
   {
     name: "This Web Site",
     status: "done",
-    techs: ["ts", 'react'],
+    techs: ["ts", "react"],
     desc: "My own Website :3",
-    buttons: [{ type: "github", url: "https://github.com/developerRalsei/developerRalsei.github.io" }],
-    url: "https://github.com/developerRalsei/developerRalsei.github.io"
+    buttons: [
+      {
+        type: "github",
+        url: "https://github.com/developerRalsei/developerRalsei.github.io",
+      },
+    ],
+    url: "https://github.com/developerRalsei/developerRalsei.github.io",
   },
   {
     name: "Omsu",
     status: "wip",
-    techs: ["ts", "js","react", "nodejs"],
+    techs: ["ts", "js", "react", "nodejs"],
     url: "https://omsu.onrender.com/",
     desc: "An easy data viewer for osu! players",
     buttons: [
-      {type: "github", url: "https://github.com/developerRalsei/omsu"},
-      {type: "link", url: "https://omsu.onrender.com/"}
-    ]
+      { type: "github", url: "https://github.com/developerRalsei/omsu" },
+      { type: "link", url: "https://omsu.onrender.com/" },
+    ],
   },
   {
     name: "Product Managmant System",
     status: "wip",
-    techs: ["ts","nextjs"],
+    techs: ["ts", "nextjs"],
     desc: "A product managment system for my company. Also my first nextjs project that haves authorisation system.",
     buttons: [
-      {type: "github", url: "https://github.com/DeveloperRalsei/Product-Managment-Template"},
-      {type: "link", url: "https://product-managment-template.vercel.app/"}
+      {
+        type: "github",
+        url: "https://github.com/DeveloperRalsei/Product-Managment-Template",
+      },
+      { type: "link", url: "https://product-managment-template.vercel.app/" },
     ],
   },
   {
@@ -206,22 +265,35 @@ export const Projects: Project[] = [
     techs: ["ts", "mongodb", "react", "nodejs"],
     desc: "The public To-Do app that everyones can see what listing.",
     buttons: [
-      { type: "github", url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine" },
-      { type: "link", url: "https://ralseistods.onrender.com/" }
-    ]
+      {
+        type: "github",
+        url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine",
+      },
+      { type: "link", url: "https://ralseistods.onrender.com/" },
+    ],
   },
   {
     name: "Node Web Starter Script",
     status: "done",
     techs: ["bash"],
     desc: "This project somehow helps you to quickly start a simple web application using nodejs expressjs and ejs.",
-    buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/NodeJS-Web-App-Bash-Script" }],
+    buttons: [
+      {
+        type: "github",
+        url: "https://github.com/DeveloperRalsei/NodeJS-Web-App-Bash-Script",
+      },
+    ],
   },
   {
     name: "Simple Blog App",
     status: "abandoned",
     techs: ["react", "mongodb", "nodejs"],
     desc: "I'm gonna rewrite a new one with nextjs",
-    buttons: [{ type: "github", url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/" }],
+    buttons: [
+      {
+        type: "github",
+        url: "https://github.com/DeveloperRalsei/MERN-App-Blog-Template/",
+      },
+    ],
   },
 ];

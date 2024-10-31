@@ -1,10 +1,12 @@
 import { Tooltip, TextInput, Space, Text } from "@mantine/core";
 import ProjectRenderer from "../components/ProjectRenderer";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Projects } from "../data";
+import { SecretContext } from "../components/context/secret/SecretContext";
 
 const ProjectList = () => {
   const [search, setSearch] = useState("");
+  const { changeSecret } = useContext(SecretContext);
 
   const filteredProjects = search
     ? Projects.filter((p) =>
@@ -25,16 +27,14 @@ const ProjectList = () => {
             <Text
               variant="gradient"
               gradient={{ from: "red", to: "yellow", deg: 90 }}
-              display={"inline"}
-            >
+              display={"inline"}>
               SUS
             </Text>
             picious"
           </>
         }
         position="top-end"
-        openDelay={3000}
-      >
+        openDelay={3000}>
         <TextInput
           mt={10}
           placeholder="Search..."
@@ -52,15 +52,18 @@ const ProjectList = () => {
         <ProjectRenderer
           p={{
             name: "???",
+            status: "???",
+            techs: ["???"],
             buttons: [
               {
-                type: "link",
-                url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                type: "custom",
+                icon: "???",
+                onClick: (e) => {
+                  e.preventDefault();
+                  changeSecret();
+                },
               },
             ],
-            status: "done",
-            techs: [],
-            desc: "???",
           }}
         />
       )}

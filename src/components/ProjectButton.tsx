@@ -1,4 +1,9 @@
-import { Button, ButtonVariant, DefaultMantineColor, useMantineTheme } from '@mantine/core'
+import {
+  Button,
+  ButtonVariant,
+  DefaultMantineColor,
+  useMantineTheme,
+} from "@mantine/core";
 
 export const ProjectButton = ({
   variant,
@@ -6,26 +11,30 @@ export const ProjectButton = ({
   children,
   icon,
   iconRight,
-  href
+  onClick,
+  href,
 }: {
-  variant?: ButtonVariant,
-  color?: DefaultMantineColor
-  children: React.ReactNode
-  icon?: React.ReactNode
-  iconRight?: React.ReactNode
-  href: string
+  variant?: ButtonVariant;
+  color?: DefaultMantineColor;
+  children: React.ReactNode;
+  icon?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  onClick?: () => void;
+  href?: string;
 }) => {
-  const theme = useMantineTheme()
+  const theme = useMantineTheme();
 
-  return <Button
-    variant={variant}
-    component='a'
-    href={href}
-    color={color || theme.colors.dark[5]}
-    leftSection={icon}
-    rightSection={iconRight}
-    target='_blank'
-  >
-    {children}
-  </Button>
-}
+  return (
+    <Button
+      variant={variant}
+      component="a"
+      href={href}
+      color={color || theme.colors.dark[5]}
+      leftSection={icon}
+      rightSection={iconRight}
+      target="_blank"
+      onClick={onClick}>
+      {children}
+    </Button>
+  );
+};
