@@ -1,0 +1,91 @@
+import{K as A,g as B,r as T,h as D,j as e,B as j,H as L,I as G,i as F,f as N,a1 as C,ad as W,a6 as U,M as s,S as t,W as E,T as h}from"./index-DmTuLwHM.js";var P={root:"m_9e117634"};const H={},J=L((i,{radius:a,fit:n})=>({root:{"--image-radius":a===void 0?void 0:G(a),"--image-object-fit":n}})),m=A((i,a)=>{const n=B("Image",H,i),{classNames:g,className:y,style:v,styles:u,unstyled:k,vars:b,onError:r,src:l,radius:x,fit:o,fallbackSrc:d,mod:c,...M}=n,[w,I]=T.useState(!l);T.useEffect(()=>I(!l),[l]);const f=D({name:"Image",classes:P,props:n,className:y,style:v,classNames:g,styles:u,unstyled:k,vars:b,varsResolver:J});return w&&d?e.jsx(j,{component:"img",ref:a,src:d,...f("root"),onError:r,mod:["fallback",c],...M}):e.jsx(j,{component:"img",ref:a,...f("root"),src:l,onError:z=>{r==null||r(z),I(!0)},mod:c,...M})});m.classes=P;m.displayName="@mantine/core/Image";const[q,O]=F("List component was not found in tree");var S={root:"m_abbac491",item:"m_abb6bec2",itemWrapper:"m_75cd9f71",itemIcon:"m_60f83e5b"};const $={},R=N((i,a)=>{const n=B("ListItem",$,i),{classNames:g,className:y,style:v,styles:u,vars:k,icon:b,children:r,mod:l,...x}=n,o=O(),d=b||o.icon,c={classNames:g,styles:u};return e.jsx(j,{...o.getStyles("item",{...c,className:y,style:v}),component:"li",mod:[{"with-icon":!!d,centered:o.center},l],ref:a,...x,children:e.jsxs("div",{...o.getStyles("itemWrapper",c),children:[d&&e.jsx("span",{...o.getStyles("itemIcon",c),children:d}),e.jsx("span",{...o.getStyles("itemLabel",c),children:r})]})})});R.classes=S;R.displayName="@mantine/core/ListItem";const X={type:"unordered"},Y=L((i,{size:a,spacing:n})=>({root:{"--list-fz":C(a),"--list-lh":W(a),"--list-spacing":U(n)}})),p=N((i,a)=>{const n=B("List",X,i),{classNames:g,className:y,style:v,styles:u,unstyled:k,vars:b,children:r,type:l,withPadding:x,icon:o,spacing:d,center:c,listStyleType:M,mod:w,...I}=n,f=D({name:"List",classes:S,props:n,className:y,style:v,classNames:g,styles:u,unstyled:k,vars:b,varsResolver:Y});return e.jsx(q,{value:{center:c,icon:o,getStyles:f},children:e.jsx(j,{...f("root",{style:{listStyleType:M}}),component:l==="unordered"?"ul":"ol",mod:[{"with-padding":x},w],ref:a,...I,children:r})})});p.classes=S;p.displayName="@mantine/core/List";p.Item=R;/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var V=s("outline","brand-css3","IconBrandCss3",[["path",{d:"M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z",key:"svg-0"}],["path",{d:"M8.5 8h7l-4.5 4h4l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5",key:"svg-1"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var K=s("outline","brand-discord","IconBrandDiscord",[["path",{d:"M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0",key:"svg-0"}],["path",{d:"M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0",key:"svg-1"}],["path",{d:"M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3",key:"svg-2"}],["path",{d:"M7 16.5c3.5 1 6.5 1 10 0",key:"svg-3"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var _=s("outline","brand-github","IconBrandGithub",[["path",{d:"M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5",key:"svg-0"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var Q=s("outline","brand-html5","IconBrandHtml5",[["path",{d:"M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z",key:"svg-0"}],["path",{d:"M15.5 8h-7l.5 4h6l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5",key:"svg-1"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var Z=s("outline","brand-javascript","IconBrandJavascript",[["path",{d:"M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z",key:"svg-0"}],["path",{d:"M7.5 8h3v8l-2 -1",key:"svg-1"}],["path",{d:"M16.5 8h-2.5a.5 .5 0 0 0 -.5 .5v3a.5 .5 0 0 0 .5 .5h1.423a.5 .5 0 0 1 .495 .57l-.418 2.93l-2 .5",key:"svg-2"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var ee=s("outline","brand-mantine","IconBrandMantine",[["path",{d:"M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0",key:"svg-0"}],["path",{d:"M11 16c1.22 -.912 2 -2.36 2 -4a5.01 5.01 0 0 0 -2 -4",key:"svg-1"}],["path",{d:"M14 9h-2",key:"svg-2"}],["path",{d:"M14 15h-2",key:"svg-3"}],["path",{d:"M10 12h.01",key:"svg-4"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var te=s("outline","brand-mongodb","IconBrandMongodb",[["path",{d:"M12 3v19",key:"svg-0"}],["path",{d:"M18 11.227c0 3.273 -1.812 4.77 -6 9.273c-4.188 -4.503 -6 -6 -6 -9.273c0 -4.454 3.071 -6.927 6 -9.227c2.929 2.3 6 4.773 6 9.227z",key:"svg-1"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var se=s("outline","brand-mysql","IconBrandMysql",[["path",{d:"M13 21c-1.427 -1.026 -3.59 -3.854 -4 -6c-.486 .77 -1.501 2 -2 2c-1.499 -.888 -.574 -3.973 0 -6c-1.596 -1.433 -2.468 -2.458 -2.5 -4c-3.35 -3.44 -.444 -5.27 2.5 -3h1c8.482 .5 6.421 8.07 9 11.5c2.295 .522 3.665 2.254 5 3.5c-2.086 -.2 -2.784 -.344 -3.5 0c.478 1.64 2.123 2.2 3.5 3",key:"svg-0"}],["path",{d:"M9 7h.01",key:"svg-1"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var ae=s("outline","brand-nodejs","IconBrandNodejs",[["path",{d:"M9 9v8.044a2 2 0 0 1 -2.996 1.734l-1.568 -.9a3 3 0 0 1 -1.436 -2.561v-6.635a3 3 0 0 1 1.436 -2.56l6 -3.667a3 3 0 0 1 3.128 0l6 3.667a3 3 0 0 1 1.436 2.561v6.634a3 3 0 0 1 -1.436 2.56l-6 3.667a3 3 0 0 1 -3.128 0",key:"svg-0"}],["path",{d:"M17 9h-3.5a1.5 1.5 0 0 0 0 3h2a1.5 1.5 0 0 1 0 3h-3.5",key:"svg-1"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var ne=s("outline","brand-npm","IconBrandNpm",[["path",{d:"M1 8h22v7h-12v2h-4v-2h-6z",key:"svg-0"}],["path",{d:"M7 8v7",key:"svg-1"}],["path",{d:"M14 8v7",key:"svg-2"}],["path",{d:"M17 11v4",key:"svg-3"}],["path",{d:"M4 11v4",key:"svg-4"}],["path",{d:"M11 11v1",key:"svg-5"}],["path",{d:"M20 11v4",key:"svg-6"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var oe=s("outline","brand-react","IconBrandReact",[["path",{d:"M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102",key:"svg-0"}],["path",{d:"M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102",key:"svg-1"}],["path",{d:"M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2",key:"svg-2"}],["path",{d:"M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2",key:"svg-3"}],["path",{d:"M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896",key:"svg-4"}],["path",{d:"M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897",key:"svg-5"}],["path",{d:"M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z",key:"svg-6"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var ce=s("outline","brand-spotify","IconBrandSpotify",[["path",{d:"M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0",key:"svg-0"}],["path",{d:"M8 11.973c2.5 -1.473 5.5 -.973 7.5 .527",key:"svg-1"}],["path",{d:"M9 15c1.5 -1 4 -1 5 .5",key:"svg-2"}],["path",{d:"M7 9c2 -1 6 -2 10 .5",key:"svg-3"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var re=s("outline","brand-typescript","IconBrandTypescript",[["path",{d:"M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5",key:"svg-0"}],["path",{d:"M9 12h4",key:"svg-1"}],["path",{d:"M11 12v6",key:"svg-2"}],["path",{d:"M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z",key:"svg-3"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var le=s("outline","brand-ubuntu","IconBrandUbuntu",[["path",{d:"M12 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",key:"svg-0"}],["path",{d:"M17.723 7.41a7.992 7.992 0 0 0 -3.74 -2.162m-3.971 0a7.993 7.993 0 0 0 -3.789 2.216m-1.881 3.215a8 8 0 0 0 -.342 2.32c0 .738 .1 1.453 .287 2.132m1.96 3.428a7.993 7.993 0 0 0 3.759 2.19m4 0a7.993 7.993 0 0 0 3.747 -2.186m1.962 -3.43a8.008 8.008 0 0 0 .287 -2.131c0 -.764 -.107 -1.503 -.307 -2.203",key:"svg-1"}],["path",{d:"M5 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",key:"svg-2"}],["path",{d:"M19 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",key:"svg-3"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var ie=s("outline","brand-x","IconBrandX",[["path",{d:"M4 4l11.733 16h4.267l-11.733 -16z",key:"svg-0"}],["path",{d:"M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772",key:"svg-1"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var de=s("outline","device-desktop","IconDeviceDesktop",[["path",{d:"M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z",key:"svg-0"}],["path",{d:"M7 20h10",key:"svg-1"}],["path",{d:"M9 16v4",key:"svg-2"}],["path",{d:"M15 16v4",key:"svg-3"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var he=s("outline","git-merge","IconGitMerge",[["path",{d:"M7 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",key:"svg-0"}],["path",{d:"M7 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",key:"svg-1"}],["path",{d:"M17 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",key:"svg-2"}],["path",{d:"M7 8l0 8",key:"svg-3"}],["path",{d:"M7 8a4 4 0 0 0 4 4h4",key:"svg-4"}]]);/**
+ * @license @tabler/icons-react v3.11.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */var pe=s("outline","mail","IconMail",[["path",{d:"M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z",key:"svg-0"}],["path",{d:"M3 7l9 6l9 -6",key:"svg-1"}]]);const ge=[{content:e.jsx(e.Fragment,{children:e.jsxs(t,{children:["Well, I'm a simple guy who loves to code and lives in"," ",e.jsxs(E,{display:"inline-flex",gap:4,children:[e.jsx(h,{label:"It's Turkiye!!! not Turkey",children:e.jsx(t,{c:"red",fw:700,children:"Turkiye"})})," ","/"," ",e.jsx(h,{label:"Yes, this city is exist",children:e.jsx(t,{c:"cyan",fw:700,children:"Isparta"})}),e.jsx(h,{label:"GMT +3 / UTC +3",children:e.jsx(m,{src:"/images/as-bayraklari-as.png",alt:"Flag",w:20})})]}),"."]})})},{content:e.jsxs(e.Fragment,{children:["I'm currently learning"," ",e.jsx(t,{c:"blue",fw:700,children:"NextJs"}),","," ",e.jsx(t,{c:"green",fw:700,children:"C#"}),", and"," ",e.jsx(t,{c:"gray",component:"a",href:"https://deno.com",target:"_blank",fw:700,children:"DenoJs"}),"."]})},{content:e.jsx(e.Fragment,{children:e.jsxs(t,{children:["I'm using"," ",e.jsx(t,{c:"blue",fw:700,component:"a",href:"https://archlinux.org",target:"_blank",children:"Arch Linux"})," ","BTW. :P"]})})},{content:e.jsx(e.Fragment,{children:e.jsxs(t,{children:["I'm a big fan of"," ",e.jsx(h,{label:"Obviously",children:e.jsxs(j,{display:"inline",children:[" (",e.jsx(t,{c:"orange",fw:700,component:"a",href:"https://undertale.com",target:"_blank",children:"Undertale"})," ","/"," ",e.jsx(t,{c:"green",fw:700,component:"a",href:"https://deltarune.com",target:"_blank",children:"Deltarune"}),")"]})})]})})},{content:e.jsx(e.Fragment,{children:e.jsxs(t,{children:["And I'm playing these games too:",e.jsxs(p,{icon:"-",size:"sm",children:[e.jsx(p.Item,{children:e.jsx(t,{c:"green",component:"a",href:"https://minecraft.net",fw:700,target:"_blank",children:"Minecraft"})}),e.jsxs(p.Item,{children:[e.jsx(t,{c:"pink",fw:700,component:"a",href:"https://osu.ppy.sh",target:"_blank",children:"Osu!"}),"(I'm addicted to this game. Guess that's why I've less friends, 🥲)"]}),e.jsx(p.Item,{children:e.jsx(t,{c:"yellow",fw:700,component:"a",href:"https://gamejolt.com/games/UndertaleYellow/136925",target:"_blank",children:"Undertale Yellow"})})]})]})})}],ye=[{content:e.jsx(e.Fragment,{children:e.jsxs(t,{children:["I'm 18 years old guy and my student carrier is"," ",e.jsxs(t,{c:"red",fw:700,children:[" ","OVER!"]})," ","Unfortunately, my dad is pushing me to find a job and I'm not that able to find a job I don't like. (This programming stuff is inculed)."]})})},{content:e.jsx(e.Fragment,{children:e.jsxs(t,{children:["I'm about to become a poor because of my dad. After all he still want"," ",e.jsx(t,{c:"teal",children:"ME!"})," to pay for bills :/"]})})}],ve=[{label:"HTML",icon:e.jsx(Q,{}),href:"#",color:"orange"},{label:"CSS",icon:e.jsx(V,{}),href:"#",color:"var(--mantine-color-blue-3)"},{label:"JS",icon:e.jsx(Z,{}),href:"#",color:"var(--mantine-color-yellow-5)"},{label:"TS",icon:e.jsx(re,{}),href:"https://typescriptlang.org/",color:"#2f74c0"},{label:"NodeJS",icon:e.jsx(ae,{}),href:"https://nodejs.org/",color:"green"},{label:"NPM",icon:e.jsx(ne,{}),href:"https://npmjs.com",color:"red"},{label:"React",icon:e.jsx(oe,{}),href:"https://react.dev/",color:"blue"},{label:"MySQL",icon:e.jsx(se,{}),href:"https://mysql.com",color:"cyan"},{label:"Git",icon:e.jsx(he,{}),href:"https://git-scm.com",color:"#ff0000"},{label:"GitHub",icon:e.jsx(_,{}),href:"https://github.com",color:"#fff"},{label:"Mantine",icon:e.jsx(ee,{}),href:"https://mantine.dev",color:"#339af0"},{label:"MongoDb",icon:e.jsx(te,{}),href:"https://www.mongodb.com/",color:"#00ff00"},{label:"Linux",icon:e.jsx(h,{label:"Debian/Ubuntu or Arch",children:e.jsx(le,{})}),href:"https://mantine.dev",color:"yellow"}],ue=[{label:"Discord",icon:e.jsx(K,{}),href:"https://discord.com/users/718798893445283863",color:"cyan"},{label:"X",icon:e.jsx(ie,{}),href:"https://x.com/HugPrinceRalsei",color:"#fff"},{label:"Playlist",icon:e.jsx(ce,{}),href:"https://open.spotify.com/playlist/0sekcZeuwtAomcoRwkrPcS",color:"green"},{label:"Github",icon:e.jsx(_,{}),href:"https://github.com/DeveloperRalsei/",color:"#fff"},{label:"NameMC",icon:e.jsx(m,{src:"/images/namemc.png",alt:"namemc",w:25,radius:3}),href:"https://namemc.com/profile/1riza",color:"#fff"},{label:"G-Mail",icon:e.jsx(pe,{}),href:"mailto:fluffycutegoatboi@gmail.com",color:"orange"},{label:"osu!",icon:e.jsx(h,{label:e.jsx(t,{display:"inline",children:"6 DIGIT 💀"}),children:e.jsx(m,{src:"/images/osu.png",alt:"osu",w:25})}),href:"https://osu.ppy.sh/users/27076843",color:"pink"},{label:"My Desktop",icon:e.jsx(h,{label:e.jsx(m,{src:"/images/desktop.png",alt:"MyDesktop",w:600}),children:e.jsx(de,{})}),href:"/images/desktop.png",color:"lime"}],be=[{name:"This Web Site",status:"done",techs:["ts","react"],desc:"My own Website :3",buttons:[{type:"github",url:"https://github.com/developerRalsei/developerRalsei.github.io"}],url:"https://github.com/developerRalsei/developerRalsei.github.io"},{name:"Omsu",status:"wip",techs:["ts","js","react","nodejs"],url:"https://omsu.onrender.com/",desc:"An easy data viewer for osu! players",buttons:[{type:"github",url:"https://github.com/developerRalsei/omsu"},{type:"link",url:"https://omsu.onrender.com/"}]},{name:"Product Managmant System",status:"wip",techs:["ts","nextjs"],desc:"A product managment system for my company. Also my first nextjs project that haves authorisation system.",buttons:[{type:"github",url:"https://github.com/DeveloperRalsei/Product-Managment-Template"},{type:"link",url:"https://product-managment-template.vercel.app/"}]},{name:"Public To-Do",status:"done",techs:["ts","mongodb","react","nodejs"],desc:"The public To-Do app that everyones can see what listing.",buttons:[{type:"github",url:"https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine"},{type:"link",url:"https://ralseistods.onrender.com/"}]},{name:"Node Web Starter Script",status:"done",techs:["bash"],desc:"This project somehow helps you to quickly start a simple web application using nodejs expressjs and ejs.",buttons:[{type:"github",url:"https://github.com/DeveloperRalsei/NodeJS-Web-App-Bash-Script"}]},{name:"Simple Blog App",status:"abandoned",techs:["react","mongodb","nodejs"],desc:"I'm gonna rewrite a new one with nextjs",buttons:[{type:"github",url:"https://github.com/DeveloperRalsei/MERN-App-Blog-Template/"}]}];export{m as I,p as L,ue as P,de as a,ve as b,_ as c,oe as d,re as e,ye as f,Z as g,Q as h,V as i,ae as j,te as k,ge as l,se as m,be as n};
