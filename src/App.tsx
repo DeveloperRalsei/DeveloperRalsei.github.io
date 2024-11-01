@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, lazy, Suspense } from "react";
 import {
   ActionIcon,
   AppShell,
@@ -9,10 +9,7 @@ import {
   Title,
   Tooltip,
 } from "@mantine/core";
-import Home from "./sections/Home.tsx";
 import Card from "./components/Card.tsx";
-import AboutMe from "./sections/AboutMe.tsx";
-import ProjectList from "./sections/ProjectList.tsx";
 import {
   IconBook2,
   IconChevronLeft,
@@ -21,6 +18,15 @@ import {
 import { PageSwitcher } from "./components/PageSwitcher.tsx";
 import Secret from "./sections/Secret.tsx";
 import { SecretContext } from "./components/context/secret/SecretContext.tsx";
+import { PageLoader } from "./components/Loader.tsx";
+
+// import Home from "./sections/Home.tsx";
+// import AboutMe from "./sections/AboutMe.tsx";
+// import ProjectList from "./sections/ProjectList.tsx";
+
+const Home = lazy(() => import("./sections/Home.tsx"));
+const AboutMe = lazy(() => import("./sections/AboutMe.tsx"));
+const ProjectList = lazy(() => import("./sections/ProjectList.tsx"));
 
 export type page = "home" | "aboutme" | "projects" | "???";
 
@@ -86,12 +92,11 @@ const App = () => {
       </ActionIcon>
     ),
 
-    projectsPageRightBtn: (
+    projectsPageRightBtn: secret ? (
+      <div></div>
+    ) : (
       <Tooltip label="???">
-        <ActionIcon
-          variant="light"
-          disabled={secret}
-          onClick={() => setPage("???")}>
+        <ActionIcon variant="light" onClick={() => setPage("???")}>
           <IconChevronRight />
         </ActionIcon>
       </Tooltip>
@@ -127,23 +132,27 @@ const App = () => {
               rightBtn={PageSwitcherBtns.homePageRightBtn}
               leftBtn={PageSwitcherBtns.homePageLeftBtn}
             />
-            <Container size={"sm"} mb={30}>
-              <Home />
-            </Container>
+            <Suspense fallback={<PageLoader />}>
+              <Container size={"sm"} mb={30}>
+                <Home />
+              </Container>
+            </Suspense>
           </>
         )}
 
         {page === "aboutme" && (
           <>
             <PageSwitcher
-              page="About Me"
+              page="My Skills"
               pageTitleColor="green"
               leftBtn={PageSwitcherBtns.aboutmeLeftBtn}
               rightBtn={PageSwitcherBtns.aboutmeRightBtn}
             />
-            <Container size="sm">
-              <AboutMe />
-            </Container>
+            <Suspense fallback={<PageLoader />}>
+              <Container size="sm">
+                <AboutMe />
+              </Container>
+            </Suspense>
           </>
         )}
 
@@ -155,12 +164,14 @@ const App = () => {
               leftBtn={PageSwitcherBtns.projectsPageLeftBtn}
               rightBtn={PageSwitcherBtns.projectsPageRightBtn}
             />
-            <Container size={"xs"}>
-              <Card title="Projects" icon={<IconBook2 />}>
-                <ProjectList />
-              </Card>
-              <Space h={"10vh"} />
-            </Container>
+            <Suspense fallback={<PageLoader />}>
+              <Container size={"xs"}>
+                <Card title="Projects" icon={<IconBook2 />}>
+                  <ProjectList />
+                </Card>
+                <Space h={"10vh"} />
+              </Container>
+            </Suspense>
             <Space h="5vh" />
           </>
         )}

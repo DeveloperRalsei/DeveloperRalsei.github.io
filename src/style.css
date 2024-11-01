@@ -3,10 +3,13 @@
   src: url(/fonts/undertale.ttf);
 }
 
+::selection {
+  background-color: var(--mantine-color-teal-light);
+}
+
 body {
   font-size: 22px;
   font-family: "undertale", sans-serif;
-  user-select: none;
 }
 
 ::-webkit-scrollbar {

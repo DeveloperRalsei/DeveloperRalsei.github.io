@@ -70,57 +70,57 @@ const TechRender = ({ tech }: { tech: Tech }) => {
 const TechRenderers: Record<Tech, React.ReactNode> = {
   react: (
     <Tooltip label="React" withArrow>
-      <IconBrandReact size={22} />
+      <IconBrandReact size={20} />
     </Tooltip>
   ),
   ts: (
     <Tooltip label="Typescript" withArrow>
-      <IconBrandTypescript size={22} />
+      <IconBrandTypescript size={20} />
     </Tooltip>
   ),
   js: (
     <Tooltip label="JavaScript" withArrow>
-      <IconBrandJavascript size={22} />
+      <IconBrandJavascript size={20} />
     </Tooltip>
   ),
   html: (
     <Tooltip label="HTML" withArrow>
-      <IconBrandHtml5 size={22} />
+      <IconBrandHtml5 size={20} />
     </Tooltip>
   ),
   css: (
     <Tooltip label="CSS" withArrow>
-      <IconBrandCss3 size={22} />
+      <IconBrandCss3 size={20} />
     </Tooltip>
   ),
   nodejs: (
     <Tooltip label="NodeJS" withArrow>
-      <IconBrandNodejs size={22} />
+      <IconBrandNodejs size={20} />
     </Tooltip>
   ),
   bash: (
     <Tooltip label="Bash">
-      <IconTerminal2 size={22} />
+      <IconTerminal2 size={20} />
     </Tooltip>
   ),
   electron: (
     <Tooltip label="ElectronJS">
-      <IoLogoElectron size={22} stroke="200" />
+      <IoLogoElectron size={20} stroke="200" />
     </Tooltip>
   ),
   mongodb: (
     <Tooltip label="Mongo DB">
-      <IconBrandMongodb size={22} />
+      <IconBrandMongodb size={20} />
     </Tooltip>
   ),
   nextjs: (
     <Tooltip label="NextJS">
-      <IconBrandNextjs size={22} />
+      <IconBrandNextjs size={20} />
     </Tooltip>
   ),
   mysql: (
     <Tooltip label="MySQL">
-      <IconBrandMysql size={22} />
+      <IconBrandMysql size={20} />
     </Tooltip>
   ),
   "???": (

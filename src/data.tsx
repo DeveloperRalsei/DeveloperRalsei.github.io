@@ -210,6 +210,8 @@ export const listItems = [
                 target="_blank">
                 Osu!
               </Text>
+              (I'm addicted to this game. Guess that's why I've less friends,
+              🥲)
             </List.Item>
             <List.Item>
               <Text
@@ -228,7 +230,33 @@ export const listItems = [
   },
 ];
 
-export const funFactListItems = [];
+export const funFactListItems = [
+  {
+    content: (
+      <>
+        <Text>
+          I'm 18 years old guy and my student carrier is{" "}
+          <Text c={"red"} fw={700}>
+            {" "}
+            OVER!
+          </Text>{" "}
+          Unfortunately, my dad is pushing me to find a job and I'm not that
+          able to find a job I don't like. (This programming stuff is inculed).
+        </Text>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        <Text>
+          I'm about to become a poor because of my dad. After all he still want{" "}
+          <Text c={"teal"}>ME!</Text> to pay for bills :/
+        </Text>
+      </>
+    ),
+  },
+];
 
 export const IconLinks: Icon[] = [
   {
