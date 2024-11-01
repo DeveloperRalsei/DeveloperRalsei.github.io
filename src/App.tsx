@@ -122,6 +122,8 @@ const App = () => {
         {page === "home" && (
           <>
             <PageSwitcher
+              page="Home"
+              pageTitleColor="grape"
               rightBtn={PageSwitcherBtns.homePageRightBtn}
               leftBtn={PageSwitcherBtns.homePageLeftBtn}
             />
@@ -134,6 +136,8 @@ const App = () => {
         {page === "aboutme" && (
           <>
             <PageSwitcher
+              page="About Me"
+              pageTitleColor="green"
               leftBtn={PageSwitcherBtns.aboutmeLeftBtn}
               rightBtn={PageSwitcherBtns.aboutmeRightBtn}
             />
@@ -146,6 +150,8 @@ const App = () => {
         {page === "projects" && (
           <>
             <PageSwitcher
+              page="Projects"
+              pageTitleColor="blue"
               leftBtn={PageSwitcherBtns.projectsPageLeftBtn}
               rightBtn={PageSwitcherBtns.projectsPageRightBtn}
             />
@@ -162,6 +168,7 @@ const App = () => {
         {page === "???" && (
           <Container size={"sm"}>
             <PageSwitcher
+              page="???"
               leftBtn={PageSwitcherBtns["???leftBtn"]}
               rightBtn={PageSwitcherBtns["???rightBtn"]}
             />

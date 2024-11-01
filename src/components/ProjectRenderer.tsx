@@ -35,25 +35,25 @@ const StatusRenderers: Record<Project["status"], React.ReactNode> = {
   done: <></>,
   wip: (
     <Tooltip label="Work in Progress">
-      <Badge variant="light" color="yellow">
+      <Badge variant="light" color="yellow" visibleFrom="sm">
         WIP
       </Badge>
     </Tooltip>
   ),
   forgotten: (
-    <Badge variant="light" color="gray">
+    <Badge variant="light" color="gray" visibleFrom="sm">
       Forgotten
     </Badge>
   ),
   abandoned: (
     <Tooltip label="Abandoned Project">
-      <Badge variant="light" color="red">
+      <Badge variant="light" color="red" visibleFrom="sm">
         Dead
       </Badge>
     </Tooltip>
   ),
   "???": (
-    <Badge variant="outline" color="gray">
+    <Badge variant="outline" color="gray" visibleFrom="sm">
       <Text>???</Text>
     </Badge>
   ),
@@ -148,7 +148,9 @@ const ProjectRenderer = ({ p, props }: { p: Project; props?: PaperProps }) => {
         </Group>
         <SimpleGrid cols={{ base: 1, lg: p.imgUrl ? 2 : 1 }}>
           <Stack h={"100%"} style={{ overflow: "auto" }}>
-            <Stack>{p.desc && <Text fz={"sm"}>{p.desc}</Text>}</Stack>
+            <Stack visibleFrom="sm">
+              {p.desc && <Text fz={"sm"}>{p.desc}</Text>}
+            </Stack>
           </Stack>
           <Box style={{ alignSelf: "end" }}>
             {p.imgUrl && (

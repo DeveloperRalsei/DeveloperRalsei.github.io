@@ -3,9 +3,9 @@
   src: url(/fonts/undertale.ttf);
 }
 
-body{
+body {
   font-size: 22px;
-  font-family: 'undertale',sans-serif;
+  font-family: "undertale", sans-serif;
   user-select: none;
 }
 
@@ -15,9 +15,18 @@ body{
   background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background: var(--mantine-color-pink-4);
   border-radius: 100px;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 #ILEFT {

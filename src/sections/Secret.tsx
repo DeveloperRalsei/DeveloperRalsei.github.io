@@ -1,11 +1,15 @@
-import { Box, Space } from "@mantine/core";
+import { Anchor, Space } from "@mantine/core";
 
 const Secret = () => {
   return (
-    <Box>
+    <>
       <Space h="300vh" />
-      Meow! :3
-    </Box>
+      <Anchor
+        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        td={"underline"}>
+        Meow! :3
+      </Anchor>
+    </>
   );
 };
 

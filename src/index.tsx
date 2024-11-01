@@ -10,7 +10,7 @@ import ILEFT from "./sections/ILEFT";
 import { SecretProvider } from "./components/context/secret/SecretContext";
 
 const theme = createTheme({
-  primaryColor: "green",
+  primaryColor: "teal",
   fontFamily: "undertale",
   components: {
     Tooltip: {
@@ -33,7 +33,7 @@ const theme = createTheme({
 
 const AppWrapper = () => {
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={theme} defaultColorScheme="dark">
       <SecretProvider secret={false}>
         <MusicPlayerProvider>
           <Notifications position="top-center" />
