@@ -1,40 +1,50 @@
-import {
-  Button,
-  ButtonVariant,
-  DefaultMantineColor,
-  useMantineTheme,
-} from "@mantine/core";
+import { ProjectButton as btnType } from "@/types";
+import { Button, Group } from "@mantine/core";
+import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
 
-export const ProjectButton = ({
-  variant,
-  color,
-  children,
-  icon,
-  iconRight,
-  onClick,
-  href,
+export function ProjectButton({
+  button,
+  flex,
 }: {
-  variant?: ButtonVariant;
-  color?: DefaultMantineColor;
-  children: React.ReactNode;
-  icon?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  onClick?: () => void;
-  href?: string;
-}) => {
-  const theme = useMantineTheme();
+  button: btnType;
+  flex?: boolean;
+}) {
+  const { color, type } = button;
+
+  if (type !== "custom") {
+    return (
+      <Button
+        variant="light"
+        color={color || "gray"}
+        component="a"
+        fz={"md"}
+        href={button.url}
+        target="_blank"
+        flex={flex ? 1 : undefined}
+        style={{
+          textDecoration: "none",
+        }}
+      >
+        {type === "link" && (
+          <Group gap={7}>
+            {button.label}
+            <IconExternalLink size={16} />
+          </Group>
+        )}
+
+        {type === "github" && (
+          <Group>
+            <IconBrandGithub size={16} />
+            {"Open on Github"}
+          </Group>
+        )}
+      </Button>
+    );
+  }
 
   return (
-    <Button
-      variant={variant}
-      component="a"
-      href={href}
-      color={color || theme.colors.dark[5]}
-      leftSection={icon}
-      rightSection={iconRight}
-      target="_blank"
-      onClick={onClick}>
-      {children}
+    <Button onClick={button.onClick} color={color} flex={flex ? 1 : undefined}>
+      {button.label}
     </Button>
   );
-};
+}

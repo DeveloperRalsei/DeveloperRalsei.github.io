@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import Card from "../components/Card";
 import Status, { StatusBadge } from "../components/Status";
-import { IconBook2, IconDeviceDesktop } from "@tabler/icons-react";
+import { IconDeviceDesktop } from "@tabler/icons-react";
 import { IconLinks, ProfileLinks } from "../data";
 import MusicPlayer from "../components/context/MusicPlayer/MusicPlayer";
 
@@ -23,7 +23,8 @@ const MySituation = () => {
       title="Some useless info"
       icon={<IconDeviceDesktop />}
       tcolor="blue"
-      withBorder>
+      withBorder
+    >
       <Space h={10} />
       <Stack gap={2}>
         <Group justify="space-between">

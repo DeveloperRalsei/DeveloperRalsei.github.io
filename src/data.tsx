@@ -1,12 +1,4 @@
-import {
-  Box,
-  DefaultMantineColor,
-  Group,
-  Image,
-  List,
-  Text,
-  Tooltip,
-} from "@mantine/core";
+import { Box, Group, Image, List, Text, Tooltip } from "@mantine/core";
 import {
   IconBrandCss3,
   IconBrandDiscord,
@@ -27,62 +19,7 @@ import {
   IconGitMerge,
   IconMail,
 } from "@tabler/icons-react";
-import React from "react";
-
-export type Icon = {
-  label: string;
-  icon: React.ReactNode;
-  href: string;
-  color: DefaultMantineColor;
-};
-
-export type ProfileLink = {
-  label: string;
-  icon: React.ReactNode;
-  href: string;
-  color: DefaultMantineColor;
-};
-
-export type Tech =
-  | "???"
-  | "html"
-  | "css"
-  | "js"
-  | "ts"
-  | "nodejs"
-  | "mysql"
-  | "mongodb"
-  | "bash"
-  | "react"
-  | "electron"
-  | "nextjs";
-
-type ProjectButtonDefaults = {
-  color?: DefaultMantineColor;
-  icon?: React.ReactNode;
-  label?: string;
-};
-
-type ProjectButton = ProjectButtonDefaults &
-  (
-    | {
-        type: "link" | "github";
-        url: string;
-      }
-    | {
-        type: "custom";
-        onClick: (...params: any) => void;
-      }
-  );
-export interface Project {
-  name: string;
-  desc?: string;
-  status: "done" | "wip" | "forgotten" | "abandoned" | "???";
-  imgUrl?: string;
-  techs: Tech[];
-  buttons: ProjectButton[];
-  url?: string;
-}
+import { Icon, ProfileLink, Project } from "./types";
 
 export const listItems = [
   {
@@ -128,7 +65,8 @@ export const listItems = [
           component="a"
           href="https://deno.com"
           target="_blank"
-          fw={700}>
+          fw={700}
+        >
           DenoJs
         </Text>
         .
@@ -145,7 +83,8 @@ export const listItems = [
             fw={700}
             component="a"
             href="https://archlinux.org"
-            target="_blank">
+            target="_blank"
+          >
             Arch Linux
           </Text>{" "}
           BTW. :P
@@ -166,7 +105,8 @@ export const listItems = [
                 fw={700}
                 component="a"
                 href="https://undertale.com"
-                target="_blank">
+                target="_blank"
+              >
                 Undertale
               </Text>{" "}
               /{" "}
@@ -175,7 +115,8 @@ export const listItems = [
                 fw={700}
                 component="a"
                 href="https://deltarune.com"
-                target="_blank">
+                target="_blank"
+              >
                 Deltarune
               </Text>
               {")"}
@@ -197,7 +138,8 @@ export const listItems = [
                 component="a"
                 href="https://minecraft.net"
                 fw={700}
-                target="_blank">
+                target="_blank"
+              >
                 Minecraft
               </Text>
             </List.Item>
@@ -207,7 +149,8 @@ export const listItems = [
                 fw={700}
                 component="a"
                 href="https://osu.ppy.sh"
-                target="_blank">
+                target="_blank"
+              >
                 Osu!
               </Text>
               (I'm addicted to this game. Guess that's why I've less friends,
@@ -219,7 +162,8 @@ export const listItems = [
                 fw={700}
                 component="a"
                 href="https://gamejolt.com/games/UndertaleYellow/136925"
-                target="_blank">
+                target="_blank"
+              >
                 Undertale Yellow
               </Text>
             </List.Item>
@@ -343,7 +287,7 @@ export const IconLinks: Icon[] = [
   },
 ];
 
-export const ProfileLinks = [
+export const ProfileLinks: ProfileLink[] = [
   {
     label: "Discord",
     icon: <IconBrandDiscord />,
@@ -394,14 +338,15 @@ export const ProfileLinks = [
     label: "My Desktop",
     icon: (
       <Tooltip
-        label={<Image src={"/images/desktop.png"} alt="MyDesktop" w={600} />}>
+        label={<Image src={"/images/desktop.png"} alt="MyDesktop" w={600} />}
+      >
         <IconDeviceDesktop />
       </Tooltip>
     ),
     href: "/images/desktop.png",
     color: "lime",
   },
-] as ProfileLink[];
+];
 
 export const Projects: Project[] = [
   {
@@ -425,7 +370,7 @@ export const Projects: Project[] = [
     desc: "An easy data viewer for osu! players",
     buttons: [
       { type: "github", url: "https://github.com/developerRalsei/omsu" },
-      { type: "link", url: "https://omsu.onrender.com/" },
+      { type: "link", url: "https://omsu.onrender.com/", label: "Open Omsu" },
     ],
   },
   {
@@ -438,7 +383,11 @@ export const Projects: Project[] = [
         type: "github",
         url: "https://github.com/DeveloperRalsei/Product-Managment-Template",
       },
-      { type: "link", url: "https://product-managment-template.vercel.app/" },
+      {
+        type: "link",
+        url: "https://product-managment-template.vercel.app/",
+        label: "Open PMS",
+      },
     ],
   },
   {
@@ -451,7 +400,11 @@ export const Projects: Project[] = [
         type: "github",
         url: "https://github.com/DeveloperRalsei/My-first-todo-app-but-with-mantine",
       },
-      { type: "link", url: "https://ralseistods.onrender.com/" },
+      {
+        type: "link",
+        url: "https://ralseistods.onrender.com/",
+        label: "Open ToDo",
+      },
     ],
   },
   {

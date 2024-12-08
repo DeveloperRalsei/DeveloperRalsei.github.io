@@ -5,9 +5,10 @@ const Secret = () => {
     <>
       <Space h="300vh" />
       <Anchor
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-        td={"underline"}>
-        Meow! :3
+        td={"underline"}
+        onClick={() => open("https://jcw87.github.io/c2-sans-fight/", "_blank")}
+      >
+        Don't click this link or you gonna have a bad time
       </Anchor>
     </>
   );

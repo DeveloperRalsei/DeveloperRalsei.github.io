@@ -6,7 +6,7 @@ import { SecretContext } from "../components/context/secret/SecretContext";
 
 const ProjectList = () => {
   const [search, setSearch] = useState("");
-  const { changeSecret } = useContext(SecretContext);
+  const { toggle } = useContext(SecretContext);
 
   const filteredProjects = search
     ? Projects.filter((p) =>
@@ -27,14 +27,16 @@ const ProjectList = () => {
             <Text
               variant="gradient"
               gradient={{ from: "red", to: "yellow", deg: 90 }}
-              display={"inline"}>
+              display={"inline"}
+            >
               SUS
             </Text>
             picious"
           </>
         }
         position="top-end"
-        openDelay={3000}>
+        openDelay={3000}
+      >
         <TextInput
           mt={10}
           placeholder="Search..."
@@ -46,7 +48,7 @@ const ProjectList = () => {
       <Space h={15} />
 
       {filteredProjects.map((p, i) => (
-        <ProjectRenderer p={p} key={i} props={{ mb: "md" }} />
+        <ProjectRenderer p={p} key={i} />
       ))}
       {search.toLocaleLowerCase() === "sus" && (
         <ProjectRenderer
@@ -57,11 +59,10 @@ const ProjectList = () => {
             buttons: [
               {
                 type: "custom",
-                icon: "???",
-                onClick: (e) => {
-                  e.preventDefault();
-                  changeSecret();
+                onClick: () => {
+                  toggle();
                 },
+                label: "???",
               },
             ],
           }}

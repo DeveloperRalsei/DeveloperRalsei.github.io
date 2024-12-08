@@ -1,10 +1,13 @@
+import { useDisclosure } from "@mantine/hooks";
 import { createContext, useState } from "react";
 
 export const SecretContext = createContext<{
-  changeSecret: () => void;
+  toggle: () => void;
+  setSecret: (value: boolean) => void;
   secret: boolean;
 }>({
-  changeSecret: () => {},
+  toggle: () => {},
+  setSecret: () => {},
   secret: false,
 });
 
@@ -14,14 +17,18 @@ export const SecretProvider = ({
   children: React.ReactNode;
   secret: boolean;
 }) => {
-  const [secret, setSecret] = useState(false);
+  const [secret, { toggle, open, close }] = useDisclosure(false);
 
-  function changeSecret() {
-    setSecret((prev) => !prev);
+  function setSecret(value: boolean): void {
+    if (value) {
+      open();
+    } else {
+      close();
+    }
   }
 
   return (
-    <SecretContext.Provider value={{ secret, changeSecret }}>
+    <SecretContext.Provider value={{ secret, toggle, setSecret }}>
       {children}
     </SecretContext.Provider>
   );

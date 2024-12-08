@@ -21,7 +21,21 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "@/*": ["./src/*"],
+      "@blogs": ["./blogs/index.d.ts"],
+      "@blogs/*": ["./blogs/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "blogs"],
+  "mdx": {
+    "plugins": [
+      "@mdx-js/mdx",
+      "@mdx-js/react",
+      "remark-frontmatter",
+      "remark-mdx-frontmatter"
+    ]
+  }
 }

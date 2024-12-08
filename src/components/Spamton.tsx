@@ -6,11 +6,10 @@ const Spamton = () => {
     <Tooltip
       multiline
       label="Hello [TRADER]. What do you [TALKING IN BRAIN] about? WANNA [CREATE] AN UNFORGETTABLE [D-DEAL] FOR [US]?"
-      position="bottom-end"
+      position="top-end"
       fz={"h4"}
-      color="white"
-      c="black"
-      className="spamton-tooltip">
+      className="spamton-tooltip"
+    >
       <Image
         src="/images/sprites/spamton.png"
         style={{ cursor: "pointer" }}

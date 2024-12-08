@@ -1,219 +1,143 @@
-import React, { useState } from "react";
-import { Project, Tech } from "../data";
+import { Project, Tech } from "@/types";
 import {
-  Paper,
-  Group,
-  Title,
-  Stack,
+  Accordion,
+  ActionIcon,
   Badge,
-  Tooltip,
-  SimpleGrid,
-  Text,
-  Box,
-  LoadingOverlay,
+  Button,
+  Group,
   Image,
-  PaperProps,
+  Space,
+  Stack,
+  Text,
+  Tooltip,
 } from "@mantine/core";
 import {
+  IconBrandCss3,
+  IconBrandHtml5,
+  IconBrandJavascript,
+  IconBrandMongodb,
+  IconBrandMysql,
+  IconBrandNextjs,
+  IconBrandNodejs,
   IconBrandReact,
   IconBrandTypescript,
-  IconBrandNodejs,
-  IconBrandJavascript,
-  IconBrandHtml5,
-  IconBrandCss3,
-  IconBrandGithub,
-  IconExternalLink,
   IconTerminal2,
-  IconBrandMongodb,
-  IconBrandNextjs,
-  IconBrandMysql,
 } from "@tabler/icons-react";
-import { IoLogoElectron } from "react-icons/io5";
 import { ProjectButton } from "./ProjectButton";
 
-const StatusRenderers: Record<Project["status"], React.ReactNode> = {
-  done: <></>,
-  wip: (
-    <Tooltip label="Work in Progress">
-      <Badge variant="light" color="yellow" visibleFrom="sm">
-        WIP
-      </Badge>
-    </Tooltip>
-  ),
-  forgotten: (
-    <Badge variant="light" color="gray" visibleFrom="sm">
-      Forgotten
-    </Badge>
-  ),
-  abandoned: (
-    <Tooltip label="Abandoned Project">
-      <Badge variant="light" color="red" visibleFrom="sm">
-        Dead
-      </Badge>
-    </Tooltip>
-  ),
-  "???": (
-    <Badge variant="outline" color="gray" visibleFrom="sm">
-      <Text>???</Text>
-    </Badge>
-  ),
-};
-
-const StatusRender = ({ status }: { status: Project["status"] }) => {
-  return StatusRenderers[status];
-};
-
-const TechRender = ({ tech }: { tech: Tech }) => {
+function TechRenderer({ tech }: { tech: Tech }) {
   return TechRenderers[tech];
-};
+}
 
 const TechRenderers: Record<Tech, React.ReactNode> = {
-  react: (
-    <Tooltip label="React" withArrow>
-      <IconBrandReact size={20} />
-    </Tooltip>
-  ),
-  ts: (
-    <Tooltip label="Typescript" withArrow>
-      <IconBrandTypescript size={20} />
-    </Tooltip>
-  ),
-  js: (
-    <Tooltip label="JavaScript" withArrow>
-      <IconBrandJavascript size={20} />
+  "???": (
+    <Tooltip label="???">
+      <div>???</div>
     </Tooltip>
   ),
   html: (
-    <Tooltip label="HTML" withArrow>
-      <IconBrandHtml5 size={20} />
+    <Tooltip label="HTML">
+      <IconBrandHtml5 color="#e4552d" />
     </Tooltip>
   ),
   css: (
-    <Tooltip label="CSS" withArrow>
-      <IconBrandCss3 size={20} />
+    <Tooltip label="CSS">
+      <IconBrandCss3 color="#0a7bbf" />
+    </Tooltip>
+  ),
+  js: (
+    <Tooltip label="JavaScript">
+      <IconBrandJavascript color="#f7e025" />
+    </Tooltip>
+  ),
+  ts: (
+    <Tooltip label="TypeScript">
+      <IconBrandTypescript color="#087ece" />
     </Tooltip>
   ),
   nodejs: (
-    <Tooltip label="NodeJS" withArrow>
-      <IconBrandNodejs size={20} />
-    </Tooltip>
-  ),
-  bash: (
-    <Tooltip label="Bash">
-      <IconTerminal2 size={20} />
-    </Tooltip>
-  ),
-  electron: (
-    <Tooltip label="ElectronJS">
-      <IoLogoElectron size={20} stroke="200" />
-    </Tooltip>
-  ),
-  mongodb: (
-    <Tooltip label="Mongo DB">
-      <IconBrandMongodb size={20} />
-    </Tooltip>
-  ),
-  nextjs: (
-    <Tooltip label="NextJS">
-      <IconBrandNextjs size={20} />
+    <Tooltip label="NodeJS">
+      <IconBrandNodejs color="#71c450" />
     </Tooltip>
   ),
   mysql: (
     <Tooltip label="MySQL">
-      <IconBrandMysql size={20} />
+      <IconBrandMysql color="#087993" />
     </Tooltip>
   ),
-  "???": (
-    <Tooltip label="???">
-      <Text>{"???"}</Text>
+  mongodb: (
+    <Tooltip label="MongoDB">
+      <IconBrandMongodb color="green" />
+    </Tooltip>
+  ),
+  bash: (
+    <Tooltip label="Bash">
+      <IconTerminal2 />
+    </Tooltip>
+  ),
+  react: (
+    <Tooltip label="React">
+      <IconBrandReact color="#66dcfb" />
+    </Tooltip>
+  ),
+  nextjs: (
+    <Tooltip label="NextJs">
+      <IconBrandNextjs />
     </Tooltip>
   ),
 };
 
-const ProjectRenderer = ({ p, props }: { p: Project; props?: PaperProps }) => {
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+function ProjectRenderer({ p }: { p: Project }) {
   return (
-    <Paper p={"xs"} withBorder h={"fit-content"} {...props}>
-      <Stack>
-        <Group justify="space-between">
-          <Group>
-            <Title order={3}>{p.name}</Title>
-            <StatusRender status={p.status} />
+    <Accordion
+      mb={"xs"}
+      variant="separated"
+      chevronPosition="left"
+      style={{ boxShadow: "0 0 3px rgba(255, 255, 255, 0.1)" }}
+      radius={"sm"}
+    >
+      <Accordion.Item value={p.name + p.status}>
+        <Accordion.Control>
+          <Group justify="space-between">
+            <Text fz={"h4"}>{p.name}</Text>
+            <Group gap={5} visibleFrom="xs">
+              {p.techs.map((t, i) => (
+                <TechRenderer key={i} tech={t} />
+              ))}
+            </Group>
           </Group>
-          <Group>
-            {p.techs.map((t, i) => (
-              <TechRender tech={t} key={i} />
-            ))}
-          </Group>
-        </Group>
-        <SimpleGrid cols={{ base: 1, lg: p.imgUrl ? 2 : 1 }}>
-          <Stack h={"100%"} style={{ overflow: "auto" }}>
-            <Stack visibleFrom="sm">
-              {p.desc && <Text fz={"sm"}>{p.desc}</Text>}
+        </Accordion.Control>
+        <Accordion.Panel>
+          <Stack>
+            <Group justify="space-between">
+              <Text fz={"h5"}>{p.desc}</Text>
+              {p.imgUrl && (
+                <Image src={p.imgUrl} height={200} width={200} radius={10} />
+              )}
+            </Group>
+
+            <Group hiddenFrom="xs" w={"100%"} justify="center">
+              {p.techs.map((tech, i) => (
+                <TechRenderer key={i} tech={tech} />
+              ))}
+            </Group>
+
+            <Group visibleFrom="sm">
+              {p.buttons.map((button, i) => (
+                <ProjectButton key={button.type + i} button={button} flex />
+              ))}
+            </Group>
+
+            <Stack hiddenFrom="sm">
+              {p.buttons.map((button, i) => (
+                <ProjectButton key={button.type + i} button={button} />
+              ))}
             </Stack>
           </Stack>
-          <Box style={{ alignSelf: "end" }}>
-            {p.imgUrl && (
-              <Box pos={"relative"}>
-                <LoadingOverlay visible={!isLoaded} pos={"absolute"} />
-                <Image
-                  src={p.imgUrl}
-                  radius={"md"}
-                  onLoad={() => setIsLoaded(true)}
-                  onError={() => setIsLoaded(true)}
-                />
-              </Box>
-            )}
-          </Box>
-        </SimpleGrid>
-        <Group grow visibleFrom="sm">
-          {!p.buttons.length && <></>}
-          {p.buttons.map((b, i) => {
-            const url = (b.type !== "custom" && b.url) || "";
-            const action = (b.type === "custom" && b.onClick) || function () {};
-
-            return (
-              <ProjectButton
-                href={url}
-                onClick={action}
-                key={i}
-                iconRight={b.type === "link" && <IconExternalLink />}
-                icon={
-                  (b.type === "custom" && b.icon) ||
-                  (b.type === "github" && <IconBrandGithub />)
-                }>
-                {b.type === "custom" && b.label}
-                {b.type === "github" && "Open in Github"}
-                {b.type === "link" && `Open ${p.name}`}
-              </ProjectButton>
-            );
-          })}
-        </Group>
-        <Stack hiddenFrom="sm">
-          {p.buttons.map((b, i) => {
-            const url = (b.type !== "custom" && b.url) || "";
-            const action = (b.type === "custom" && b.onClick) || function () {};
-
-            return (
-              <ProjectButton
-                href={url}
-                onClick={action}
-                key={i}
-                iconRight={b.type === "link" && <IconExternalLink />}
-                icon={
-                  (b.type === "custom" && b.icon) ||
-                  (b.type === "github" && <IconBrandGithub />)
-                }>
-                {b.type === "github" && "Open in Github"}
-                {b.type === "link" && `Open ${p.name}`}
-                {b.type === "custom" && b.label}
-              </ProjectButton>
-            );
-          })}
-        </Stack>
-      </Stack>
-    </Paper>
+        </Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
   );
-};
+}
 
 export default ProjectRenderer;

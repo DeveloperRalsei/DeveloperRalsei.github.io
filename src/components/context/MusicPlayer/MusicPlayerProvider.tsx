@@ -1,7 +1,7 @@
 import { notifications } from "@mantine/notifications";
 import { createContext, useContext, useState } from "react";
 
-interface MusicPlayerContextType {
+export interface MusicPlayerContextType {
   isPlaying: boolean;
   currentTrack: number;
   playTrack: (index: number) => void;
@@ -10,9 +10,9 @@ interface MusicPlayerContextType {
   previousTrack: () => void;
 }
 
-const MusicPlayerContext = createContext<MusicPlayerContextType | undefined>(
-  undefined
-);
+export const MusicPlayerContext = createContext<
+  MusicPlayerContextType | undefined
+>(undefined);
 
 const tracks = [
   {
@@ -60,12 +60,12 @@ export const MusicPlayerProvider = ({
   };
 
   const nextTrack = () => {
-    let nextTrackIndex = (currentTrack + 1) % tracks.length;
+    const nextTrackIndex = (currentTrack + 1) % tracks.length;
     playTrack(nextTrackIndex);
   };
 
   const previousTrack = () => {
-    let prevTrackIndex = (currentTrack - 1 + tracks.length) % tracks.length;
+    const prevTrackIndex = (currentTrack - 1 + tracks.length) % tracks.length;
     playTrack(prevTrackIndex);
   };
 
@@ -78,16 +78,9 @@ export const MusicPlayerProvider = ({
         togglePlayPause,
         nextTrack,
         previousTrack,
-      }}>
+      }}
+    >
       {children}
     </MusicPlayerContext.Provider>
   );
-};
-
-export const useMusicPlayer = () => {
-  const context = useContext(MusicPlayerContext);
-  if (!context) {
-    throw new Error("useMusicPlayer must be used within a MusicPlayerProvider");
-  }
-  return context;
 };

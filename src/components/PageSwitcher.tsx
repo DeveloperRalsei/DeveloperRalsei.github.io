@@ -1,5 +1,4 @@
 import { Text, Container, Group, MantineColor } from "@mantine/core";
-import { page } from "../App";
 
 export const PageSwitcher = ({
   rightBtn,

@@ -6,8 +6,8 @@ import "./style.css";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import { MusicPlayerProvider } from "./components/context/MusicPlayer/MusicPlayerProvider";
-import ILEFT from "./sections/ILEFT";
 import { SecretProvider } from "./components/context/secret/SecretContext";
+import { PageProvider } from "./components/context/PageContext";
 
 const theme = createTheme({
   primaryColor: "teal",
@@ -28,6 +28,12 @@ const theme = createTheme({
         display: "inline",
       },
     },
+    Badge: {
+      defaultProps: {
+        size: "sm",
+        variant: "light",
+      },
+    },
   },
 });
 
@@ -36,8 +42,10 @@ const AppWrapper = () => {
     <MantineProvider theme={theme} defaultColorScheme="dark">
       <SecretProvider secret={false}>
         <MusicPlayerProvider>
-          <Notifications position="top-center" />
-          <App />
+          <PageProvider>
+            <Notifications position="top-center" />
+            <App />
+          </PageProvider>
         </MusicPlayerProvider>
       </SecretProvider>
     </MantineProvider>

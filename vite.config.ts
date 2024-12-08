@@ -1,14 +1,31 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import mdx from "@mdx-js/rollup";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    include: ["@tabler/icons-react"],
-  },
-  server: {
-    hmr: true,
-    open: true,
-  },
+    plugins: [
+        react(),
+        mdx({
+            remarkPlugins: [
+                remarkFrontmatter,
+                [remarkMdxFrontmatter, { name: "frontmatter" }],
+            ],
+        }),
+        tsconfigPaths(),
+    ],
+    optimizeDeps: {
+        include: [
+            "@tabler/icons-react",
+            "@mantine/core",
+            "@mantine/notifications",
+            "@mantine/hooks",
+        ],
+    },
+    server: {
+        hmr: true,
+        open: true,
+    },
 });
