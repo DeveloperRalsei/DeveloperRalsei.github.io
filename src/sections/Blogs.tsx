@@ -1,7 +1,7 @@
 import BlogCard from "@/components/BlogCard";
-import blogs from "@blogs";
 import { Stack, TextInput, Text } from "@mantine/core";
 import { useState } from "react";
+import { blogs } from "@/data";
 
 export default function Blogs() {
   const [search, setSearch] = useState("");

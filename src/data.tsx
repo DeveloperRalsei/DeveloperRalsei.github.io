@@ -19,9 +19,11 @@ import {
   IconGitMerge,
   IconMail,
 } from "@tabler/icons-react";
-import { Icon, ProfileLink, Project } from "./types";
+import { Blog, Icon, ProfileLink, Project } from "./types";
+import { learnMyAge } from "./helpers/utils";
+import * as blog1 from "@blogs/first.mdx";
 
-export const listItems = [
+export const listItems: { ["content"]: React.ReactNode }[] = [
   {
     content: (
       <>
@@ -45,6 +47,19 @@ export const listItems = [
           </Group>
           .
         </Text>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        I'm{" "}
+        <Tooltip label="2006-04-11">
+          <Text c="yellow" fw={700}>
+            {learnMyAge()}
+          </Text>
+        </Tooltip>{" "}
+        years old
       </>
     ),
   },
@@ -144,17 +159,21 @@ export const listItems = [
               </Text>
             </List.Item>
             <List.Item>
-              <Text
-                c={"pink"}
-                fw={700}
-                component="a"
-                href="https://osu.ppy.sh"
-                target="_blank"
+              <Tooltip
+                label={
+                  "I'm addicted to this game. Guess that's why I've less friends"
+                }
               >
-                Osu!
-              </Text>
-              (I'm addicted to this game. Guess that's why I've less friends,
-              🥲)
+                <Text
+                  c={"pink"}
+                  fw={700}
+                  component="a"
+                  href="https://osu.ppy.sh"
+                  target="_blank"
+                >
+                  Osu!
+                </Text>
+              </Tooltip>
             </List.Item>
             <List.Item>
               <Text
@@ -172,35 +191,59 @@ export const listItems = [
       </>
     ),
   },
+  {
+    content: (
+      <>
+        <Text>
+          I'm <Text c="grape">poor</Text> 🥲
+        </Text>
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        My codes are usually being a spaghetti code. I just can't clean it up.
+      </>
+    ),
+  },
+  {
+    content: (
+      <>
+        I'm a <Text c="blue">forgetful</Text> person. I can't remember what I've
+        done last time.
+      </>
+    ),
+  },
 ];
 
-export const funFactListItems = [
-  {
-    content: (
-      <>
-        <Text>
-          I'm 18 years old guy and my student carrier is{" "}
-          <Text c={"red"} fw={700}>
-            {" "}
-            OVER!
-          </Text>{" "}
-          Unfortunately, my dad is pushing me to find a job and I'm not that
-          able to find a job I don't like. (This programming stuff is inculed).
-        </Text>
-      </>
-    ),
-  },
-  {
-    content: (
-      <>
-        <Text>
-          I'm about to become a poor because of my dad. After all he still want{" "}
-          <Text c={"teal"}>ME!</Text> to pay for bills :/
-        </Text>
-      </>
-    ),
-  },
-];
+// export const funFactListItems = [
+//   {
+//     content: (
+//       <>
+//         <Text>
+//           I'm 18 years old guy and my student carrier is{" "}
+//           <Text c={"red"} fw={700}>
+//             {" "}
+//             OVER!
+//           </Text>{" "}
+//           Unfortunately, my dad is pushing me to find a job and I'm not that
+//           able to find a job I don't like. (This programming stuff is inculed).
+//         </Text>
+//       </>
+//     ),
+//   },
+//   {
+//     content: (
+//       <>
+//         <Text>
+//           I'm about to become a poor because of my dad. After all he still want{" "}
+//           <Text c={"teal"}>ME!</Text> to pay for bills :/
+//         </Text>
+//       </>
+//     ),
+//   },
+// ];
 
 export const IconLinks: Icon[] = [
   {
@@ -360,13 +403,11 @@ export const Projects: Project[] = [
         url: "https://github.com/developerRalsei/developerRalsei.github.io",
       },
     ],
-    url: "https://github.com/developerRalsei/developerRalsei.github.io",
   },
   {
     name: "Omsu",
     status: "wip",
     techs: ["ts", "js", "react", "nodejs"],
-    url: "https://omsu.onrender.com/",
     desc: "An easy data viewer for osu! players",
     buttons: [
       { type: "github", url: "https://github.com/developerRalsei/omsu" },
@@ -421,7 +462,7 @@ export const Projects: Project[] = [
   },
   {
     name: "Simple Blog App",
-    status: "abandoned",
+    status: "dead",
     techs: ["react", "mongodb", "nodejs"],
     desc: "I'm gonna rewrite a new one with nextjs",
     buttons: [
@@ -431,4 +472,21 @@ export const Projects: Project[] = [
       },
     ],
   },
+  {
+    name: "Task Manager",
+    status: "wip",
+    techs: ["nextjs", "ts"],
+    desc: "An app that helps me to manage my projects",
+    buttons: [
+      {
+        type: "github",
+        url: "https://github.com/developerRalsei/task-manager",
+      },
+    ],
+  },
+];
+
+export const blogs: Blog[] = [
+  //@ts-ignore
+  blog1.blogInfo,
 ];

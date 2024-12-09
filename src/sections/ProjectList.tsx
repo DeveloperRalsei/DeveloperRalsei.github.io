@@ -1,14 +1,15 @@
 import { Tooltip, TextInput, Space, Text } from "@mantine/core";
-import ProjectRenderer from "../components/ProjectRenderer";
+import ProjectRenderer from "../components/project/ProjectRenderer";
 import { useContext, useState } from "react";
 import { Projects } from "../data";
 import { SecretContext } from "../components/context/secret/SecretContext";
+import { Status } from "@/types";
 
 const ProjectList = () => {
   const [search, setSearch] = useState("");
   const { toggle } = useContext(SecretContext);
 
-  const filteredProjects = search
+  let filteredProjects = search
     ? Projects.filter((p) =>
         [p.name, p.desc, p.techs]
           .filter((x) => x)
@@ -17,6 +18,21 @@ const ProjectList = () => {
           .includes(search.toLowerCase())
       )
     : Projects;
+
+  const statusOrder: { [K in Status]: number } = {
+    done: 0,
+    wip: 1,
+    dead: 2,
+    "???": 3,
+  };
+
+  filteredProjects = filteredProjects.sort((p1, p2) =>
+    p1.name.localeCompare(p2.name)
+  );
+
+  filteredProjects = filteredProjects.sort(
+    (p1, p2) => statusOrder[p1.status] - statusOrder[p2.status]
+  );
 
   return (
     <>
@@ -59,10 +75,11 @@ const ProjectList = () => {
             buttons: [
               {
                 type: "custom",
+                color: "gray",
+                label: "???",
                 onClick: () => {
                   toggle();
                 },
-                label: "???",
               },
             ],
           }}

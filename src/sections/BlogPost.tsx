@@ -1,7 +1,7 @@
 import loadMdx from "@/helpers/loadMdx";
 import useBlogs from "@/hooks/useBlogs";
 import usePage from "@/hooks/usePage";
-import { Loader, Stack } from "@mantine/core";
+import { Loader, Stack, TypographyStylesProvider } from "@mantine/core";
 import { Suspense } from "react";
 
 export default function BlogPostPage() {
@@ -13,7 +13,9 @@ export default function BlogPostPage() {
   return (
     <Stack>
       <Suspense fallback={<Loader type="dots" />}>
-        <Blog />
+        <TypographyStylesProvider>
+          <Blog />
+        </TypographyStylesProvider>
       </Suspense>
     </Stack>
   );

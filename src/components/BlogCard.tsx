@@ -1,5 +1,5 @@
 import { Blog } from "@/types";
-import { Card } from "@mantine/core";
+import { Card, Group, Text } from "@mantine/core";
 import usePage from "@/hooks/usePage";
 
 export default function BlogCard({ blogInfo }: { blogInfo: Blog }) {
@@ -10,7 +10,12 @@ export default function BlogCard({ blogInfo }: { blogInfo: Blog }) {
       style={{ cursor: "pointer" }}
     >
       <Card.Section withBorder fz={"h3"} p={"sm"}>
-        {blogInfo.title}
+        <Group justify="space-between" w={"100%"}>
+          {blogInfo.title}
+          <Text fz={"md"} c={"dimmed"}>
+            {blogInfo.date.toLocaleDateString()}
+          </Text>
+        </Group>
       </Card.Section>
       <Card.Section p={"sm"}>{blogInfo.description}</Card.Section>
     </Card>

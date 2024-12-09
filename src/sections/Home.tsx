@@ -1,6 +1,6 @@
 import { Box, Image, List, Title, Tooltip } from "@mantine/core";
 import Card from "../components/Card";
-import { funFactListItems, listItems } from "../data";
+import { listItems } from "../data";
 import Spamton from "../components/Spamton";
 
 const AboutMe = () => {
@@ -20,23 +20,13 @@ const AboutMe = () => {
             radius={3}
           />
         </Tooltip>
-      }>
+      }
+    >
       <Spamton />
       <Box>
         <Title order={4}>- Who am I?</Title>
         <List p={{ lg: "md", sm: 0 }}>
           {listItems.map((item, i) => (
-            <List.Item key={i} mb={"xs"}>
-              {item.content}
-            </List.Item>
-          ))}
-        </List>
-      </Box>
-
-      <Box>
-        <Title order={4}>- Fun Facts</Title>
-        <List p={{ lg: "md", sm: 0 }}>
-          {funFactListItems.map((item, i) => (
             <List.Item key={i} mb={"xs"}>
               {item.content}
             </List.Item>

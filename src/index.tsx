@@ -28,12 +28,6 @@ const theme = createTheme({
         display: "inline",
       },
     },
-    Badge: {
-      defaultProps: {
-        size: "sm",
-        variant: "light",
-      },
-    },
   },
 });
 

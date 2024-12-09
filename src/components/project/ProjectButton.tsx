@@ -14,7 +14,7 @@ export function ProjectButton({
   if (type !== "custom") {
     return (
       <Button
-        variant="light"
+        variant={"light"}
         color={color || "gray"}
         component="a"
         fz={"md"}

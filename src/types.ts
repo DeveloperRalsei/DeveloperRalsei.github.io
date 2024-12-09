@@ -1,4 +1,4 @@
-import { DefaultMantineColor } from "@mantine/core";
+import { ButtonProps, DefaultMantineColor } from "@mantine/core";
 
 export type Blog = {
   id: number;
@@ -62,12 +62,13 @@ export type ProjectButton = {
     }
 );
 
+export type Status = "done" | "wip" | "dead" | "???";
+
 export interface Project {
   name: string;
   desc?: string;
-  status: "done" | "wip" | "forgotten" | "abandoned" | "???";
+  status: Status;
   imgUrl?: string;
   techs: Tech[];
   buttons: ProjectButton[];
-  url?: string;
 }
