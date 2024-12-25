@@ -1,5 +1,17 @@
-import { Box, Group, Image, List, Text, Tooltip } from "@mantine/core";
 import {
+  ActionIcon,
+  Box,
+  DefaultMantineColor,
+  Group,
+  Image,
+  List,
+  Space,
+  Text,
+  Tooltip,
+} from "@mantine/core";
+import Card from "./components/Card.tsx";
+import {
+  IconBook2,
   IconBrandCss3,
   IconBrandDiscord,
   IconBrandGithub,
@@ -15,13 +27,27 @@ import {
   IconBrandTypescript,
   IconBrandUbuntu,
   IconBrandX,
+  IconChevronLeft,
+  IconChevronRight,
   IconDeviceDesktop,
   IconGitMerge,
+  IconHomeFilled,
   IconMail,
 } from "@tabler/icons-react";
-import { Blog, Icon, ProfileLink, Project } from "./types";
+import { Blog, Icon, page, ProfileLink, Project } from "./types";
 import { learnMyAge } from "./helpers/utils";
 import * as blog1 from "@blogs/first.mdx";
+import usePage from "./hooks/usePage";
+import useSecret from "./hooks/useSecret";
+import { lazy } from "react";
+import useBlogs from "./hooks/useBlogs.tsx";
+
+const Home = lazy(() => import("./sections/Home.tsx"));
+const AboutMe = lazy(() => import("./sections/AboutMe.tsx"));
+const ProjectList = lazy(() => import("./sections/ProjectList.tsx"));
+const BlogPage = lazy(() => import("./sections/Blogs.tsx"));
+const BlogPostPage = lazy(() => import("./sections/BlogPost.tsx"));
+const Secret = lazy(() => import("./sections/Secret.tsx"));
 
 export const listItems: { ["content"]: React.ReactNode }[] = [
   {
@@ -418,7 +444,7 @@ export const Projects: Project[] = [
     name: "Product Managmant System",
     status: "wip",
     techs: ["ts", "nextjs"],
-    desc: "A product managment system for my company. Also my first nextjs project that haves authorisation system.",
+    desc: "My first nextjs project that has authentication and authorization system",
     buttons: [
       {
         type: "github",
@@ -435,7 +461,7 @@ export const Projects: Project[] = [
     name: "Public To-Do",
     status: "done",
     techs: ["ts", "mongodb", "react", "nodejs"],
-    desc: "The public To-Do app that everyones can see what listing.",
+    desc: "The public To-Do app that everyones can see and edit what they listing. I know it's stupid.",
     buttons: [
       {
         type: "github",
@@ -452,7 +478,7 @@ export const Projects: Project[] = [
     name: "Node Web Starter Script",
     status: "done",
     techs: ["bash"],
-    desc: "This project somehow helps you to quickly start a simple web application using nodejs expressjs and ejs.",
+    desc: "A script that helps you to quickly start a simple web application using nodejs expressjs and ejs.",
     buttons: [
       {
         type: "github",
@@ -490,3 +516,150 @@ export const blogs: Blog[] = [
   //@ts-ignore
   blog1.blogInfo,
 ];
+
+export function getPageSwitcherConfig() {
+  const { page, setPage, blogPageId } = usePage();
+  const { secret, setSecret } = useSecret();
+  const blog = useBlogs(blogPageId);
+
+  type PageSwitcher = {
+    title: string;
+    color: DefaultMantineColor;
+    leftBtn: React.ReactNode;
+    rightBtn: React.ReactNode;
+    content: React.ReactNode;
+  };
+
+  const PageSwitcherConfig: Record<page, PageSwitcher> = {
+    home: {
+      title: "Home",
+      color: "grape",
+      leftBtn: (
+        <Tooltip label="Blogs">
+          <ActionIcon variant="light" onClick={() => setPage("blog")}>
+            <IconChevronLeft />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      rightBtn: (
+        <Tooltip label="My Links">
+          <ActionIcon variant="light" onClick={() => setPage("aboutme")}>
+            <IconChevronRight />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      content: <Home />,
+    },
+    blog: {
+      title: "Blogs",
+      color: "orange",
+      leftBtn: (
+        <ActionIcon variant="light" disabled>
+          <IconChevronLeft />
+        </ActionIcon>
+      ),
+      rightBtn: (
+        <Tooltip label="Home">
+          <ActionIcon variant="light" onClick={() => setPage("home")}>
+            <IconChevronRight />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      content: <BlogPage />,
+    },
+
+    "blog-post": {
+      title: blog?.title || "Title not found",
+      color: "pink",
+      leftBtn: (
+        <Tooltip label="Blogs">
+          <ActionIcon variant="light" onClick={() => setPage("blog")}>
+            <IconBook2 />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      rightBtn: (
+        <Tooltip label="Home">
+          <ActionIcon variant="light" onClick={() => setPage("home")}>
+            <IconHomeFilled />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      content: <BlogPostPage />,
+    },
+
+    aboutme: {
+      title: "My Skills",
+      color: "green",
+      leftBtn: (
+        <Tooltip label="Home">
+          <ActionIcon variant="light" onClick={() => setPage("home")}>
+            <IconChevronLeft />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      rightBtn: (
+        <Tooltip label="Projects">
+          <ActionIcon variant="light" onClick={() => setPage("projects")}>
+            <IconChevronRight />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      content: <AboutMe />,
+    },
+    projects: {
+      title: "Projects",
+      color: "blue",
+      leftBtn: (
+        <Tooltip label="My Links">
+          <ActionIcon variant="light" onClick={() => setPage("aboutme")}>
+            <IconChevronLeft />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      rightBtn: (
+        <Tooltip label="???">
+          <ActionIcon
+            variant="light"
+            disabled={!secret}
+            onClick={() => setPage("???")}
+          >
+            <IconChevronRight />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      content: (
+        <>
+          <Card title="Projects" icon={<IconBook2 />}>
+            <ProjectList />
+          </Card>
+          <Space h={"10vh"} />
+        </>
+      ),
+    },
+
+    "???": {
+      title: "???",
+      leftBtn: (
+        <Tooltip label="Projects">
+          <ActionIcon variant="light" onClick={() => setPage("projects")}>
+            <IconChevronLeft />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      color: "dark",
+      rightBtn: (
+        <ActionIcon
+          disabled
+          variant="light"
+          onClick={() => setPage("projects")}
+        >
+          <IconChevronRight />
+        </ActionIcon>
+      ),
+      content: <Secret />,
+    },
+  };
+
+  return PageSwitcherConfig;
+}

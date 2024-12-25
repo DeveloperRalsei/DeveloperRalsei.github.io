@@ -16,7 +16,20 @@ function ProjectRenderer({ p }: { p: Project }) {
       <Accordion.Item value={p.name + p.status}>
         <Accordion.Control>
           <Group justify="space-between">
-            <Text fz={"h4"}>{p.name}</Text>
+            <Text
+              c={
+                p.status === "done"
+                  ? "white"
+                  : p.status === "wip"
+                  ? "yellow"
+                  : p.status === "dead"
+                  ? "red"
+                  : "gray"
+              }
+              fw={700}
+            >
+              {p.name}
+            </Text>
             <Box visibleFrom="xs">
               <StatusRenderer status={p.status} />
             </Box>

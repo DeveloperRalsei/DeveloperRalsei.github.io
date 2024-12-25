@@ -13,7 +13,11 @@ export default function BlogCard({ blogInfo }: { blogInfo: Blog }) {
         <Group justify="space-between" w={"100%"}>
           {blogInfo.title}
           <Text fz={"md"} c={"dimmed"}>
-            {blogInfo.date.toLocaleDateString()}
+            {blogInfo.date.toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
           </Text>
         </Group>
       </Card.Section>
