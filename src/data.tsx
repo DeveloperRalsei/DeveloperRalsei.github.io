@@ -351,7 +351,7 @@ export const IconLinks: Icon[] = [
         <IconBrandUbuntu />
       </Tooltip>
     ),
-    href: "https://mantine.dev",
+    href: "https://kernel.org",
     color: "yellow",
   },
 ];
@@ -530,7 +530,9 @@ export function getPageSwitcherConfig() {
     content: React.ReactNode;
   };
 
-  const PageSwitcherConfig: Record<page, PageSwitcher> = {
+  const PageSwitcherConfig: {
+    [K in page]: PageSwitcher /* yea I'm learning mapped types :P */;
+  } = {
     home: {
       title: "Home",
       color: "grape",
@@ -636,6 +638,14 @@ export function getPageSwitcherConfig() {
           <Space h={"10vh"} />
         </>
       ),
+    },
+
+    testingArea: {
+      color: "gray",
+      title: "Testing Area",
+      content: "",
+      leftBtn: <></>,
+      rightBtn: <></>,
     },
 
     "???": {

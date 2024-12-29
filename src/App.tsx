@@ -1,7 +1,21 @@
 import { AppShell, Avatar, Group, Title, Tooltip } from "@mantine/core";
 import AppRenderer from "./AppRenderer.tsx";
+import { useEffect } from "react";
+import usePage from "./hooks/usePage.tsx";
 
 const App = () => {
+  const { setPage } = usePage();
+
+  useEffect(() => {
+    //@ts-ignore
+    window.testing = false;
+
+    //@ts-ignore
+    if (window.testing) {
+      setPage("testingArea");
+    }
+  }, []);
+
   return (
     <AppShell header={{ height: 60, offset: true }}>
       <AppShell.Header withBorder={false}>

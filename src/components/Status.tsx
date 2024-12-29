@@ -1,5 +1,16 @@
 import React from "react";
-import { Box, Group, Loader, Menu, Paper, Text } from "@mantine/core";
+import {
+  Box,
+  Group,
+  Loader,
+  Menu,
+  Paper,
+  Text,
+  Image,
+  Grid,
+  SimpleGrid,
+  Stack,
+} from "@mantine/core";
 import { useLanyard, LanyardWebsocket, Activity } from "react-use-lanyard";
 import { IconBrandSpotify } from "@tabler/icons-react";
 
@@ -51,7 +62,7 @@ const Status: React.FC = () => {
   const songSeconds = songTotalSeconds % 60;
 
   return (
-    <Paper p="md" withBorder>
+    <Paper p="md">
       {isOnline ? (
         <Group w="100%" justify="space-between" gap={0}>
           {activities && activities[0] ? (
@@ -87,28 +98,29 @@ const Status: React.FC = () => {
               <Menu.Dropdown p={20} bg={"dark"}>
                 <Text c={"green"}>Listening</Text>
                 <Menu.Divider />
-                <Text display={"block"}>
-                  Song:{" "}
-                  <Text c={"lime"} display={"inline"}>
-                    {spotify?.song}
-                  </Text>
-                </Text>
-                <Text display={"block"}>
-                  Artist:{" "}
-                  <Text
-                    c={"blue"}
-                    display={"inline"}
-                    td={"underline"}
-                    component="a"
-                    href={`https://google.com/search?q="${spotify?.artist}" artist`}
-                  >
-                    {spotify?.artist}
-                  </Text>
-                </Text>
-                <Text display={"block"}>
-                  Duration: <Text display="inline">{songMinutes}</Text> minutes{" "}
-                  <Text display="inline">{songSeconds}</Text> seconds
-                </Text>
+                <Group justify="space-between">
+                  <Image src={spotify?.album_art_url} w={100} radius={"sm"} />
+                  <Stack gap={3} mt={"md"}>
+                    <Text
+                      c={"indigo"}
+                      component="a"
+                      href={`https://spotify.link/${spotify?.track_id}`}
+                      target="_blank"
+                    >
+                      {spotify?.song}
+                    </Text>
+                    <div>
+                      {"By "}
+                      <Text c="cyan">{spotify?.artist}</Text>
+                    </div>
+                    <div>
+                      <Text display={"inline"} c="grape">
+                        {songMinutes}:{songSeconds}
+                      </Text>
+                      {" seconds"}
+                    </div>
+                  </Stack>
+                </Group>
               </Menu.Dropdown>
             </Menu>
           ) : (

@@ -1,4 +1,4 @@
-import { ButtonProps, DefaultMantineColor } from "@mantine/core";
+import { DefaultMantineColor } from "@mantine/core";
 
 export type Blog = {
   id: number;
@@ -14,6 +14,7 @@ export type page =
   | "blog-post"
   | "aboutme"
   | "projects"
+  | "testingArea"
   | "???";
 
 export type Icon = {
@@ -72,3 +73,30 @@ export interface Project {
   techs: Tech[];
   buttons: ProjectButton[];
 }
+
+export type LanyardApiResponse = {
+  success: boolean;
+  data: {
+    active_on_discord_mobile: boolean;
+    active_on_discord_desktop: boolean;
+    listening_to_spotify: boolean;
+    spotify: {
+      track_id: string;
+      timestamps: {
+        start: number;
+        end: number;
+      };
+      song: string;
+      artist: string;
+      album_art_url: string;
+      album: string;
+    };
+    discord_user: {
+      username: string;
+      public_flags: number;
+      id: string;
+      avatar: "a_7484f82375f47a487f41650f36d30318";
+    };
+    discord_status: "online" | "dnd" | "active" | "idle";
+  };
+};
