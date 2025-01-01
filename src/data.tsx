@@ -386,7 +386,7 @@ export const ProfileLinks: ProfileLink[] = [
 ];
 
 function OsuDataWithTooltip() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     async function fetchOsuData() {
@@ -394,24 +394,24 @@ function OsuDataWithTooltip() {
         const fetchedData = await getMyOsuData();
 
         setUserData(fetchedData);
-
-        console.log(fetchedData);
       } catch (err) {
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     }
     fetchOsuData();
   });
   if (loading) {
     return (
-      <Tooltip label={<Loader />}>
-        <div>Loading</div>
+      <Tooltip label={<Loader color="pink" />} withArrow arrowSize={10}>
+        <Image src={"/images/osu.png"} alt="osu" w={25} />
       </Tooltip>
     );
   }
 
   return (
-    <Tooltip label={<div>{}</div>}>
+    <Tooltip label={<div>{"loaded"}</div>}>
       <Image src={"/images/osu.png"} alt="osu" w={25} />
     </Tooltip>
   );

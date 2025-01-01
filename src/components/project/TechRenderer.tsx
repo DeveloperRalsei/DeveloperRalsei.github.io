@@ -11,6 +11,8 @@ import {
   IconTerminal2,
   IconBrandReact,
   IconBrandNextjs,
+  IconBrandCSharp,
+  IconBrandGolang,
 } from "@tabler/icons-react";
 
 export function TechRenderer({ tech }: { tech: Tech }) {
@@ -71,6 +73,16 @@ const TechRenderers: Record<Tech, React.ReactNode> = {
   nextjs: (
     <Tooltip label="NextJs">
       <IconBrandNextjs />
+    </Tooltip>
+  ),
+  csharp: (
+    <Tooltip label="C#">
+      <IconBrandCSharp color="pink" />
+    </Tooltip>
+  ),
+  go: (
+    <Tooltip label="Go Lang">
+      <IconBrandGolang color="#2249a4" />
     </Tooltip>
   ),
 };

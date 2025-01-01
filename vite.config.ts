@@ -30,5 +30,11 @@ export default defineConfig({
   server: {
     hmr: true,
     open: true,
+    proxy: {
+      "/osu-api": {
+        target: "https://osu.ppy.sh",
+        rewrite: (path) => path.replace(/^\/osu-api/, ""),
+      },
+    },
   },
 });

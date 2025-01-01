@@ -22,7 +22,6 @@ export const PageProvider = ({ children }: { children: React.ReactNode }) => {
   function setPage(page: page): void;
 
   function setPage(page: page, blogPageId?: number): void {
-    console.log(page, blogPageId);
     if (page !== "blog-post") {
       setCurrentPage(page);
       return;
