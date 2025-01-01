@@ -5,6 +5,9 @@ import {
   Group,
   Image,
   List,
+  Loader,
+  MantineColor,
+  MantineThemeColors,
   Space,
   Text,
   Tooltip,
@@ -24,6 +27,7 @@ import {
   IconBrandNpm,
   IconBrandReact,
   IconBrandSpotify,
+  IconBrandTiktok,
   IconBrandTypescript,
   IconBrandUbuntu,
   IconBrandX,
@@ -34,13 +38,14 @@ import {
   IconHomeFilled,
   IconMail,
 } from "@tabler/icons-react";
-import { Blog, Icon, page, ProfileLink, Project } from "./types";
+import { Blog, Icon, page, ProfileLink, Project, Tech } from "./types";
 import { learnMyAge } from "./helpers/utils";
 import * as blog1 from "@blogs/first.mdx";
 import usePage from "./hooks/usePage";
 import useSecret from "./hooks/useSecret";
-import { lazy } from "react";
+import { lazy, useEffect, useState } from "react";
 import useBlogs from "./hooks/useBlogs.tsx";
+import { getMyOsuData } from "./utils/osu.ts";
 
 const Home = lazy(() => import("./sections/Home.tsx"));
 const AboutMe = lazy(() => import("./sections/AboutMe.tsx"));
@@ -48,6 +53,7 @@ const ProjectList = lazy(() => import("./sections/ProjectList.tsx"));
 const BlogPage = lazy(() => import("./sections/Blogs.tsx"));
 const BlogPostPage = lazy(() => import("./sections/BlogPost.tsx"));
 const Secret = lazy(() => import("./sections/Secret.tsx"));
+const DesktopPreview = lazy(() => import("./sections/DesktopPreview.tsx"));
 
 export const listItems: { ["content"]: React.ReactNode }[] = [
   {
@@ -243,34 +249,6 @@ export const listItems: { ["content"]: React.ReactNode }[] = [
   },
 ];
 
-// export const funFactListItems = [
-//   {
-//     content: (
-//       <>
-//         <Text>
-//           I'm 18 years old guy and my student carrier is{" "}
-//           <Text c={"red"} fw={700}>
-//             {" "}
-//             OVER!
-//           </Text>{" "}
-//           Unfortunately, my dad is pushing me to find a job and I'm not that
-//           able to find a job I don't like. (This programming stuff is inculed).
-//         </Text>
-//       </>
-//     ),
-//   },
-//   {
-//     content: (
-//       <>
-//         <Text>
-//           I'm about to become a poor because of my dad. After all he still want{" "}
-//           <Text c={"teal"}>ME!</Text> to pay for bills :/
-//         </Text>
-//       </>
-//     ),
-//   },
-// ];
-
 export const IconLinks: Icon[] = [
   {
     label: "HTML",
@@ -358,17 +336,23 @@ export const IconLinks: Icon[] = [
 
 export const ProfileLinks: ProfileLink[] = [
   {
+    label: "TikTok",
+    color: "pink",
+    href: "https://www.tiktok.com/@developerralsei",
+    icon: <IconBrandTiktok />,
+  },
+  {
     label: "Discord",
     icon: <IconBrandDiscord />,
     href: "https://discord.com/users/718798893445283863",
     color: "cyan",
   },
-  {
-    label: "X",
-    icon: <IconBrandX />,
-    href: "https://x.com/HugPrinceRalsei",
-    color: "#fff",
-  },
+  // {
+  //   label: "X",
+  //   icon: <IconBrandX />,
+  //   href: "https://x.com/HugPrinceRalsei",
+  //   color: "#fff",
+  // },
   {
     label: "Playlist",
     icon: <IconBrandSpotify />,
@@ -395,25 +379,63 @@ export const ProfileLinks: ProfileLink[] = [
   },
   {
     label: "osu!",
-    icon: (
-      <Tooltip label={<Text display={"inline"}>6 DIGIT &#x1f480;</Text>}>
-        <Image src={"/images/osu.png"} alt="osu" w={25} />
-      </Tooltip>
-    ),
+    icon: <OsuDataWithTooltip />,
     href: "https://osu.ppy.sh/users/27076843",
     color: "pink",
   },
-  {
-    label: "My Desktop",
-    icon: (
-      <Tooltip
-        label={<Image src={"/images/desktop.png"} alt="MyDesktop" w={600} />}
-      >
-        <IconDeviceDesktop />
+];
+
+function OsuDataWithTooltip() {
+  const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    async function fetchOsuData() {
+      try {
+        const fetchedData = await getMyOsuData();
+
+        setUserData(fetchedData);
+
+        console.log(fetchedData);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchOsuData();
+  });
+  if (loading) {
+    return (
+      <Tooltip label={<Loader />}>
+        <div>Loading</div>
       </Tooltip>
-    ),
-    href: "/images/desktop.png",
+    );
+  }
+
+  return (
+    <Tooltip label={<div>{}</div>}>
+      <Image src={"/images/osu.png"} alt="osu" w={25} />
+    </Tooltip>
+  );
+}
+
+export const CurrentyLearning: {
+  language: string;
+  color: MantineColor;
+}[] = [
+  {
+    color: "blue",
+    language: "Go",
+  },
+  {
+    language: "NextJS",
     color: "lime",
+  },
+  {
+    language: "C#",
+    color: "orange",
+  },
+  {
+    language: "DenoJs",
+    color: "white",
   },
 ];
 
@@ -646,6 +668,26 @@ export function getPageSwitcherConfig() {
       content: "",
       leftBtn: <></>,
       rightBtn: <></>,
+    },
+
+    desktopPreview: {
+      color: "red",
+      title: "My Desktop",
+      content: <DesktopPreview />,
+      leftBtn: (
+        <Tooltip label="Home">
+          <ActionIcon variant="light" onClick={() => setPage("home")}>
+            <IconHomeFilled />
+          </ActionIcon>
+        </Tooltip>
+      ),
+      rightBtn: (
+        <Tooltip label="Home">
+          <ActionIcon variant="light" onClick={() => setPage("aboutme")}>
+            <IconBook2 />
+          </ActionIcon>
+        </Tooltip>
+      ),
     },
 
     "???": {

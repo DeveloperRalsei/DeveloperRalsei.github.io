@@ -12,11 +12,19 @@ import {
 import Card from "../components/Card";
 import Status, { StatusBadge } from "../components/Status";
 import { IconDeviceDesktop } from "@tabler/icons-react";
-import { IconLinks, ProfileLinks } from "../data";
+import { CurrentyLearning, IconLinks, ProfileLinks } from "../data";
 import MusicPlayer from "../components/context/MusicPlayer/MusicPlayer";
+import usePage from "@/hooks/usePage";
+
+const desktopData = {
+  label: "My Desktop",
+  icon: <IconDeviceDesktop />,
+  color: "blue",
+};
 
 const MySituation = () => {
   const theme = useMantineTheme();
+  const { setPage } = usePage();
 
   return (
     <Card
@@ -37,10 +45,15 @@ const MySituation = () => {
         <Status />
         <br />
         <Group gap={6}>
-          <Text>Currently learning: </Text>
-          <Text c={"blue"}>NextJs,</Text>
-          <Text c={"green"}>C#,</Text>
-          <Text c={"gray"}>DenoJs,</Text>
+          {"I'm currently learning: "}
+          {CurrentyLearning.map((item, i) => (
+            <>
+              <Text key={i + item.language} c={item.color} fw={600}>
+                {item.language.toUpperCase()}
+              </Text>
+              {","}
+            </>
+          ))}
         </Group>
         <Space h={20} />
         <Title order={4} c={"grape"}>
@@ -64,13 +77,27 @@ const MySituation = () => {
         <Divider />
         <Flex mt={10} gap={"lg"} wrap={"wrap"} justify={"center"}>
           {ProfileLinks.map((l, i) => (
-            <Anchor href={l.href} key={i} c={l.color} target="_blank">
+            <Anchor href={l.href} key={i} c={l.color} target={"_blank"}>
               <Stack align="center">
                 {l.icon}
                 <Text size="sm">{l.label}</Text>
               </Stack>
             </Anchor>
           ))}
+
+          <Anchor
+            key={desktopData.color + 12312313}
+            c={desktopData.color}
+            onClick={(e) => {
+              e.preventDefault();
+              setPage("desktopPreview");
+            }}
+          >
+            <Stack align="center">
+              {desktopData.icon}
+              <Text size="sm">{desktopData.label}</Text>
+            </Stack>
+          </Anchor>
         </Flex>
       </Stack>
     </Card>

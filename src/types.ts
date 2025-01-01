@@ -15,6 +15,7 @@ export type page =
   | "aboutme"
   | "projects"
   | "testingArea"
+  | "desktopPreview"
   | "???";
 
 export type Icon = {
@@ -42,7 +43,9 @@ export type Tech =
   | "mongodb"
   | "bash"
   | "react"
-  | "nextjs";
+  | "nextjs"
+  | "go"
+  | "csharp";
 
 export type ProjectButton = {
   color?: DefaultMantineColor;

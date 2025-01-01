@@ -28,7 +28,12 @@ export default function AppRenderer() {
         rightBtn={currentPage.rightBtn}
       />
       <Suspense fallback={<PageLoader />}>
-        <Container size={page === "projects" ? "xs" : "sm"} mb={30}>
+        <Container
+          size={
+            page === "projects" ? "xs" : page === "desktopPreview" ? "xl" : "sm"
+          }
+          mb={30}
+        >
           {currentPage.content}
         </Container>
       </Suspense>
