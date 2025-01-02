@@ -6,7 +6,7 @@ export default function DesktopPreview() {
       <Grid.Col span={{ sm: 12, md: 6 }}>
         <Stack>
           <Title ta={"center"} order={4}>
-            With Programs
+            Without Programs
           </Title>
           <Image src={"/images/desktop/without_programs.png"} w={"100%"} />
         </Stack>
