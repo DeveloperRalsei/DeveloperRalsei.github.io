@@ -1,3 +1,4 @@
+import * as blog1 from "@blogs/first.mdx";
 import {
   ActionIcon,
   Box,
@@ -5,13 +6,11 @@ import {
   Group,
   Image,
   List,
-  Loader,
   MantineColor,
   Space,
   Text,
-  Tooltip,
+  Tooltip
 } from "@mantine/core";
-import Card from "./components/Card.tsx";
 import {
   IconBook2,
   IconBrandCss3,
@@ -29,20 +28,19 @@ import {
   IconBrandTiktok,
   IconBrandTypescript,
   IconBrandUbuntu,
-  IconBrandVisualStudio,
   IconChevronLeft,
   IconChevronRight,
   IconGitMerge,
   IconHomeFilled,
-  IconMail,
+  IconMail
 } from "@tabler/icons-react";
-import { Blog, Icon, page, ProfileLink, Project } from "./types";
+import { lazy } from "react";
+import Card from "./components/Card.tsx";
 import { learnMyAge } from "./helpers/utils";
-import * as blog1 from "@blogs/first.mdx";
+import useBlogs from "./hooks/useBlogs.tsx";
 import usePage from "./hooks/usePage";
 import useSecret from "./hooks/useSecret";
-import { lazy } from "react";
-import useBlogs from "./hooks/useBlogs.tsx";
+import { Blog, Icon, page, ProfileLink, Project } from "./types";
 
 const Home = lazy(() => import("./sections/Home.tsx"));
 const AboutMe = lazy(() => import("./sections/AboutMe.tsx"));
@@ -334,9 +332,9 @@ export const IconLinks: Icon[] = [
     color: "green",
     href: "https://neovim.io/",
     icon: (
-      <IconBrandVisualStudio />
+      <Image src="/images/nvim.png" w={20} />
     )
-  }
+  },
 ];
 
 export const ProfileLinks: ProfileLink[] = [
@@ -653,16 +651,14 @@ export function getPageSwitcherConfig() {
       title: "My Desktop",
       content: <DesktopPreview />,
       leftBtn: (
-        <Tooltip label="Home">
-          <ActionIcon variant="light" onClick={() => setPage("home")}>
-            <IconHomeFilled />
-          </ActionIcon>
-        </Tooltip>
+        <ActionIcon disabled variant="light" onClick={() => setPage("home")}>
+          <IconChevronLeft />
+        </ActionIcon>
       ),
       rightBtn: (
         <Tooltip label="Home">
-          <ActionIcon variant="light" onClick={() => setPage("aboutme")}>
-            <IconBook2 />
+          <ActionIcon variant="light" onClick={() => setPage("home")}>
+            <IconChevronRight />
           </ActionIcon>
         </Tooltip>
       ),
