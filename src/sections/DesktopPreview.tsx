@@ -12,11 +12,12 @@ export default function DesktopPreview() {
         </Stack>
       </Grid.Col>
       <Grid.Col span={{ sm: 12, md: 6 }}>
-        <Title ta={"center"} order={4}>
-          With Programs
-        </Title>
-
-        <Image src={"/images/desktop/with_programs.png"} w={"100%"} />
+        <Stack>
+          <Title ta={"center"} order={4}>
+            With Programs
+          </Title>
+          <Image src={"/images/desktop/with_programs.png"} w={"100%"} />
+        </Stack>
       </Grid.Col>
     </Grid>
   );

@@ -85,19 +85,6 @@ const MySituation = () => {
             </Anchor>
           ))}
 
-          <Anchor
-            key={desktopData.color + 12312313}
-            c={desktopData.color}
-            onClick={(e) => {
-              e.preventDefault();
-              setPage("desktopPreview");
-            }}
-          >
-            <Stack align="center">
-              {desktopData.icon}
-              <Text size="sm">{desktopData.label}</Text>
-            </Stack>
-          </Anchor>
         </Flex>
       </Stack>
     </Card>

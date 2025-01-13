@@ -50,21 +50,21 @@ export type Tech =
 export type ProjectButton = {
   color?: DefaultMantineColor;
 } & (
-  | {
+    | {
       type: "github";
       url: string;
     }
-  | {
+    | {
       type: "link";
       label: string;
       url: string;
     }
-  | {
+    | {
       type: "custom";
       label: string;
       onClick: (...params: any) => void;
     }
-);
+  );
 
 export type Status = "done" | "wip" | "dead" | "???";
 

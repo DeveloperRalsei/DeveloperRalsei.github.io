@@ -7,7 +7,6 @@ import {
   List,
   Loader,
   MantineColor,
-  MantineThemeColors,
   Space,
   Text,
   Tooltip,
@@ -30,22 +29,20 @@ import {
   IconBrandTiktok,
   IconBrandTypescript,
   IconBrandUbuntu,
-  IconBrandX,
+  IconBrandVisualStudio,
   IconChevronLeft,
   IconChevronRight,
-  IconDeviceDesktop,
   IconGitMerge,
   IconHomeFilled,
   IconMail,
 } from "@tabler/icons-react";
-import { Blog, Icon, page, ProfileLink, Project, Tech } from "./types";
+import { Blog, Icon, page, ProfileLink, Project } from "./types";
 import { learnMyAge } from "./helpers/utils";
 import * as blog1 from "@blogs/first.mdx";
 import usePage from "./hooks/usePage";
 import useSecret from "./hooks/useSecret";
-import { lazy, useEffect, useState } from "react";
+import { lazy } from "react";
 import useBlogs from "./hooks/useBlogs.tsx";
-import { getMyOsuData } from "./utils/osu.ts";
 
 const Home = lazy(() => import("./sections/Home.tsx"));
 const AboutMe = lazy(() => import("./sections/AboutMe.tsx"));
@@ -332,6 +329,14 @@ export const IconLinks: Icon[] = [
     href: "https://kernel.org",
     color: "yellow",
   },
+  {
+    label: "Neovim",
+    color: "green",
+    href: "https://neovim.io/",
+    icon: (
+      <IconBrandVisualStudio />
+    )
+  }
 ];
 
 export const ProfileLinks: ProfileLink[] = [
@@ -379,65 +384,36 @@ export const ProfileLinks: ProfileLink[] = [
   },
   {
     label: "osu!",
-    icon: <OsuDataWithTooltip />,
+    icon: <Tooltip label="5 Digit (Mania)">
+      <Image src={"/images/osu.png"} w={25} />
+    </Tooltip>,
     href: "https://osu.ppy.sh/users/27076843",
     color: "pink",
   },
 ];
 
-function OsuDataWithTooltip() {
-  const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState(null);
-  useEffect(() => {
-    async function fetchOsuData() {
-      try {
-        const fetchedData = await getMyOsuData();
-
-        setUserData(fetchedData);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchOsuData();
-  });
-  if (loading) {
-    return (
-      <Tooltip label={<Loader color="pink" />} withArrow arrowSize={10}>
-        <Image src={"/images/osu.png"} alt="osu" w={25} />
-      </Tooltip>
-    );
-  }
-
-  return (
-    <Tooltip label={<div>{"loaded"}</div>}>
-      <Image src={"/images/osu.png"} alt="osu" w={25} />
-    </Tooltip>
-  );
-}
 
 export const CurrentyLearning: {
   language: string;
   color: MantineColor;
 }[] = [
-  {
-    color: "blue",
-    language: "Go",
-  },
-  {
-    language: "NextJS",
-    color: "lime",
-  },
-  {
-    language: "C#",
-    color: "orange",
-  },
-  {
-    language: "DenoJs",
-    color: "white",
-  },
-];
+    {
+      color: "blue",
+      language: "Go",
+    },
+    {
+      language: "NextJS",
+      color: "lime",
+    },
+    {
+      language: "C#",
+      color: "orange",
+    },
+    {
+      language: "DenoJs",
+      color: "white",
+    },
+  ];
 
 export const Projects: Project[] = [
   {
@@ -540,8 +516,8 @@ export const blogs: Blog[] = [
 ];
 
 export function getPageSwitcherConfig() {
-  const { page, setPage, blogPageId } = usePage();
-  const { secret, setSecret } = useSecret();
+  const { setPage, blogPageId } = usePage();
+  const { secret } = useSecret();
   const blog = useBlogs(blogPageId);
 
   type PageSwitcher = {
@@ -578,9 +554,11 @@ export function getPageSwitcherConfig() {
       title: "Blogs",
       color: "orange",
       leftBtn: (
-        <ActionIcon variant="light" disabled>
-          <IconChevronLeft />
-        </ActionIcon>
+        <Tooltip label="My Desktop">
+          <ActionIcon variant="light" onClick={() => setPage("desktopPreview")}>
+            <IconChevronLeft />
+          </ActionIcon>
+        </Tooltip>
       ),
       rightBtn: (
         <Tooltip label="Home">
