@@ -219,6 +219,7 @@
         heart.style.left = `${centerX + offsetX - 16}px`;
         heart.style.top = `${centerY + offsetY - 16}px`;
         heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+        heart.style.zIndex = 9999
         parent.appendChild(heart);
 
         setTimeout(() => {
@@ -348,7 +349,7 @@
       }
       idleAnimation =
         avalibleIdleAnimations[
-          Math.floor(Math.random() * avalibleIdleAnimations.length)
+        Math.floor(Math.random() * avalibleIdleAnimations.length)
         ];
     }
 
