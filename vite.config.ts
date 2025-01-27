@@ -6,35 +6,30 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    {
-      enforce: "pre",
-      ...mdx({
-        remarkPlugins: [
-          remarkFrontmatter,
-          [remarkMdxFrontmatter, { name: "frontmatter" }],
-        ],
-      }),
-    },
-    react(),
-    tsconfigPaths(),
-  ],
-  optimizeDeps: {
-    include: [
-      "@tabler/icons-react",
-      "@mantine/core",
-      "@mantine/notifications",
-      "@mantine/hooks",
+    plugins: [
+        {
+            enforce: "pre",
+            ...mdx({
+                remarkPlugins: [
+                    remarkFrontmatter,
+                    [remarkMdxFrontmatter, { name: "frontmatter" }],
+                ],
+            }),
+        },
+        react(),
+        tsconfigPaths(),
     ],
-  },
-  server: {
-    hmr: true,
-    open: true,
-    proxy: {
-      "/osu-api": {
-        target: "https://osu.ppy.sh",
-        rewrite: (path) => path.replace(/^\/osu-api/, ""),
-      },
+    optimizeDeps: {
+        include: [
+            "@tabler/icons-react",
+            "@mantine/core",
+            "@mantine/notifications",
+            "@mantine/hooks",
+        ],
     },
-  },
+    server: {
+        hmr: true,
+        open: true,
+        cors: true,
+    },
 });

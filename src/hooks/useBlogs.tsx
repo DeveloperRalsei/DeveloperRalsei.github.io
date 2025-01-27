@@ -1,7 +1,6 @@
 import { Blog } from "@/types";
-import { blogs } from "@/data";
+import { blogs } from "@/data/blogs";
 
-export default function useBlogs(blogPageId: number): Blog | undefined {
-  const blog = blogs.find((blog) => blog.id === blogPageId);
-  return blog;
+export function useBlogs(blogPageId: number): Blog | undefined {
+    return blogs.find((blog) => blog.id === blogPageId);
 }
