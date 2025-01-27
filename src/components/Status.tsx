@@ -12,7 +12,7 @@ import { useLanyard, LanyardWebsocket, Activity } from "react-use-lanyard";
 import { IconBrandSpotify } from "@tabler/icons-react";
 
 export const StatusBadge = () => {
-    const { status } = useLanyard({
+    const { status, loading } = useLanyard({
         userId: "718798893445283863",
         socket: true,
     }) as LanyardWebsocket;
@@ -23,7 +23,7 @@ export const StatusBadge = () => {
             : false;
     const isIdle = status?.discord_status === "idle";
 
-    if (!status) {
+    if (loading) {
         return <Loader type="dots" />;
     }
 
