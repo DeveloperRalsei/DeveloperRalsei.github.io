@@ -8,6 +8,7 @@ import "@mantine/notifications/styles.css";
 import { MusicPlayerProvider } from "./components/context/MusicPlayer/MusicPlayerProvider";
 import { SecretProvider } from "./components/context/secret/SecretContext";
 import { PageProvider } from "./components/context/PageContext";
+import { StrictMode } from "react";
 
 const theme = createTheme({
     primaryColor: "teal",
@@ -51,16 +52,18 @@ const theme = createTheme({
 
 const AppWrapper = () => {
     return (
-        <MantineProvider theme={theme} defaultColorScheme="dark">
-            <SecretProvider secret={false}>
-                <MusicPlayerProvider>
-                    <PageProvider>
-                        <Notifications position="top-center" />
-                        <App />
-                    </PageProvider>
-                </MusicPlayerProvider>
-            </SecretProvider>
-        </MantineProvider>
+        <StrictMode>
+            <MantineProvider theme={theme} defaultColorScheme="dark">
+                <SecretProvider secret={false}>
+                    <MusicPlayerProvider>
+                        <PageProvider>
+                            <Notifications position="top-center" />
+                            <App />
+                        </PageProvider>
+                    </MusicPlayerProvider>
+                </SecretProvider>
+            </MantineProvider>
+        </StrictMode>
     );
 };
 

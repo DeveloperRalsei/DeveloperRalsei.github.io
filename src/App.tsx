@@ -1,10 +1,30 @@
 import { AppShell, Avatar, Group, Title, Tooltip } from "@mantine/core";
 import AppRenderer from "./AppRenderer.tsx";
+import { useReward } from 'react-rewards'
+import { useEffect } from "react";
+import { IS_BIRTHDAY_EVENT_ACTIVE, MY_AGE } from "./data/constants.ts";
 
 const App = () => {
+    const { reward: reward2 } = useReward("Confetti2", "balloons")
+    const { reward: reward1 } = useReward("Confetti1", "balloons")
+
+
+    useEffect(() => {
+        if (!IS_BIRTHDAY_EVENT_ACTIVE) return
+        const handleClick = () => {
+            if (Math.random() < 0.20) {
+                reward1();
+                reward2();
+            }
+        };
+
+        window.addEventListener("click", handleClick);
+        return () => window.removeEventListener("click", handleClick);
+    }, [reward1, reward2]);
+    console.log("Age: ", MY_AGE)
 
     return (
-        <AppShell header={{ height: 60, offset: true }}>
+        <AppShell header={{ height: 60, offset: true }} >
             <AppShell.Header withBorder={false}>
                 <Group align="center" h={"100%"} justify="space-around">
                     <Group>
@@ -20,23 +40,22 @@ const App = () => {
                             DeveloperRalsei
                         </Title>
                     </Group>
-                    {/* <Group> */}
-                    {/*     <Slider */}
-                    {/*         onChange={setVolume} */}
-                    {/*         value={volume} */}
-                    {/*         min={0} */}
-                    {/*         max={1} */}
-                    {/*         step={0.01} */}
-                    {/*         w={100} /> */}
-                    {/**/}
-                    {/*     {timer} */}
-                    {/* </Group> */}
                 </Group>
             </AppShell.Header>
 
             <AppShell.Main px={{ md: "xs" }}>
                 <AppRenderer />
             </AppShell.Main>
+            <span id="Confetti1" style={{
+                position: "absolute",
+                bottom: 0,
+                right: 30
+            }} />
+            <span id="Confetti2" style={{
+                position: "absolute",
+                bottom: 0,
+                left: 30
+            }} />
         </AppShell>
     );
 };

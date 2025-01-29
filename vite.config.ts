@@ -31,4 +31,5 @@ export default defineConfig({
         open: true,
         cors: true,
     },
+    base: "/"
 });

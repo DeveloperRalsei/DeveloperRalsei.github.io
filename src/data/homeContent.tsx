@@ -1,13 +1,13 @@
-import { learnMyAge } from "@/helpers/utils";
 import { usePage } from "@/hooks";
 import { Group, Tooltip, Box, List, Text, Image, ActionIcon } from "@mantine/core";
+import { IS_BIRTHDAY_EVENT_ACTIVE, MY_AGE } from "./constants";
 
 function MyAge() {
     const { setPage } = usePage()
 
     return (
         <ActionIcon onClick={() => setPage("birthDayPlace")} size="xs" variant="subtle">
-            {learnMyAge()}
+            {MY_AGE}
         </ActionIcon>
     )
 
@@ -46,13 +46,19 @@ export const listItems = [
                 I'm{" "}
                 <Tooltip label="2006-04-11">
                     <Text c="yellow" fw={700}>
-                        <MyAge />
+                        {IS_BIRTHDAY_EVENT_ACTIVE ? (
+                            <MyAge />
+                        ) : (
+                            MY_AGE
+                        )}
                     </Text>
                 </Tooltip>{" "}
                 years old{" "}
-                <Text span c="dimmed" opacity={0.7}>
-                    (Click my age for my birth day event :3)
-                </Text>
+                {IS_BIRTHDAY_EVENT_ACTIVE && (
+                    <Text span c="dimmed" opacity={0.7}>
+                        (Click my age for my birth day event :3)
+                    </Text>
+                )}
             </>
         )
     },
