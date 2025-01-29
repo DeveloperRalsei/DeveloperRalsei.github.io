@@ -34,6 +34,7 @@ export const useBeatdrop = ({
 }) => {
     const DEFAULT_VOLUME = 0.5;
     const ref = useRef<HTMLAudioElement | null>(null);
+    const canvasRef = useRef<HTMLCanvasElement | null>(null)
     const [timer, setTimer] = useState("--:--:--");
     const [beatDidDrop, setBeatDidDrop] = useState(new Date() > beatDropOn);
     const [volume, _setVolume] = useState(DEFAULT_VOLUME);
@@ -51,6 +52,44 @@ export const useBeatdrop = ({
         beatDropOn,
         beatDropPosition,
     ]);
+
+    useEffect(() => {
+        if (!ref.current || !canvasRef.current) return;
+
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        const source = audioContext.createMediaElementSource(ref.current);
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
+
+        analyser.fftSize = 256;
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+
+        const canvas = canvasRef.current
+        const ctx = canvas.getContext("2d")!;
+        canvas.width = 400;
+        canvas.height = 250;
+
+        const draw = () => {
+            requestAnimationFrame(draw);
+
+            analyser.getByteFrequencyData(dataArray);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const barWidth = (canvas.width / bufferLength) * 0.8
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                const barHeight = dataArray[i];
+                ctx.fillStyle = `rgb(100, ${barHeight + 50}, 200)`;
+                ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                x += barWidth + 1;
+            }
+        };
+
+        draw();
+    }, [audioSrc]);
 
     const update = () => {
         const date = new Date();
@@ -125,5 +164,6 @@ export const useBeatdrop = ({
             _setVolume(v);
         },
         err,
+        canvasRef,
     };
 };

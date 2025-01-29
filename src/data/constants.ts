@@ -1,10 +1,8 @@
 export const
-    IS_BIRTHDAY_EVENT_ACTIVE = (function () {
-        // if (import.meta.env.DEV) return true
-        if (new Date().getDate() === 11 && new Date().getMonth() === 0) return true
-        return false
-    })(),
-
+    IS_BIRTHDAY_EVENT_ACTIVE =
+        import.meta.env.DEV ||
+        (new Date().getMonth() === 0 && new Date().getDate() < 12) ||
+        false,
     BIRTHDAY_DATE = new Date(2006, 3, 11)
 
 const today = new Date();
