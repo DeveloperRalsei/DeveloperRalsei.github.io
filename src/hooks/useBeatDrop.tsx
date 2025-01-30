@@ -69,7 +69,7 @@ export const useBeatdrop = ({
         const canvas = canvasRef.current
         const ctx = canvas.getContext("2d")!;
         canvas.width = 400;
-        canvas.height = 250;
+        canvas.height = 230;
 
         const draw = () => {
             requestAnimationFrame(draw);
@@ -84,7 +84,7 @@ export const useBeatdrop = ({
                 const barHeight = dataArray[i];
                 ctx.fillStyle = `rgb(100, ${barHeight + 50}, 200)`;
                 ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-                x += barWidth + 1;
+                x += barWidth + 1.5;
             }
         };
 

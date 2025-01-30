@@ -142,7 +142,7 @@ export function getPageSwitcherConfig() {
 
         birthDayPlace: {
             color: "violet",
-            title: "Birth Day Event 🎂️",
+            title: "🎂️ Birth Day Event 🎂️",
             leftBtn: btns.home,
             rightBtn: btns.aboutme,
             content: <BirtDayPlace />

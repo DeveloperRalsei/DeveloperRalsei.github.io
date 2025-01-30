@@ -2,7 +2,7 @@ import { AppShell, Avatar, Group, Title, Tooltip } from "@mantine/core";
 import AppRenderer from "./AppRenderer.tsx";
 import { useReward } from 'react-rewards'
 import { useEffect } from "react";
-import { IS_BIRTHDAY_EVENT_ACTIVE, MY_AGE } from "./data/constants.ts";
+import { IS_BIRTHDAY_EVENT_ACTIVE } from "./data/constants.ts";
 
 const App = () => {
     const { reward: reward2 } = useReward("Confetti2", "balloons")
@@ -21,7 +21,6 @@ const App = () => {
         window.addEventListener("click", handleClick);
         return () => window.removeEventListener("click", handleClick);
     }, [reward1, reward2]);
-    console.log("Age: ", MY_AGE)
 
     return (
         <AppShell header={{ height: 60, offset: true }} >

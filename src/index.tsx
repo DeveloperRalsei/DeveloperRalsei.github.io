@@ -9,9 +9,11 @@ import { MusicPlayerProvider } from "./components/context/MusicPlayer/MusicPlaye
 import { SecretProvider } from "./components/context/secret/SecretContext";
 import { PageProvider } from "./components/context/PageContext";
 import { StrictMode } from "react";
+import { IS_TODAY_MYBIRTHDAY } from "./data/constants";
+
 
 const theme = createTheme({
-    primaryColor: "teal",
+    primaryColor: IS_TODAY_MYBIRTHDAY ? "orange" : "teal",
     fontFamily: "undertale",
     colors: {
         dark: [
@@ -53,7 +55,7 @@ const theme = createTheme({
 const AppWrapper = () => {
     return (
         <StrictMode>
-            <MantineProvider theme={theme} defaultColorScheme="dark">
+            <MantineProvider theme={theme} defaultColorScheme="light">
                 <SecretProvider secret={false}>
                     <MusicPlayerProvider>
                         <PageProvider>
