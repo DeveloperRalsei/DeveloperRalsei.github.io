@@ -55,7 +55,7 @@ const theme = createTheme({
 const AppWrapper = () => {
     return (
         <StrictMode>
-            <MantineProvider theme={theme} defaultColorScheme="light">
+            <MantineProvider theme={theme} forceColorScheme="dark">
                 <SecretProvider secret={false}>
                     <MusicPlayerProvider>
                         <PageProvider>
