@@ -6,3 +6,8 @@ export const learnMyAge = () => {
 
     return age;
 };
+
+export const wait = (milliseconds: number) =>
+    Promise.resolve(
+        new Promise((resolve) => setTimeout(resolve, milliseconds)),
+    );

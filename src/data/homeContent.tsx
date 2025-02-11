@@ -1,17 +1,13 @@
-import { usePage } from "@/hooks";
-import { Group, Tooltip, Box, List, Text, Image, ActionIcon } from "@mantine/core";
+import {
+    Group,
+    Tooltip,
+    Box,
+    List,
+    Text,
+    Image,
+    ActionIcon,
+} from "@mantine/core";
 import { IS_BIRTHDAY_EVENT_ACTIVE, MY_AGE } from "./constants";
-
-function MyAge() {
-    const { setPage } = usePage()
-
-    return (
-        <ActionIcon onClick={() => setPage("birthDayPlace")} size="xs" variant="subtle">
-            {MY_AGE}
-        </ActionIcon>
-    )
-
-}
 
 export const listItems = [
     {
@@ -32,7 +28,11 @@ export const listItems = [
                             </Text>
                         </Tooltip>
                         <Tooltip label="GMT +3 / UTC +3">
-                            <Image src={"/images/as-bayraklari-as.png"} alt="Flag" w={20} />
+                            <Image
+                                src={"/images/as-bayraklari-as.png"}
+                                alt="Flag"
+                                w={20}
+                            />
                         </Tooltip>
                     </Group>
                     .
@@ -47,7 +47,14 @@ export const listItems = [
                 <Tooltip label="2006-04-11">
                     <Text c="yellow" fw={700}>
                         {IS_BIRTHDAY_EVENT_ACTIVE ? (
-                            <MyAge />
+                            <ActionIcon
+                                component="a"
+                                href="#happi-birthday"
+                                size="xs"
+                                variant="subtle"
+                            >
+                                {MY_AGE}
+                            </ActionIcon>
                         ) : (
                             MY_AGE
                         )}
@@ -60,7 +67,7 @@ export const listItems = [
                     </Text>
                 )}
             </>
-        )
+        ),
     },
     {
         content: (
@@ -202,15 +209,16 @@ export const listItems = [
     {
         content: (
             <>
-                My codes are usually being a spaghetti code. I just can't clean it up.
+                My codes are usually being a spaghetti code. I just can't clean
+                it up.
             </>
         ),
     },
     {
         content: (
             <>
-                I'm a <Text c="blue">forgetful</Text> person. I can't remember what I've
-                done last time.
+                I'm a <Text c="blue">forgetful</Text> person. I can't remember
+                what I've done last time.
             </>
         ),
     },

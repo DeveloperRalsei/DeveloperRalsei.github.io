@@ -23,6 +23,7 @@
         "react-floating-balloons": "^3.0.1",
         "react-icons": "^5.3.0",
         "react-rewards": "^2.1.0",
+        "react-router-dom": "^7.1.5",
         "react-single-balloon": "^1.0.4",
         "react-use-lanyard": "^0.3.1",
         "remark-frontmatter": "^5.0.0",

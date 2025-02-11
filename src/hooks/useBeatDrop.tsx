@@ -6,17 +6,17 @@ export const relativeString = (d: Date) => {
     const absDiff = Math.abs(diff);
     let f: { duration: number; unit: any };
     if (absDiff > 86400 * 30 * 10) {
-        f = { duration: Math.round(diff / (86400 * 365)), unit: 'years' };
+        f = { duration: Math.round(diff / (86400 * 365)), unit: "years" };
     } else if (absDiff > 86400 * 25) {
-        f = { duration: Math.round(diff / (86400 * 30)), unit: 'months' };
+        f = { duration: Math.round(diff / (86400 * 30)), unit: "months" };
     } else if (absDiff > 3600 * 21) {
-        f = { duration: Math.round(diff / 86400), unit: 'days' };
+        f = { duration: Math.round(diff / 86400), unit: "days" };
     } else if (absDiff > 60 * 44) {
-        f = { duration: Math.round(diff / 3600), unit: 'hours' };
+        f = { duration: Math.round(diff / 3600), unit: "hours" };
     } else if (absDiff > 30) {
-        f = { duration: Math.round(diff / 60), unit: 'minutes' };
+        f = { duration: Math.round(diff / 60), unit: "minutes" };
     } else {
-        f = { duration: diff, unit: 'seconds' };
+        f = { duration: diff, unit: "seconds" };
     }
     return f.duration + " " + f.unit;
 };
@@ -34,7 +34,7 @@ export const useBeatdrop = ({
 }) => {
     const DEFAULT_VOLUME = 0.5;
     const ref = useRef<HTMLAudioElement | null>(null);
-    const canvasRef = useRef<HTMLCanvasElement | null>(null)
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [timer, setTimer] = useState("--:--:--");
     const [beatDidDrop, setBeatDidDrop] = useState(new Date() > beatDropOn);
     const [volume, _setVolume] = useState(DEFAULT_VOLUME);
@@ -46,17 +46,16 @@ export const useBeatdrop = ({
         _setVolume(ref.current.volume);
     }, [audioSrc]);
 
-    const startPlaybackOn = useMemo(() => (
-        beatDropOn.getTime() - (beatDropPosition * 1000) - 1000
-    ), [
-        beatDropOn,
-        beatDropPosition,
-    ]);
+    const startPlaybackOn = useMemo(
+        () => beatDropOn.getTime() - beatDropPosition * 1000 - 1000,
+        [beatDropOn, beatDropPosition],
+    );
 
     useEffect(() => {
         if (!ref.current || !canvasRef.current) return;
 
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const audioContext = new (window.AudioContext ||
+            (window as any).webkitAudioContext)();
         const analyser = audioContext.createAnalyser();
         const source = audioContext.createMediaElementSource(ref.current);
         source.connect(analyser);
@@ -66,10 +65,10 @@ export const useBeatdrop = ({
         const bufferLength = analyser.frequencyBinCount;
         const dataArray = new Uint8Array(bufferLength);
 
-        const canvas = canvasRef.current
+        const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d")!;
-        canvas.width = 400;
-        canvas.height = 230;
+        canvas.width = 600;
+        canvas.height = 304;
 
         const draw = () => {
             requestAnimationFrame(draw);
@@ -77,14 +76,14 @@ export const useBeatdrop = ({
             analyser.getByteFrequencyData(dataArray);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            const barWidth = (canvas.width / bufferLength) * 0.8
+            const barWidth = (canvas.width / bufferLength) * 0.8;
             let x = 0;
 
             for (let i = 0; i < bufferLength; i++) {
-                const barHeight = dataArray[i];
-                ctx.fillStyle = `rgb(100, ${barHeight + 50}, 200)`;
+                const barHeight = (dataArray[i] / 255) * canvas.height * 1.1;
+                ctx.fillStyle = `rgb(${barHeight - 50}, ${barHeight + 50}, ${barHeight})`;
                 ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-                x += barWidth + 1.5;
+                x += barWidth + 1.1;
             }
         };
 
@@ -96,40 +95,46 @@ export const useBeatdrop = ({
         let passed = date.getTime() > beatDropOn.getTime();
         setBeatDidDrop(passed);
 
-        let diff = Math.round(Math.abs(date.getTime() - beatDropOn.getTime()) / 1000);
+        let diff = Math.round(
+            Math.abs(date.getTime() - beatDropOn.getTime()) / 1000,
+        );
 
-        const h = Math.floor((diff) / (60 * 60));
+        const h = Math.floor(diff / (60 * 60));
         const m = Math.floor(diff / 60) % 60;
         const s = diff % 60;
 
-        setTimer([
-            h.toString().padStart(2, "0"),
-            (true) ? m.toString().padStart(2, "0") : null,
-            (true) ? s.toString().padStart(2, "0") : s.toString(),
-        ].filter(x => x).join(":"));
+        setTimer(
+            [
+                h.toString().padStart(2, "0"),
+                true ? m.toString().padStart(2, "0") : null,
+                true ? s.toString().padStart(2, "0") : s.toString(),
+            ]
+                .filter((x) => x)
+                .join(":"),
+        );
 
         if (!ref.current) return;
 
         if (!ref.current.paused) setErr(null);
 
-        const endPlaybackOn = startPlaybackOn + ((ref.current.duration + 2) * 1000);
+        const endPlaybackOn =
+            startPlaybackOn + (ref.current.duration + 2) * 1000;
 
         if (
-            ref.current.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA
-            && startPlaybackOn < date.getTime()
-            && endPlaybackOn > date.getTime()
+            ref.current.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA &&
+            startPlaybackOn < date.getTime() &&
+            endPlaybackOn > date.getTime()
         ) {
             let approxTime = (date.getTime() - startPlaybackOn) / 1000;
 
             try {
                 if (ref.current.paused) {
-                    ref.current.play()
-                        .catch(e => {
-                            console.log("play() error", e);
-                            setErr(e);
-                        });
+                    ref.current.play().catch((e) => {
+                        console.log("play() error", e);
+                        setErr(e);
+                    });
                     ref.current.currentTime = approxTime;
-                };
+                }
 
                 let { currentTime } = ref.current;
                 if (Math.abs(currentTime - approxTime) >= maxDelay) {

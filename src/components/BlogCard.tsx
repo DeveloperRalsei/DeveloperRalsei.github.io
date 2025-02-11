@@ -1,13 +1,17 @@
 import { Blog } from "@/types";
 import { Card, Group, Text } from "@mantine/core";
-import { usePage } from "@/hooks"
+// import { usePage } from "@/hooks";
 
 export default function BlogCard({ blogInfo }: { blogInfo: Blog }) {
-    const { setPage } = usePage();
+    // const { setPage } = usePage();
     return (
         <Card
-            onClick={() => setPage("blog-post", blogInfo.id)}
-            style={{ cursor: "pointer" }}
+            // onClick={() => setPage("blog-post", blogInfo.id)}
+            component={"a"}
+            href={`#blogs/${blogInfo.id}`}
+            target="_self"
+            withBorder
+            style={{ cursor: "pointer", textDecoration: "none" }}
         >
             <Card.Section withBorder fz={"h3"} p={"sm"}>
                 <Group justify="space-between" w={"100%"}>

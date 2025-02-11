@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import App from "./App";
+// import App from "./App";
 import "./style.css";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
@@ -10,7 +10,8 @@ import { SecretProvider } from "./components/context/secret/SecretContext";
 import { PageProvider } from "./components/context/PageContext";
 import { StrictMode } from "react";
 import { IS_TODAY_MYBIRTHDAY } from "./data/constants";
-
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 
 const theme = createTheme({
     primaryColor: IS_TODAY_MYBIRTHDAY ? "orange" : "teal",
@@ -31,7 +32,7 @@ const theme = createTheme({
             "#1A1B1E",
             "#141517",
             "#101113",
-        ]
+        ],
     },
     components: {
         Tooltip: {
@@ -52,21 +53,17 @@ const theme = createTheme({
     },
 });
 
-const AppWrapper = () => {
-    return (
-        <StrictMode>
-            <MantineProvider theme={theme} forceColorScheme="dark">
-                <SecretProvider secret={false}>
-                    <MusicPlayerProvider>
-                        <PageProvider>
-                            <Notifications position="top-center" />
-                            <App />
-                        </PageProvider>
-                    </MusicPlayerProvider>
-                </SecretProvider>
-            </MantineProvider>
-        </StrictMode>
-    );
-};
-
-createRoot(document.getElementById("root")!).render(<AppWrapper />);
+createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+        <MantineProvider theme={theme} forceColorScheme="dark">
+            <SecretProvider secret={false}>
+                <MusicPlayerProvider>
+                    <PageProvider>
+                        <Notifications position="top-center" />
+                        <RouterProvider router={router} />
+                    </PageProvider>
+                </MusicPlayerProvider>
+            </SecretProvider>
+        </MantineProvider>
+    </StrictMode>,
+);

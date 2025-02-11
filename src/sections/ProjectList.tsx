@@ -11,12 +11,12 @@ const ProjectList = () => {
 
     let filteredProjects = search
         ? Projects.filter((p) =>
-            [p.name, p.desc, p.techs]
-                .filter((x) => x)
-                .join(" ")
-                .toLowerCase()
-                .includes(search.toLowerCase())
-        )
+              [p.name, p.desc, p.techs]
+                  .filter((x) => x)
+                  .join(" ")
+                  .toLowerCase()
+                  .includes(search.toLowerCase()),
+          )
         : Projects;
 
     const statusOrder: { [K in Status]: number } = {
@@ -27,11 +27,11 @@ const ProjectList = () => {
     };
 
     filteredProjects = filteredProjects.sort((p1, p2) =>
-        p1.name.localeCompare(p2.name)
+        p1.name.localeCompare(p2.name),
     );
 
     filteredProjects = filteredProjects.sort(
-        (p1, p2) => statusOrder[p1.status] - statusOrder[p2.status]
+        (p1, p2) => statusOrder[p1.status] - statusOrder[p2.status],
     );
 
     return (

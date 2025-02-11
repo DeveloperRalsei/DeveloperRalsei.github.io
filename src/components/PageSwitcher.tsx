@@ -1,27 +1,40 @@
-import { Text, Container, Group, MantineColor } from "@mantine/core";
+import { routes } from "@/data/routes";
+import { ActionIcon, Container, Group, Tooltip } from "@mantine/core";
+import { useSecret } from "@/hooks";
 
-export const PageSwitcher = ({
-  rightBtn,
-  leftBtn,
-  page,
-  pageTitleColor,
-}: {
-  rightBtn?: React.ReactNode;
-  leftBtn?: React.ReactNode;
-  page: string;
-  pageTitleColor?: MantineColor;
-}) => {
-  return (
-    <Container size={"xs"} mb={"sm"}>
-      <Group w={"100%"} justify="space-between">
-        {leftBtn || <div></div>}
-        <Text fz={"h3"} c={pageTitleColor}>
-          {page}
-        </Text>
-        {rightBtn || <div></div>}
-      </Group>
-    </Container>
-  );
+export const PageSwitcher = () => {
+    const { secret } = useSecret();
+
+    return (
+        <Container size={"xs"}>
+            <Group w={"100%"} justify="space-between">
+                {routes
+                    .filter((route) =>
+                        route.route === "hmm"
+                            ? secret
+                            : (route.enabled ?? true),
+                    )
+                    .map((route) => (
+                        <Tooltip
+                            key={route.route + route.color}
+                            label={route.label}
+                            withArrow
+                        >
+                            <ActionIcon
+                                variant="light"
+                                component="a"
+                                href={"#" + route.route}
+                                radius={"sm"}
+                                size={"lg"}
+                                color={route.color}
+                            >
+                                {route.icon}
+                            </ActionIcon>
+                        </Tooltip>
+                    ))}
+            </Group>
+        </Container>
+    );
 };
 
 export default PageSwitcher;
