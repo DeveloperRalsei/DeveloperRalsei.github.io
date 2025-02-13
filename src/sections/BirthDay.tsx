@@ -43,7 +43,7 @@ export default function BirthDayPlace() {
 
     useHotkeys([["T", () => setIsTurkish((prev) => !prev)]]);
 
-    if (!import.meta.env.DEV && IS_BIRTHDAY_EVENT_ACTIVE)
+    if (!import.meta.env.DEV && !IS_BIRTHDAY_EVENT_ACTIVE)
         return "HEHEHE \n Check back later :)";
     return (
         <Stack w={"100%"} h="100%" align="center">
