@@ -16,7 +16,6 @@ import { useHotkeys } from "@mantine/hooks";
 import { useReward } from "react-rewards";
 import { AnonymousForm } from "@/components/birtdayEvent/AnonymousForm";
 import { IS_BIRTHDAY_EVENT_ACTIVE } from "@/data/constants";
-import { Navigate } from "react-router-dom";
 
 export default function BirthDayPlace() {
     const { timer, volume, setVolume, err, beatDidDrop, isPlaying, canvasRef } =
@@ -43,8 +42,7 @@ export default function BirthDayPlace() {
 
     useHotkeys([["T", () => setIsTurkish((prev) => !prev)]]);
 
-    if (!import.meta.env.DEV && !IS_BIRTHDAY_EVENT_ACTIVE)
-        return "HEHEHE \n Check back later :)";
+    if (!import.meta.env.DEV) return "HEHEHE \n Check back later :)";
     return (
         <Stack w={"100%"} h="100%" align="center">
             {!beatDidDrop && !isPlaying && !err && (
