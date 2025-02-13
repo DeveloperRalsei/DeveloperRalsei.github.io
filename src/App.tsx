@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 // import AppRenderer from "./AppRenderer.tsx";
 import { useReward } from "react-rewards";
-import { Suspense, useEffect } from "react";
+import { useEffect, useTransition } from "react";
 import { IS_BIRTHDAY_EVENT_ACTIVE } from "./data/constants.ts";
 import { Outlet, useLocation } from "react-router-dom";
 import { PageLoader } from "./components/Loader.tsx";
@@ -20,6 +20,8 @@ const App = () => {
     const { reward: reward2 } = useReward("Confetti2", "balloons");
     const { reward: reward1 } = useReward("Confetti1", "balloons");
     const { pathname } = useLocation();
+
+    const [pending, startTransition] = useTransition();
 
     useEffect(() => {
         if (!IS_BIRTHDAY_EVENT_ACTIVE) return;
@@ -55,7 +57,7 @@ const App = () => {
             </AppShell.Header>
 
             <AppShell.Main px={{ md: "xs" }}>
-                <PageSwitcher />
+                <PageSwitcher startTranitionFunc={startTransition} />
                 <Container
                     pt={30}
                     size={
@@ -66,9 +68,11 @@ const App = () => {
                               : "sm"
                     }
                 >
-                    <Suspense fallback={<PageLoader />}>
-                        <Outlet />
-                    </Suspense>
+                    {pending ? <PageLoader /> : <Outlet />}
+
+                    {/* <Suspense fallback={<PageLoader />}> */}
+                    {/*     <Outlet /> */}
+                    {/* </Suspense> */}
                 </Container>
             </AppShell.Main>
             <span

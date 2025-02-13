@@ -2,16 +2,16 @@ import { createRoot } from "react-dom/client";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 // import App from "./App";
-import "./style.css";
-import "@mantine/core/styles.css";
-import "@mantine/notifications/styles.css";
 import { MusicPlayerProvider } from "./components/context/MusicPlayer/MusicPlayerProvider";
 import { SecretProvider } from "./components/context/secret/SecretContext";
-import { PageProvider } from "./components/context/PageContext";
 import { StrictMode } from "react";
 import { IS_TODAY_MYBIRTHDAY } from "./data/constants";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
+
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import "./style.css";
 
 const theme = createTheme({
     primaryColor: IS_TODAY_MYBIRTHDAY ? "orange" : "teal",
@@ -58,10 +58,8 @@ createRoot(document.getElementById("root")!).render(
         <MantineProvider theme={theme} forceColorScheme="dark">
             <SecretProvider secret={false}>
                 <MusicPlayerProvider>
-                    <PageProvider>
-                        <Notifications position="top-center" />
-                        <RouterProvider router={router} />
-                    </PageProvider>
+                    <Notifications position="top-center" />
+                    <RouterProvider router={router} />
                 </MusicPlayerProvider>
             </SecretProvider>
         </MantineProvider>

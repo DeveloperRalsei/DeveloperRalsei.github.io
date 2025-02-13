@@ -2,8 +2,18 @@ import { routes } from "@/data/routes";
 import { ActionIcon, Container, Group, Tooltip } from "@mantine/core";
 import { useSecret } from "@/hooks";
 
-export const PageSwitcher = () => {
+export const PageSwitcher = ({
+    startTranitionFunc,
+}: {
+    startTranitionFunc: React.TransitionStartFunction;
+}) => {
     const { secret } = useSecret();
+
+    const handleClick = (route: string) => {
+        startTranitionFunc(() => {
+            window.location.hash = route;
+        });
+    };
 
     return (
         <Container size={"xs"}>
@@ -22,8 +32,8 @@ export const PageSwitcher = () => {
                         >
                             <ActionIcon
                                 variant="light"
+                                onClick={() => handleClick(route.route)}
                                 component="a"
-                                href={"#" + route.route}
                                 radius={"sm"}
                                 size={"lg"}
                                 color={route.color}
