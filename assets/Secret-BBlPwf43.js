@@ -1,1 +1,0 @@
-import{j as t,a2 as n}from"./index-CiQ1AGql.js";import{A as o}from"./Anchor-0rYXjhRP.js";import"./Text-Co2RZhea.js";const s=()=>t.jsxs(t.Fragment,{children:[t.jsx(n,{h:"300vh"}),t.jsx(o,{td:"underline",onClick:()=>open("https://jcw87.github.io/c2-sans-fight/","_blank"),children:"Don't click this link or you gonna have a bad time"})]});export{s as default};
