@@ -7,10 +7,12 @@ import { SecretProvider } from "./components/context/secret/SecretContext";
 import { StrictMode } from "react";
 import { IS_TODAY_MYBIRTHDAY } from "./data/constants";
 import { RouterProvider } from "react-router-dom";
+import "./i18n";
 import { router } from "./router";
 
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
+import "mantine-flagpack/styles.css";
 import "./style.css";
 
 const theme = createTheme({

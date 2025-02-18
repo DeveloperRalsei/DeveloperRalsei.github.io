@@ -15,6 +15,10 @@ import { Outlet, useLocation } from "react-router-dom";
 import { PageLoader } from "./components/Loader.tsx";
 import Spamton from "./components/Spamton.tsx";
 import PageSwitcher from "./components/PageSwitcher.tsx";
+import { useHotkeys } from "@mantine/hooks";
+import {} from "react-i18next";
+import i18n from "./i18n.ts";
+import { LangAffix } from "./components/home/languageAffix.tsx";
 
 const App = () => {
     const { reward: reward2 } = useReward("Confetti2", "balloons");
@@ -36,6 +40,11 @@ const App = () => {
         return () => window.removeEventListener("click", handleClick);
     }, [reward1, reward2]);
 
+    useHotkeys([
+        ["1", () => i18n.changeLanguage("en")],
+        ["2", () => i18n.changeLanguage("tr")],
+    ]);
+
     return (
         <AppShell header={{ height: 80, offset: true }}>
             <AppShell.Header withBorder={false}>
@@ -50,7 +59,7 @@ const App = () => {
                             />
                         </Tooltip>
                         <Title ta={"center"} order={3} c={"teal"}>
-                            DeveloperRalsei
+                            Developer Ralsei
                         </Title>
                     </Group>
                 </Group>
@@ -92,7 +101,8 @@ const App = () => {
                 }}
             />
             <Spamton />
-            <Space h={"20vh"} />
+            <Space h={"5vh"} />
+            <LangAffix />
         </AppShell>
     );
 };

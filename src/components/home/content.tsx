@@ -1,49 +1,48 @@
+import { IS_BIRTHDAY_EVENT_ACTIVE, MY_AGE } from "@/data/constants";
 import {
     Group,
+    ListItem,
     Tooltip,
-    Box,
-    List,
     Text,
     Image,
+    Stack,
     ActionIcon,
+    Box,
+    List,
 } from "@mantine/core";
-import { IS_BIRTHDAY_EVENT_ACTIVE, MY_AGE } from "./constants";
+import { useTranslation } from "react-i18next";
 
-export const listItems = [
-    {
-        content: (
-            <>
-                <Text>
-                    Well, I'm a simple guy who loves to code and lives in{" "}
-                    <Group display={"inline-flex"} gap={4}>
-                        <Tooltip label="It's Turkiye!!! not Turkey">
-                            <Text c={"red"} fw={700}>
-                                Turkiye
-                            </Text>
-                        </Tooltip>{" "}
-                        /{" "}
-                        <Tooltip label="Yes, this city is exist">
-                            <Text c={"cyan"} fw={700}>
-                                Isparta
-                            </Text>
-                        </Tooltip>
-                        <Tooltip label="GMT +3 / UTC +3">
-                            <Image
-                                src={"/images/as-bayraklari-as.png"}
-                                alt="Flag"
-                                w={20}
-                            />
-                        </Tooltip>
-                    </Group>
-                    .
-                </Text>
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
-                I'm{" "}
+export default function HomeContent() {
+    const { t } = useTranslation();
+    return (
+        <Stack mt={"sm"} gap={6}>
+            <ListItem>{t("home.items.0")}</ListItem>
+            <ListItem>
+                {t("home.items.1.prefix")}
+                <Group display={"inline-flex"} gap={3} me={3}>
+                    <Tooltip label="It's Turkiye!!! not Turkey">
+                        <Text c={"red"} fw={700}>
+                            Turkiye
+                        </Text>
+                    </Tooltip>{" "}
+                    /{" "}
+                    <Tooltip label={t("home.items.1.tooltip")}>
+                        <Text c={"cyan"} fw={700}>
+                            Isparta
+                        </Text>
+                    </Tooltip>
+                    <Tooltip label="GMT +3 / UTC +3">
+                        <Image
+                            src={"/images/as-bayraklari-as.png"}
+                            alt="Flag"
+                            w={20}
+                        />
+                    </Tooltip>
+                </Group>
+                {t("home.items.1.suffix")}
+            </ListItem>
+            <ListItem>
+                {t("home.items.2.prefix")}
                 <Tooltip label="2006-04-11">
                     <Text c="yellow" fw={700}>
                         {IS_BIRTHDAY_EVENT_ACTIVE ? (
@@ -59,20 +58,16 @@ export const listItems = [
                             MY_AGE
                         )}
                     </Text>
-                </Tooltip>{" "}
-                years old{" "}
+                </Tooltip>
+                {t("home.items.2.suffix")}
                 {IS_BIRTHDAY_EVENT_ACTIVE && (
                     <Text span c="dimmed" opacity={0.7}>
-                        (Click my age for my birth day event :3)
+                        {t("home.items.2.event")}
                     </Text>
                 )}
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
-                I'm currently learning{" "}
+            </ListItem>
+            <ListItem>
+                {t("home.items.3.prefix")}
                 <Text c={"blue"} fw={700}>
                     NextJs
                 </Text>
@@ -80,7 +75,7 @@ export const listItems = [
                 <Text c={"green"} fw={700}>
                     C#
                 </Text>
-                , and{" "}
+                {t("home.items.3.middle")}
                 <Text
                     c={"gray"}
                     component="a"
@@ -90,15 +85,11 @@ export const listItems = [
                 >
                     DenoJs
                 </Text>
-                .
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
+                {t("home.items.3.suffix")}
+            </ListItem>
+            <ListItem>
                 <Text>
-                    I'm using{" "}
+                    {t("home.items.4.prefix")}
                     <Text
                         c={"blue"}
                         fw={700}
@@ -108,16 +99,12 @@ export const listItems = [
                     >
                         Arch Linux
                     </Text>{" "}
-                    BTW. :P
+                    {t("home.items.4.suffix")}
                 </Text>
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
+            </ListItem>
+            <ListItem>
                 <Text>
-                    I'm a big fan of{" "}
+                    {t("home.items.5.prefix")}
                     <Tooltip label="Obviously">
                         <Box display={"inline"}>
                             {" ("}
@@ -143,15 +130,12 @@ export const listItems = [
                             {")"}
                         </Box>
                     </Tooltip>
+                    {t("home.items.5.suffix")}
                 </Text>
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
+            </ListItem>
+            <ListItem>
                 <Text>
-                    And I'm playing these games too:
+                    {t("home.items.6.prefix")}
                     <List icon="-" size="sm">
                         <List.Item>
                             <Text
@@ -193,33 +177,22 @@ export const listItems = [
                             </Text>
                         </List.Item>
                     </List>
+                    {t("home.items.6.suffix")}
                 </Text>
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
+            </ListItem>
+            <ListItem>
                 <Text>
-                    I'm <Text c="grape">poor</Text> 🥲
+                    {t("home.items.7.prefix")}{" "}
+                    <Text c="grape">{t("home.items.7.content")}</Text> 🥲
                 </Text>
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
-                My codes are usually being a spaghetti code. I just can't clean
-                it up.
-            </>
-        ),
-    },
-    {
-        content: (
-            <>
-                I'm a <Text c="blue">forgetful</Text> person. I can't remember
-                what I've done last time.
-            </>
-        ),
-    },
-];
+            </ListItem>
+            <ListItem>{t("home.items.8")}</ListItem>
+
+            <ListItem>
+                {t("home.items.9.prefix")}{" "}
+                <Text c="blue">{t("home.items.9.content")}</Text>
+                {t("home.items.9.suffix")}{" "}
+            </ListItem>
+        </Stack>
+    );
+}
