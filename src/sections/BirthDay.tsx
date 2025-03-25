@@ -21,10 +21,10 @@ export default function BirthDayPlace() {
         useBeatdrop({
             audioSrc: "/musics/strobe.mp3",
             beatDropPosition: 6 * 60 + 47,
-            beatDropOn: new Date(Date.now() + 1.1 * 6 * 1000),
-            // beatDropOn: import.meta.env.DEV
-            //     ? new Date(Date.now() + 0.1 * 60 * 1000)
-            //     : new Date("2025-04-11"),
+            // beatDropOn: new Date(Date.now() + 1.1 * 6 * 1000),
+            beatDropOn: import.meta.env.DEV
+                ? new Date(Date.now() + 0.1 * 60 * 1000)
+                : new Date("2025-04-11"),
         });
 
     const [tooltipOpened, setTooltipOpened] = useState(false);
