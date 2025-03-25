@@ -25,7 +25,9 @@ export default function BlogCard({ blogInfo }: { blogInfo: Blog }) {
                     </Text>
                 </Group>
             </Card.Section>
-            <Card.Section p={"sm"}>{blogInfo.description}</Card.Section>
+            <Card.Section p={"xs"} fz={"sm"}>
+                {blogInfo.description}
+            </Card.Section>
         </Card>
     );
 }

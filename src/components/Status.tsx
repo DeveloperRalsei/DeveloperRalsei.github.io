@@ -1,22 +1,17 @@
 import {
-    Box,
     Group,
-    Loader,
-    Menu,
-    Paper,
-    Text,
     Image,
+    Indicator,
+    Loader,
+    Paper,
+    Skeleton,
     Stack,
+    Text,
 } from "@mantine/core";
-import { useLanyard, LanyardWebsocket, Activity } from "react-use-lanyard";
-import { IconBrandSpotify } from "@tabler/icons-react";
+import { useStatus } from "./context/status";
 
 export const StatusBadge = () => {
-    const { status, loading } = useLanyard({
-        userId: "718798893445283863",
-        socket: true,
-    }) as LanyardWebsocket;
-
+    const { status, loading } = useStatus();
     const isOnline =
         status?.discord_status === "online" || status?.discord_status === "dnd"
             ? true && "active"
@@ -32,111 +27,73 @@ export const StatusBadge = () => {
     else return <Text c={"green"}>Online</Text>;
 };
 
-const Status: React.FC = () => {
-    const { status } = useLanyard({
-        userId: "718798893445283863",
-        socket: true,
-    }) as LanyardWebsocket;
+const Base = ({ children }: { children: React.ReactNode }) => (
+    <Paper w="100%" p="sm" withBorder>
+        <Group>{children}</Group>
+    </Paper>
+);
+export const StatusCard = () => {
+    const { loading, status } = useStatus();
 
-    if (!status) {
-        return <Loader type="dots" />;
+    if (loading) {
+        return (
+            <Base>
+                <Skeleton width={30} height={30} />
+                <Stack>
+                    <Skeleton width={"100%"} height={17} />
+
+                    <Skeleton width={60} height={10} />
+                </Stack>
+            </Base>
+        );
     }
 
-    const isOnline =
-        status.discord_status === "online" ||
-        status.discord_status === "dnd" ||
-        status.discord_status === "idle";
+    if (!status || !status.activities || status.activities.length === 0) {
+        return (
+            <Base>
+                <Text>I'm currently not doing anything</Text>
+            </Base>
+        );
+    }
 
-    const activities: Activity[] = status.activities;
-
-    const spotify = status.spotify;
-
-    const songDurationMs = spotify?.timestamps.end! - spotify?.timestamps.start!;
-
-    const songTotalSeconds = Math.floor(songDurationMs / 1000);
-
-    const songMinutes = Math.floor(songTotalSeconds / 60);
-    const songSeconds = songTotalSeconds % 60;
+    const appId = status.activities[0].application_id;
+    const assets = status.activities[0].assets;
 
     return (
-        <Paper p="md">
-            {isOnline ? (
-                <Group w="100%" justify="space-between" gap={0}>
-                    {activities && activities[0] ? (
-                        activities[0].name === "Custom Status" ? (
-                            activities[1] ? (
-                                <Box>
-                                    Playing a game:{" "}
-                                    <Text c={"red"} display={"inline"}>
-                                        {activities[1].name}
-                                    </Text>
-                                </Box>
-                            ) : (
-                                <Text>I'm not currently doing anything</Text>
-                            )
-                        ) : (
-                            <Box>
-                                Playing a game:{" "}
-                                <Text c={"red"} display={"inline"}>
-                                    {activities[0].name}
-                                </Text>
-                            </Box>
-                        )
+        <Paper w="100%" p="sm" withBorder>
+            <Group>
+                {assets?.large_image &&
+                    (assets.small_image ? (
+                        <Indicator
+                            color="transparent"
+                            position="bottom-end"
+                            size={30}
+                            label={
+                                <Image
+                                    src={`https://cdn.discordapp.com/app-assets/${appId}/${assets.small_image}`}
+                                    alt="small_image"
+                                    w={23}
+                                />
+                            }
+                        >
+                            <Image
+                                src={`https://cdn.discordapp.com/app-assets/${appId}/${assets?.large_image}.png`}
+                                alt="Rich Presence"
+                                w={50}
+                            />
+                        </Indicator>
                     ) : (
-                        <Text>I'm not currently doing anything</Text>
-                    )}
-
-                    {status.listening_to_spotify ? (
-                        <Menu position="left" trigger="click-hover">
-                            <Menu.Target>
-                                <IconBrandSpotify color="lightgreen" cursor={"pointer"} />
-                            </Menu.Target>
-
-                            <Menu.Dropdown p={20} bg={"dark"}>
-                                <Text c={"green"}>Listening</Text>
-                                <Menu.Divider />
-                                <Group justify="space-between">
-                                    <Image src={spotify?.album_art_url} w={100} radius={"sm"} />
-                                    <Stack gap={3} mt={"md"}>
-                                        <Text
-                                            c={"indigo"}
-                                            component="a"
-                                            href={`https://spotify.link/${spotify?.track_id}`}
-                                            target="_blank"
-                                        >
-                                            {spotify?.song}
-                                        </Text>
-                                        <div>
-                                            {"By "}
-                                            <Text c="cyan">{spotify?.artist}</Text>
-                                        </div>
-                                        <div>
-                                            <Text display={"inline"} c="grape">
-                                                {songMinutes}:{songSeconds}
-                                            </Text>
-                                            {" seconds"}
-                                        </div>
-                                    </Stack>
-                                </Group>
-                            </Menu.Dropdown>
-                        </Menu>
-                    ) : (
-                        <Menu trigger="click-hover" position="left">
-                            <Menu.Target>
-                                <IconBrandSpotify color={"gray"} cursor={"pointer"} />
-                            </Menu.Target>
-
-                            <Menu.Dropdown bg={"dark"}>
-                                <Text c={"gray"}>Not Listening Anything</Text>
-                            </Menu.Dropdown>
-                        </Menu>
-                    )}
-                </Group>
-            ) : (
-                "Offline"
-            )}
+                        <Image
+                            src={`https://cdn.discordapp.com/app-assets/${appId}/${assets?.large_image}.png`}
+                            alt="Rich Presence"
+                            w={50}
+                        />
+                    ))}
+                <Stack gap={5}>
+                    <Text fz={17}>{assets?.large_text}</Text>
+                    <Text fz={16}>{assets?.small_text}</Text>
+                </Stack>
+            </Group>
         </Paper>
     );
 };
-
-export default Status;

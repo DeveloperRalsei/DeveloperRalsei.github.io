@@ -1,6 +1,6 @@
 import App from "@/App";
 import { lazy } from "react";
-import { createHashRouter } from "react-router-dom";
+import { createHashRouter, NonIndexRouteObject } from "react-router-dom";
 
 const Home = lazy(() => import("@/sections/Home.tsx"));
 const About = lazy(async () => import("@/sections/AboutMe.tsx"));
@@ -10,12 +10,13 @@ const Desktop = lazy(() => import("@/sections/DesktopPreview.tsx"));
 const Secret = lazy(() => import("@/sections/Secret.tsx"));
 const Birthday = lazy(() => import("@/sections/BirthDay.tsx"));
 const BlogPost = lazy(() => import("@/sections/BlogPost.tsx"));
+const NotFound = lazy(() => import("@/sections/NotFound.tsx"));
 
 export const router = createHashRouter([
     {
         path: "/",
         element: <App />,
-        errorElement: "meow",
+        errorElement: <NotFound />,
         children: [
             { index: true, element: <Home /> },
             { path: "about", element: <About /> },

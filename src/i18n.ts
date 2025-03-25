@@ -1,6 +1,5 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import detector from "i18next-browser-languagedetector";
 import { en, tr } from "./assets/locales";
 
 const resources = {
@@ -8,9 +7,9 @@ const resources = {
     tr: { translation: tr },
 };
 
-i18n.use(initReactI18next).use(detector).init({
+i18n.use(initReactI18next).init({
     resources,
-    fallbackLng: "en",
+    lng: "en",
 });
 
 export default i18n;

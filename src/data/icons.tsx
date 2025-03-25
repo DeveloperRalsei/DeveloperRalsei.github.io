@@ -1,6 +1,24 @@
 import { Icon, ProfileLink } from "@/types";
 import { Tooltip, Image } from "@mantine/core";
-import { IconBrandHtml5, IconBrandCss3, IconBrandJavascript, IconBrandTypescript, IconBrandNodejs, IconBrandNpm, IconBrandReact, IconBrandMysql, IconGitMerge, IconBrandGithub, IconBrandMantine, IconBrandMongodb, IconBrandUbuntu, IconBrandTiktok, IconBrandDiscord, IconBrandSpotify, IconMail } from "@tabler/icons-react";
+import {
+    IconBrandHtml5,
+    IconBrandCss3,
+    IconBrandJavascript,
+    IconBrandTypescript,
+    IconBrandNodejs,
+    IconBrandNpm,
+    IconBrandReact,
+    IconBrandMysql,
+    IconGitMerge,
+    IconBrandGithub,
+    IconBrandMantine,
+    IconBrandMongodb,
+    IconBrandUbuntu,
+    IconBrandTiktok,
+    IconBrandDiscord,
+    IconBrandSpotify,
+    IconMail,
+} from "@tabler/icons-react";
 
 export const IconLinks: Icon[] = [
     {
@@ -46,12 +64,6 @@ export const IconLinks: Icon[] = [
         color: "blue",
     },
     {
-        label: "MySQL",
-        icon: <IconBrandMysql />,
-        href: "https://mysql.com",
-        color: "cyan",
-    },
-    {
         label: "Git",
         icon: <IconGitMerge />,
         href: "https://git-scm.com",
@@ -76,6 +88,12 @@ export const IconLinks: Icon[] = [
         color: "#00ff00",
     },
     {
+        label: "MySQL",
+        icon: <IconBrandMysql />,
+        href: "https://mysql.com",
+        color: "cyan",
+    },
+    {
         label: "Linux",
         icon: (
             <Tooltip label="Debian/Ubuntu or Arch">
@@ -89,9 +107,7 @@ export const IconLinks: Icon[] = [
         label: "Neovim",
         color: "green",
         href: "https://neovim.io/",
-        icon: (
-            <Image src="/images/nvim.png" w={20} />
-        )
+        icon: <Image src="/images/nvim.png" w={20} />,
     },
 ];
 
@@ -140,9 +156,11 @@ export const ProfileLinks: ProfileLink[] = [
     },
     {
         label: "osu!",
-        icon: <Tooltip label="5 Digit (Mania)">
-            <Image src={"/images/osu.png"} w={25} />
-        </Tooltip>,
+        icon: (
+            <Tooltip label="5 Digit (Mania)">
+                <Image src={"/images/osu.png"} w={25} />
+            </Tooltip>
+        ),
         href: "https://osu.ppy.sh/users/27076843",
         color: "pink",
     },

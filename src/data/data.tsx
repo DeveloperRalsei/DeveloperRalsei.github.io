@@ -1,8 +1,4 @@
-import {
-    Image,
-    MantineColor,
-    Tooltip
-} from "@mantine/core";
+import { Image, MantineColor, Tooltip } from "@mantine/core";
 import {
     IconBrandCss3,
     IconBrandDiscord,
@@ -20,7 +16,7 @@ import {
     IconBrandTypescript,
     IconBrandUbuntu,
     IconGitMerge,
-    IconMail
+    IconMail,
 } from "@tabler/icons-react";
 import { Icon, ProfileLink } from "../types";
 
@@ -111,9 +107,7 @@ export const IconLinks: Icon[] = [
         label: "Neovim",
         color: "green",
         href: "https://neovim.io/",
-        icon: (
-            <Image src="/images/nvim.png" w={20} />
-        )
+        icon: <Image src="/images/nvim.png" w={20} />,
     },
 ];
 
@@ -162,34 +156,81 @@ export const ProfileLinks: ProfileLink[] = [
     },
     {
         label: "osu!",
-        icon: <Tooltip label="5 Digit (Mania)">
-            <Image src={"/images/osu.png"} w={25} />
-        </Tooltip>,
+        icon: (
+            <Tooltip label="5 Digit (Mania)">
+                <Image src={"/images/osu.png"} w={25} />
+            </Tooltip>
+        ),
         href: "https://osu.ppy.sh/users/27076843",
         color: "pink",
     },
 ];
 
-
 export const CurrentyLearning: {
     language: string;
     color: MantineColor;
 }[] = [
-        {
-            color: "blue",
-            language: "Go",
-        },
-        {
-            language: "NextJS",
-            color: "lime",
-        },
-        {
-            language: "C#",
-            color: "orange",
-        },
-        {
-            language: "DenoJs",
-            color: "white",
-        },
-    ];
+    {
+        color: "blue",
+        language: "Go",
+    },
+    {
+        language: "NextJS",
+        color: "lime",
+    },
+    {
+        language: "C#",
+        color: "orange",
+    },
+    {
+        language: "DenoJs",
+        color: "white",
+    },
+];
 
+export type PcSpecification = {
+    key: string;
+    keyColor: MantineColor;
+    value: React.ReactNode;
+    innerSpecifications?: PcSpecification[];
+};
+
+export const PcSpecifications: PcSpecification[] = [
+    {
+        key: "OS",
+        keyColor: "orange",
+        value: "Arch",
+    },
+    {
+        key: "CPU",
+        keyColor: "blue",
+        value: "Intel Core",
+        innerSpecifications: [
+            {
+                key: "Gen",
+                keyColor: "violet",
+                value: "(3) 3230m",
+            },
+            {
+                key: "Cores / Threads",
+                keyColor: "lime",
+                value: "2 / 4",
+            },
+            {
+                key: "Frequency",
+                keyColor: "green",
+                value: "2.60Ghz / 3.20Ghz (Turbo)",
+            },
+        ],
+    },
+    {
+        key: "GPU",
+        keyColor: "indigo",
+        value: "AMD Radeon HD 7500M/7600M Series",
+    },
+    {
+        key: "Display",
+        keyColor: "pink",
+        value: "1366x768",
+    },
+];

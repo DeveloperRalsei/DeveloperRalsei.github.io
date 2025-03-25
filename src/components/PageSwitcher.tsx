@@ -1,6 +1,13 @@
 import { routes } from "@/data/routes";
-import { ActionIcon, Container, Group, Tooltip } from "@mantine/core";
+import {
+    ActionIcon,
+    Container,
+    Group,
+    MantineColor,
+    Tooltip,
+} from "@mantine/core";
 import { useSecret } from "@/hooks";
+import { usePage } from "./context/page";
 
 export const PageSwitcher = ({
     startTranitionFunc,
@@ -8,8 +15,13 @@ export const PageSwitcher = ({
     startTranitionFunc: React.TransitionStartFunction;
 }) => {
     const { secret } = useSecret();
+    const { setPage } = usePage();
 
-    const handleClick = (route: string) => {
+    const handleClick = (route: string, label: string, color: MantineColor) => {
+        setPage({
+            c: color,
+            pageLabel: label,
+        });
         startTranitionFunc(() => {
             window.location.hash = route;
         });
@@ -32,7 +44,13 @@ export const PageSwitcher = ({
                         >
                             <ActionIcon
                                 variant="light"
-                                onClick={() => handleClick(route.route)}
+                                onClick={() =>
+                                    handleClick(
+                                        route.route,
+                                        route.label,
+                                        route.color,
+                                    )
+                                }
                                 component="a"
                                 radius={"sm"}
                                 size={"lg"}

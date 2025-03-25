@@ -1,4 +1,4 @@
-import { Tooltip, TextInput, Space, Text } from "@mantine/core";
+import { Tooltip, TextInput, Space, Text, Accordion } from "@mantine/core";
 import ProjectRenderer from "../components/project/ProjectRenderer";
 import { useContext, useState } from "react";
 import { Projects } from "../data/projects";
@@ -62,37 +62,38 @@ const ProjectList = () => {
                 />
             </Tooltip>
             <Space h={15} />
-
-            {filteredProjects.map((p, i) => (
-                <ProjectRenderer p={p} key={i} />
-            ))}
-            {search.toLocaleLowerCase() === "sus" && (
-                <ProjectRenderer
-                    p={{
-                        name: "???",
-                        status: "???",
-                        techs: ["???"],
-                        buttons: [
-                            {
-                                type: "custom",
-                                color: "gray",
-                                label: "???",
-                                onClick: () => {
-                                    toggle();
-                                },
-                            },
-                        ],
-                    }}
-                />
-            )}
-            {!filteredProjects.length &&
-                (search.toLocaleLowerCase() === "sus" ? (
-                    ""
-                ) : (
-                    <Text w={"100%"} ta={"center"}>
-                        There's nothing I can show you 3:
-                    </Text>
+            <Accordion variant="separated" chevronPosition="left">
+                {filteredProjects.map((p, i) => (
+                    <ProjectRenderer p={p} key={i} />
                 ))}
+                {search.toLocaleLowerCase() === "sus" && (
+                    <ProjectRenderer
+                        p={{
+                            name: "???",
+                            status: "???",
+                            techs: ["???"],
+                            buttons: [
+                                {
+                                    type: "custom",
+                                    color: "gray",
+                                    label: "???",
+                                    onClick: () => {
+                                        toggle();
+                                    },
+                                },
+                            ],
+                        }}
+                    />
+                )}
+                {!filteredProjects.length &&
+                    (search.toLocaleLowerCase() === "sus" ? (
+                        ""
+                    ) : (
+                        <Text w={"100%"} ta={"center"}>
+                            There's nothing I can show you 3:
+                        </Text>
+                    ))}
+            </Accordion>
         </>
     );
 };

@@ -5,7 +5,6 @@ import {
     Group,
     Space,
     Title,
-    Tooltip,
 } from "@mantine/core";
 // import AppRenderer from "./AppRenderer.tsx";
 import { useReward } from "react-rewards";
@@ -16,9 +15,9 @@ import { PageLoader } from "./components/Loader.tsx";
 import Spamton from "./components/Spamton.tsx";
 import PageSwitcher from "./components/PageSwitcher.tsx";
 import { useHotkeys } from "@mantine/hooks";
-import {} from "react-i18next";
 import i18n from "./i18n.ts";
 import { LangAffix } from "./components/home/languageAffix.tsx";
+import { usePage } from "./components/context/page/index.tsx";
 
 const App = () => {
     const { reward: reward2 } = useReward("Confetti2", "balloons");
@@ -26,6 +25,7 @@ const App = () => {
     const { pathname } = useLocation();
 
     const [pending, startTransition] = useTransition();
+    const { pageLabel, c } = usePage();
 
     useEffect(() => {
         if (!IS_BIRTHDAY_EVENT_ACTIVE) return;
@@ -50,14 +50,15 @@ const App = () => {
             <AppShell.Header withBorder={false}>
                 <Group align="center" h={"100%"} justify="space-around">
                     <Group>
-                        <Tooltip label=":3" position="left" withArrow>
-                            <Avatar
-                                src={"/images/pp.png"}
-                                alt="me :3"
-                                style={{ cursor: "pointer" }}
-                                radius={0}
-                            />
-                        </Tooltip>
+                        <Avatar
+                            src={
+                                "https://cdn.discordapp.com/avatars/718798893445283863/3a146ccc94dd2c6e917dc6eb3ce62276.webp?size=128"
+                            }
+                            alt="me :3"
+                            size="lg"
+                            radius={0}
+                            style={{ cursor: "pointer" }}
+                        />
                         <Title ta={"center"} order={3} c={"teal"}>
                             Developer Ralsei
                         </Title>
@@ -67,6 +68,9 @@ const App = () => {
 
             <AppShell.Main px={{ md: "xs" }}>
                 <PageSwitcher startTranitionFunc={startTransition} />
+                <Title c={c} mt={5} order={3} ta="center">
+                    {pageLabel}
+                </Title>
                 <Container
                     pt={30}
                     size={
@@ -83,6 +87,7 @@ const App = () => {
                     {/*     <Outlet /> */}
                     {/* </Suspense> */}
                 </Container>
+                <Space h="4vh" />
             </AppShell.Main>
             <span
                 id="Confetti1"
@@ -101,7 +106,6 @@ const App = () => {
                 }}
             />
             <Spamton />
-            <Space h={"5vh"} />
             <LangAffix />
         </AppShell>
     );

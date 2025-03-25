@@ -15,21 +15,21 @@ import { IconCircleCheck } from "@tabler/icons-react";
 import { useHotkeys } from "@mantine/hooks";
 import { useReward } from "react-rewards";
 import { AnonymousForm } from "@/components/birtdayEvent/AnonymousForm";
-import { IS_BIRTHDAY_EVENT_ACTIVE } from "@/data/constants";
 
 export default function BirthDayPlace() {
     const { timer, volume, setVolume, err, beatDidDrop, isPlaying, canvasRef } =
         useBeatdrop({
             audioSrc: "/musics/strobe.mp3",
-            beatDropPosition: 6 * 60 + 47.4,
-            beatDropOn: import.meta.env.DEV
-                ? new Date(Date.now() + 0.1 * 60 * 1000)
-                : new Date("2025-04-11"),
+            beatDropPosition: 6 * 60 + 47,
+            beatDropOn: new Date(Date.now() + 1.1 * 6 * 1000),
+            // beatDropOn: import.meta.env.DEV
+            //     ? new Date(Date.now() + 0.1 * 60 * 1000)
+            //     : new Date("2025-04-11"),
         });
 
     const [tooltipOpened, setTooltipOpened] = useState(false);
     const isSongEnded = beatDidDrop && !isPlaying;
-    const [isTurkish, setIsTurkish] = useState(true);
+    const [isTurkish, setIsTurkish] = useState(false);
     const { reward: reward2 } = useReward("Confetti1", "balloons");
     const { reward: reward1 } = useReward("Confetti2", "balloons");
 
@@ -42,7 +42,6 @@ export default function BirthDayPlace() {
 
     useHotkeys([["T", () => setIsTurkish((prev) => !prev)]]);
 
-    if (!import.meta.env.DEV) return "HEHEHE \n Check back later :)";
     return (
         <Stack w={"100%"} h="100%" align="center">
             {!beatDidDrop && !isPlaying && !err && (
@@ -140,15 +139,6 @@ export default function BirthDayPlace() {
                 <>
                     {isTurkish ? (
                         <Text fz={20}>
-                            <Text c="dimmed" ta="center">
-                                Pekala! Eğer benim gibi kıçı koca olduğu için
-                                bir türlü sandalyesinde kalkmayacak kadar tembel
-                                değilsen :) <br />
-                                ChatGPT'den arakladığım bu mesajı okuyabilirsin{" "}
-                                {"<3"}
-                            </Text>
-                            <br />
-                            <br />
                             <Title ta={"center"} order={3}>
                                 🎉 Teşekkürler! 🎉
                             </Title>
@@ -193,17 +183,17 @@ export default function BirthDayPlace() {
                             büyük bir sürprizle görüşmek üzere! 🎊
                             <br /> <br />
                             💜 Sen harikasın! 💜
+                            <br />
+                            <br />
+                            <Text c="dimmed" ta="center">
+                                Evet, bu yazının büyük bir kısmını chat gpt'den
+                                arakladım {":P"} <br />
+                                NE!? En azından tembel olduğum, salak olduğum
+                                anlamına gelmiyor. :D <br />
+                            </Text>
                         </Text>
                     ) : (
                         <Text fz={20}>
-                            <Text c="dimmed" ta="center">
-                                Okay! If you're not a lazy ass person just like
-                                me :) <br />
-                                You can start read the letter I stole from chat
-                                gpt {" <3"}
-                            </Text>
-                            <br />
-                            <br />
                             <Title order={3} ta={"center"}>
                                 🎉 Thank You! 🎉
                             </Title>
@@ -243,6 +233,14 @@ export default function BirthDayPlace() {
                             maybe even bigger surprises next year! 🎊
                             <br /> <br />
                             💜 You're amazing! 💜
+                            <br /> <br />
+                            <Text c="dimmed" ta="center">
+                                Yeah! I copied most of this text from chat gpt
+                                {" :P "}
+                                <br />
+                                WHAT!? At least just because I'm lazy doesn't
+                                mean I'm stupid. :D <br />
+                            </Text>
                         </Text>
                     )}
                     <AnonymousForm />

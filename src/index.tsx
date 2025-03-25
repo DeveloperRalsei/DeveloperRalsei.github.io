@@ -13,7 +13,10 @@ import { router } from "./router";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "mantine-flagpack/styles.css";
+import "discord-card-react/styles";
 import "./style.css";
+import { StatusProvider } from "./components/context/status";
+import { PageProvider } from "./components/context/page";
 
 const theme = createTheme({
     primaryColor: IS_TODAY_MYBIRTHDAY ? "orange" : "teal",
@@ -60,8 +63,12 @@ createRoot(document.getElementById("root")!).render(
         <MantineProvider theme={theme} forceColorScheme="dark">
             <SecretProvider secret={false}>
                 <MusicPlayerProvider>
-                    <Notifications position="top-center" />
-                    <RouterProvider router={router} />
+                    <PageProvider>
+                        <StatusProvider>
+                            <Notifications position="top-center" />
+                            <RouterProvider router={router} />
+                        </StatusProvider>
+                    </PageProvider>
                 </MusicPlayerProvider>
             </SecretProvider>
         </MantineProvider>
