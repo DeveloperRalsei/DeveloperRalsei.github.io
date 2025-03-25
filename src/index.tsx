@@ -13,7 +13,6 @@ import { router } from "./router";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "mantine-flagpack/styles.css";
-import "discord-card-react/styles";
 import "./style.css";
 import { StatusProvider } from "./components/context/status";
 import { PageProvider } from "./components/context/page";
