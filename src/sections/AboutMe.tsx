@@ -11,7 +11,7 @@ import {
     List,
 } from "@mantine/core";
 import Card from "../components/Card";
-import { StatusBadge, StatusCard } from "../components/Status";
+import { StatusBadge, StatusCard } from "../components/context/status/Status";
 import { IconDeviceDesktop } from "@tabler/icons-react";
 import { IconLinks, ProfileLinks } from "../data/icons";
 import { CurrentyLearning, PcSpecifications } from "../data/data";

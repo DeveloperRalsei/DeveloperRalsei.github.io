@@ -7,8 +7,9 @@ import {
     Skeleton,
     Stack,
     Text,
+    Tooltip,
 } from "@mantine/core";
-import { useStatus } from "./context/status";
+import { useStatus } from ".";
 
 export const StatusBadge = () => {
     const { status, loading } = useStatus();
@@ -34,13 +35,16 @@ const Base = ({ children }: { children: React.ReactNode }) => (
 );
 export const StatusCard = () => {
     const { loading, status } = useStatus();
+    if (status?.discord_status === "offline") {
+        return;
+    }
 
     if (loading) {
         return (
             <Base>
                 <Skeleton width={30} height={30} />
                 <Stack>
-                    <Skeleton width={"100%"} height={17} />
+                    <Skeleton width={300} height={17} />
 
                     <Skeleton width={60} height={10} />
                 </Stack>
@@ -61,7 +65,7 @@ export const StatusCard = () => {
 
     return (
         <Paper w="100%" p="sm" withBorder>
-            <Group>
+            <Group align="center">
                 {assets?.large_image &&
                     (assets.small_image ? (
                         <Indicator
@@ -69,18 +73,22 @@ export const StatusCard = () => {
                             position="bottom-end"
                             size={30}
                             label={
-                                <Image
-                                    src={`https://cdn.discordapp.com/app-assets/${appId}/${assets.small_image}`}
-                                    alt="small_image"
-                                    w={23}
-                                />
+                                <Tooltip withArrow label={assets.small_text}>
+                                    <Image
+                                        src={`https://cdn.discordapp.com/app-assets/${appId}/${assets.small_image}`}
+                                        alt="small_image"
+                                        w={23}
+                                    />
+                                </Tooltip>
                             }
                         >
-                            <Image
-                                src={`https://cdn.discordapp.com/app-assets/${appId}/${assets?.large_image}.png`}
-                                alt="Rich Presence"
-                                w={50}
-                            />
+                            <Tooltip withArrow label={assets.large_text}>
+                                <Image
+                                    src={`https://cdn.discordapp.com/app-assets/${appId}/${assets?.large_image}.png`}
+                                    alt="Rich Presence"
+                                    w={50}
+                                />
+                            </Tooltip>
                         </Indicator>
                     ) : (
                         <Image
@@ -90,8 +98,14 @@ export const StatusCard = () => {
                         />
                     ))}
                 <Stack gap={5}>
-                    <Text fz={17}>{assets?.large_text}</Text>
-                    <Text fz={16}>{assets?.small_text}</Text>
+                    <Text fw="bolder" fz={20}>
+                        {status.activities[0].name}
+                    </Text>
+                    <div>
+                        <Text>{status.activities[0].details}</Text>
+                        <br />
+                        <Text>{status.activities[0].state}</Text>
+                    </div>
                 </Stack>
             </Group>
         </Paper>
