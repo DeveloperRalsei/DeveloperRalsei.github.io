@@ -7,9 +7,7 @@ import {
     Title,
 } from "@mantine/core";
 // import AppRenderer from "./AppRenderer.tsx";
-import { useReward } from "react-rewards";
-import { useEffect, useTransition } from "react";
-import { IS_BIRTHDAY_EVENT_ACTIVE } from "./data/constants.ts";
+import { useTransition } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { PageLoader } from "./components/Loader.tsx";
 import Spamton from "./components/Spamton.tsx";
@@ -20,25 +18,10 @@ import { LangAffix } from "./components/home/languageAffix.tsx";
 import { usePage } from "./components/context/page/index.tsx";
 
 const App = () => {
-    const { reward: reward2 } = useReward("Confetti2", "balloons");
-    const { reward: reward1 } = useReward("Confetti1", "balloons");
     const { pathname } = useLocation();
 
     const [pending, startTransition] = useTransition();
-    const { pageLabel, c } = usePage();
-
-    useEffect(() => {
-        if (!IS_BIRTHDAY_EVENT_ACTIVE) return;
-        const handleClick = () => {
-            if (Math.random() < 0.05) {
-                reward1();
-                reward2();
-            }
-        };
-
-        window.addEventListener("click", handleClick);
-        return () => window.removeEventListener("click", handleClick);
-    }, [reward1, reward2]);
+    const { pageLabel, color: titleColor } = usePage();
 
     useHotkeys([
         ["1", () => i18n.changeLanguage("en")],
@@ -68,7 +51,7 @@ const App = () => {
 
             <AppShell.Main px={{ md: "xs" }}>
                 <PageSwitcher startTranitionFunc={startTransition} />
-                <Title c={c} mt={5} order={3} ta="center">
+                <Title c={titleColor} mt={5} order={3} ta="center">
                     {pageLabel}
                 </Title>
                 <Container
@@ -87,7 +70,7 @@ const App = () => {
                     {/*     <Outlet /> */}
                     {/* </Suspense> */}
                 </Container>
-                <Space h="4vh" />
+                <Space h="10vh" />
             </AppShell.Main>
             <span
                 id="Confetti1"

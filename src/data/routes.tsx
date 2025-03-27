@@ -5,6 +5,8 @@ import {
     IconBrandGithub,
     IconDeviceDesktop,
     IconHomeFilled,
+    IconMessageFilled,
+    IconMusic,
     IconQuestionMark,
 } from "@tabler/icons-react";
 import React from "react";
@@ -18,33 +20,45 @@ export const routes: {
 }[] = [
     {
         label: "Home",
-        color: "grape",
+        color: "red",
         route: "",
         icon: <IconHomeFilled />,
     },
     {
         label: "About Me",
-        color: "cyan",
+        color: "orange",
         route: "about",
         icon: <IconBooks />,
     },
     {
         label: "Projects",
-        color: "green",
+        color: "yellow",
         route: "projects",
         icon: <IconBrandGithub />,
     },
     {
         label: "My Desktop",
-        color: "blue",
+        color: "green",
         route: "desktop",
         icon: <IconDeviceDesktop />,
     },
     {
         label: "Blogs",
-        color: "red",
+        color: "blue",
         route: "blogs",
         icon: <IconBook2 />,
+    },
+    {
+        label: "Music",
+        color: "indigo",
+        route: "music",
+        icon: <IconMusic />,
+    },
+    {
+        label: "Chat",
+        color: "pink",
+        route: "chat",
+        icon: <IconMessageFilled />,
     },
     {
         label: "???",

@@ -7,6 +7,7 @@ export default function BlogCard({ blogInfo }: { blogInfo: Blog }) {
     return (
         <Card
             // onClick={() => setPage("blog-post", blogInfo.id)}
+            className="hover"
             component={"a"}
             href={`#blogs/${blogInfo.id}`}
             target="_self"

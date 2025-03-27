@@ -8,6 +8,14 @@ export type Blog = {
     slug: string;
 };
 
+export type Music = {
+    id: number;
+    title: string;
+    artist: string;
+    musicPath: string;
+    coverPath: string;
+};
+
 export type page =
     | "home"
     | "blog"
@@ -51,21 +59,21 @@ export type Tech =
 export type ProjectButton = {
     color?: DefaultMantineColor;
 } & (
-        | {
-            type: "github";
-            url: string;
-        }
-        | {
-            type: "link";
-            label: string;
-            url: string;
-        }
-        | {
-            type: "custom";
-            label: string;
-            onClick: (...params: any) => void;
-        }
-    );
+    | {
+          type: "github";
+          url: string;
+      }
+    | {
+          type: "link";
+          label: string;
+          url: string;
+      }
+    | {
+          type: "custom";
+          label: string;
+          onClick: (...params: any) => void;
+      }
+);
 
 export type Status = "done" | "wip" | "dead" | "???";
 

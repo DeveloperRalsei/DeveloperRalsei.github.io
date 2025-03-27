@@ -1,53 +1,75 @@
 @font-face {
-  font-family: undertale;
-  src: url(/fonts/undertale.ttf);
+    font-family: undertale;
+    src: url(/fonts/undertale.ttf);
 }
 
 ::selection {
-  background-color: var(--mantine-color-teal-light);
+    background-color: var(--mantine-color-teal-light);
 }
 
 body {
-  user-select: none;
-  font-size: 22px;
-  font-family: "undertale", sans-serif;
+    user-select: none;
+    font-size: 22px;
+    font-family: "undertale", sans-serif;
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background-color: transparent;
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--mantine-color-pink-4);
-  border-radius: 100px;
+    background: var(--mantine-color-pink-4);
+    border-radius: 100px;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
 #ILEFT {
-  font-family: "undertale";
-  font-size: 28px;
-  position: fixed;
-  z-index: 999;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  display: grid;
-  place-items: center;
+    font-family: "undertale";
+    font-size: 28px;
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: grid;
+    place-items: center;
+}
+
+.hover {
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translate(0, -10px);
+    }
+    &:active {
+        transform: translate(0, 2px);
+    }
 }
 
 /* Guess I'll never be able to write code without stealing someone elses :/ */
 .rainbowText {
-    background-image: repeating-linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+    background-image: repeating-linear-gradient(
+        to right,
+        #ef5350,
+        #f48fb1,
+        #7e57c2,
+        #2196f3,
+        #26c6da,
+        #43a047,
+        #eeff41,
+        #f9a825,
+        #ff5722
+    );
     text-align: center;
     background-size: 800% 800%;
     background-clip: text;
@@ -61,10 +83,10 @@ a {
 
 @keyframes rainbow {
     0% {
-        background-position: 0% 0%
+        background-position: 0% 0%;
     }
 
     100% {
-        background-position: 110% 0%
+        background-position: 110% 0%;
     }
 }

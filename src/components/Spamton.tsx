@@ -1,7 +1,9 @@
 import { Image, Tooltip } from "@mantine/core";
 import styles from "./Spamton.module.css";
+import { useMusicPlayer } from "./musicPlayer";
 
 const Spamton = () => {
+    const { playing } = useMusicPlayer();
     return (
         <Tooltip
             multiline
@@ -16,7 +18,7 @@ const Spamton = () => {
                 alt="Spamton Laughing"
                 pos={"fixed"}
                 w={30}
-                bottom={0}
+                bottom={playing ? 55 : 0}
                 right={10}
                 className={styles.spamton}
             />

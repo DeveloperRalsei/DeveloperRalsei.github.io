@@ -52,6 +52,11 @@ const ProjectList = () => {
                 }
                 position="top-end"
                 openDelay={3000}
+                events={{
+                    focus: false,
+                    hover: true,
+                    touch: false,
+                }}
             >
                 <TextInput
                     mt={10}

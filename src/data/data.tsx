@@ -229,6 +229,11 @@ export const PcSpecifications: PcSpecification[] = [
         value: "AMD Radeon HD 7500M/7600M Series",
     },
     {
+        key: "RAM",
+        keyColor: "grape",
+        value: "8 GB",
+    },
+    {
         key: "Display",
         keyColor: "pink",
         value: "1366x768",

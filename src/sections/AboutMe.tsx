@@ -15,7 +15,6 @@ import { StatusBadge, StatusCard } from "../components/context/status/Status";
 import { IconDeviceDesktop } from "@tabler/icons-react";
 import { IconLinks, ProfileLinks } from "../data/icons";
 import { CurrentyLearning, PcSpecifications } from "../data/data";
-import MusicPlayer from "../components/context/MusicPlayer/MusicPlayer";
 import { useStatus } from "@/components/context/status";
 
 const MySituation = () => {
@@ -35,7 +34,6 @@ const MySituation = () => {
                     <Group gap={7}>
                         <Title order={5}>Status</Title>:<StatusBadge />
                     </Group>
-                    <MusicPlayer />
                 </Group>
                 <StatusCard />
                 <Group gap={12}>

@@ -97,7 +97,9 @@
                 [-1, -1],
             ],
         }, // Get keys with 2 or more sprites
-        keys = Object.keys(spriteSets).filter((key) => spriteSets[key].length > 1),
+        keys = Object.keys(spriteSets).filter(
+            (key) => spriteSets[key].length > 1,
+        ),
         usedKeys = new Set();
 
     function sleep(e) {
@@ -135,7 +137,8 @@
             ".main-playbackBarRemainingTime-container",
         );
         const remainingTimeLeft = remainingTime.getBoundingClientRect().left;
-        const remainingTimeBottom = remainingTime.getBoundingClientRect().bottom;
+        const remainingTimeBottom =
+            remainingTime.getBoundingClientRect().bottom;
         const remainingTimeTop = remainingTime.getBoundingClientRect().top;
 
         // Get the position of elapsed time
@@ -176,7 +179,7 @@
         nekoEl.id = "oneko";
         nekoEl.style.width = "32px";
         nekoEl.style.height = "32px";
-        nekoEl.style.position = "fixed";
+        nekoEl.style.position = "absolute";
         // nekoEl.style.pointerEvents = "none";
         nekoEl.style.backgroundImage = `url("/oneko/assets/oneko-${variant}.gif")`;
         nekoEl.style.imageRendering = "pixelated";
@@ -205,8 +208,10 @@
         function explodeHearts() {
             const parent = nekoEl.parentElement;
             const rect = nekoEl.getBoundingClientRect();
-            const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollLeft =
+                window.scrollX || document.documentElement.scrollLeft;
+            const scrollTop =
+                window.scrollY || document.documentElement.scrollTop;
             const centerX = rect.left + rect.width / 2 + scrollLeft;
             const centerY = rect.top + rect.height / 2 + scrollTop;
 
@@ -219,7 +224,7 @@
                 heart.style.left = `${centerX + offsetX - 16}px`;
                 heart.style.top = `${centerY + offsetY - 16}px`;
                 heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
-                heart.style.zIndex = 9999
+                heart.style.zIndex = 9999;
                 parent.appendChild(heart);
 
                 setTimeout(() => {
@@ -263,9 +268,15 @@
 
                 // Scratch in the opposite direction of the drag
                 if (absDeltaX > absDeltaY && absDeltaX > 10) {
-                    setSprite(deltaX > 0 ? "scratchWallW" : "scratchWallE", frameCount);
+                    setSprite(
+                        deltaX > 0 ? "scratchWallW" : "scratchWallE",
+                        frameCount,
+                    );
                 } else if (absDeltaY > absDeltaX && absDeltaY > 10) {
-                    setSprite(deltaY > 0 ? "scratchWallN" : "scratchWallS", frameCount);
+                    setSprite(
+                        deltaY > 0 ? "scratchWallN" : "scratchWallS",
+                        frameCount,
+                    );
                 }
 
                 if (
@@ -349,7 +360,7 @@
             }
             idleAnimation =
                 avalibleIdleAnimations[
-                Math.floor(Math.random() * avalibleIdleAnimations.length)
+                    Math.floor(Math.random() * avalibleIdleAnimations.length)
                 ];
         }
 

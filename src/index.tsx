@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 // import App from "./App";
-import { MusicPlayerProvider } from "./components/context/MusicPlayer/MusicPlayerProvider";
+import { MusicPlayer, MusicPlayerProvider } from "@/components/musicPlayer";
 import { SecretProvider } from "./components/context/secret/SecretContext";
 import { StrictMode } from "react";
 import { IS_TODAY_MYBIRTHDAY } from "./data/constants";
@@ -42,6 +42,10 @@ const theme = createTheme({
         Tooltip: {
             defaultProps: {
                 color: "dark",
+                events: {
+                    touch: true,
+                    hover: true,
+                },
             },
         },
         Anchor: {
@@ -66,6 +70,7 @@ createRoot(document.getElementById("root")!).render(
                         <StatusProvider>
                             <Notifications position="top-center" />
                             <RouterProvider router={router} />
+                            <MusicPlayer />
                         </StatusProvider>
                     </PageProvider>
                 </MusicPlayerProvider>

@@ -18,11 +18,11 @@ export const PageSwitcher = ({
     const { setPage } = usePage();
 
     const handleClick = (route: string, label: string, color: MantineColor) => {
-        setPage({
-            c: color,
-            pageLabel: label,
-        });
         startTranitionFunc(() => {
+            setPage({
+                color: color,
+                pageLabel: label,
+            });
             window.location.hash = route;
         });
     };
