@@ -1,4 +1,5 @@
 import App from "@/App";
+import { CHAT } from "@/data/feature-flags";
 import { lazy } from "react";
 import { createHashRouter } from "react-router-dom";
 
@@ -26,7 +27,7 @@ export const router = createHashRouter([
             { path: "blogs", element: <Blogs /> },
             { path: "blogs/:id", element: <BlogPost /> },
             { path: "desktop", element: <Desktop /> },
-            { path: "chat", element: <Chat /> },
+            CHAT ? { path: "chat", element: <Chat /> } : {},
             { path: "music", element: <Music /> },
             { path: "hmm", element: <Secret /> },
             { path: "happi-birthday", element: <Birthday /> },

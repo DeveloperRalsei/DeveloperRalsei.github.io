@@ -1,13 +1,16 @@
 import {
     AppShell,
     Avatar,
+    Center,
     Container,
     Group,
+    Overlay,
     Space,
+    Text,
     Title,
 } from "@mantine/core";
 // import AppRenderer from "./AppRenderer.tsx";
-import { useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { PageLoader } from "./components/Loader.tsx";
 import Spamton from "./components/Spamton.tsx";
@@ -16,12 +19,37 @@ import { useHotkeys } from "@mantine/hooks";
 import i18n from "./i18n.ts";
 import { LangAffix } from "./components/home/languageAffix.tsx";
 import { usePage } from "./components/context/page/index.tsx";
+import { useMusicPlayer } from "./components/musicPlayer/index.tsx";
 
 const App = () => {
     const { pathname } = useLocation();
+    const { setSong, play, error, disableError } = useMusicPlayer();
+    const [firstInteraction, setFirstInteraction] = useState(true);
 
     const [pending, startTransition] = useTransition();
     const { pageLabel, color: titleColor } = usePage();
+
+    useEffect(() => {
+        const handleUserInteraction = () => {
+            disableError();
+            play();
+            document.removeEventListener("click", handleUserInteraction);
+        };
+
+        const musicId = localStorage.getItem("musicId");
+        if (!musicId || musicId === "null") {
+            setFirstInteraction(false);
+            return;
+        }
+        setSong(Number(musicId));
+        play();
+
+        document.addEventListener("click", handleUserInteraction);
+
+        return () => {
+            document.removeEventListener("click", handleUserInteraction);
+        };
+    }, [error, firstInteraction]);
 
     useHotkeys([
         ["1", () => i18n.changeLanguage("en")],
@@ -30,6 +58,21 @@ const App = () => {
 
     return (
         <AppShell header={{ height: 80, offset: true }}>
+            {firstInteraction && (
+                <Overlay
+                    backgroundOpacity={0.8}
+                    blur={6}
+                    onClick={() => {
+                        disableError(), setFirstInteraction(false);
+                    }}
+                >
+                    <Center h="100vh">
+                        <Text c="#fff" fz="h1">
+                            Please press any where to play the song
+                        </Text>
+                    </Center>
+                </Overlay>
+            )}
             <AppShell.Header withBorder={false}>
                 <Group align="center" h={"100%"} justify="space-around">
                     <Group>
@@ -70,7 +113,7 @@ const App = () => {
                     {/*     <Outlet /> */}
                     {/* </Suspense> */}
                 </Container>
-                <Space h="10vh" />
+                <Space h="20vh" />
             </AppShell.Main>
             <span
                 id="Confetti1"

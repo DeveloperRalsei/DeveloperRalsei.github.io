@@ -2,20 +2,35 @@ import { Music } from "@/types";
 import { Card, Grid, Image, Stack, Text, Title } from "@mantine/core";
 import { useMusicPlayer } from ".";
 
-export const SongCard = ({ music }: { music: Music }) => {
+export const SongCard = ({
+    music,
+    active,
+    onClick,
+}: {
+    music: Music;
+    active?: boolean;
+    onClick?: () => void;
+}) => {
     const { setSong, play } = useMusicPlayer();
+
+    if (!onClick)
+        onClick = () => {
+            setSong(music.id);
+            play();
+        };
 
     return (
         <Card
             className="hover"
             p="xs"
+            pos="relative"
             style={{
                 cursor: "pointer",
+                boxShadow: active
+                    ? "0 0 0px 2px var(--mantine-color-teal-filled)"
+                    : undefined,
             }}
-            onClick={() => {
-                setSong(music.id);
-                play();
-            }}
+            onClick={onClick}
         >
             <Grid>
                 <Grid.Col span={3}>

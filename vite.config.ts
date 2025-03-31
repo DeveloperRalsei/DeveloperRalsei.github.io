@@ -6,29 +6,36 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    {
-      enforce: "pre",
-      ...mdx({
-        remarkPlugins: [
-          remarkFrontmatter,
-          [remarkMdxFrontmatter, { name: "frontmatter" }],
-        ],
-      }),
-    },
-    react(),
-    tsconfigPaths(),
-  ],
-  optimizeDeps: {
-    include: [
-      "@tabler/icons-react",
-      "@mantine/core",
-      "@mantine/notifications",
-      "@mantine/hooks",
+    plugins: [
+        {
+            enforce: "pre",
+            ...mdx({
+                remarkPlugins: [
+                    remarkFrontmatter,
+                    [remarkMdxFrontmatter, { name: "frontmatter" }],
+                ],
+            }),
+        },
+        react(),
+        tsconfigPaths(),
     ],
-  },
-  server: {
-    cors: true,
-  },
-  base: "/",
+    optimizeDeps: {
+        include: [
+            "@tabler/icons-react",
+            "@mantine/core",
+            "@mantine/notifications",
+            "@mantine/hooks",
+        ],
+    },
+    server: {
+        cors: true,
+        proxy: {
+            "/api": {
+                target: "http://localhost:8080",
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, ""),
+            },
+        },
+    },
+    base: "/",
 });

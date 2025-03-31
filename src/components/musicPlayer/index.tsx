@@ -1,17 +1,22 @@
 import { musics } from "@/data/musics";
+import { Music } from "@/types";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 type MusicPlayerContextType = {
-    music: HTMLAudioElement | null;
+    music: Music | null;
     playing: boolean;
     progress: number;
     currentSongId: number;
     volume: number;
+    visible: boolean;
+    error: Error | null;
     play(): void;
     pause(): void;
     toggle(): void;
     setSong(id: number): void;
     setVolume(v: number): void;
+    setVisible(v: boolean): void;
+    disableError(): void;
     next(): void;
     previous(): void;
 };
@@ -27,6 +32,9 @@ export const MusicPlayerProvider = ({
     const [playing, setPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [volume, setVolume_] = useState(0.5);
+    const [visible, setVisible_] = useState(false);
+    const [error, setError_] = useState(null);
+
     const currentSong = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
@@ -59,6 +67,7 @@ export const MusicPlayerProvider = ({
     useEffect(() => {
         if (currentSong.current) {
             if (playing) currentSong.current.play();
+            else if (currentSong.current.ended) next();
             else currentSong.current.pause();
         }
     }, [playing]);
@@ -75,7 +84,11 @@ export const MusicPlayerProvider = ({
     const play = () => {
         if (currentSong.current) {
             setPlaying(true);
-            currentSong.current.play();
+            setVisible_(true);
+            currentSong.current.play().catch((err) => {
+                console.log(err);
+                setError_(err);
+            });
         }
     };
 
@@ -110,12 +123,16 @@ export const MusicPlayerProvider = ({
     return (
         <MusicPlayerContext.Provider
             value={{
-                music: currentSong.current,
+                music: musics.find((m) => m.id === currentSongId) || null,
                 progress,
                 playing,
                 currentSongId,
                 volume,
+                visible,
+                error,
                 setSong,
+                setVisible: (v) => setVisible_(v),
+                disableError: () => setError_(null),
                 setVolume,
                 play,
                 pause,

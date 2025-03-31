@@ -3,6 +3,7 @@ import {
     Space,
     Title,
     Divider,
+    Image,
     Anchor,
     Flex,
     Stack,
@@ -50,6 +51,14 @@ const MySituation = () => {
                         </>
                     ))}
                 </Group>
+                <Title order={5} c="teal">
+                    My Github Activity
+                </Title>
+                <Divider />
+                <Image
+                    src="https://ghchart.rshah.org/008764/developerralsei"
+                    alt="meow"
+                />
                 <Space h={20} />
                 <Title order={4} c={"grape"}>
                     I Use These Techs
@@ -89,10 +98,11 @@ const MySituation = () => {
                         </Anchor>
                     ))}
                 </Flex>
-                <Divider />
+                <Space h="5vh" />
                 <Title c="teal" order={4}>
                     And My Pc Specifications
                 </Title>
+                <Divider />
                 <List>
                     {PcSpecifications.map((s, i) => (
                         <List.Item key={s.key + i}>

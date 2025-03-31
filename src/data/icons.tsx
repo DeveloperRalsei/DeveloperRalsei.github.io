@@ -16,8 +16,8 @@ import {
     IconBrandUbuntu,
     IconBrandTiktok,
     IconBrandDiscord,
-    IconBrandSpotify,
     IconMail,
+    IconBrandYoutube,
 } from "@tabler/icons-react";
 
 export const IconLinks: Icon[] = [
@@ -132,9 +132,9 @@ export const ProfileLinks: ProfileLink[] = [
     // },
     {
         label: "Playlist",
-        icon: <IconBrandSpotify />,
-        href: "https://open.spotify.com/playlist/0sekcZeuwtAomcoRwkrPcS",
-        color: "green",
+        icon: <IconBrandYoutube />,
+        href: "https://music.youtube.com/playlist?list=PLBRC-TQE9D2EP1RI8ro5IF02ofLoGbZ86&si=0_NjG9ae_J9AIQrQ",
+        color: "red",
     },
     {
         label: "Github",

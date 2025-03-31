@@ -4,6 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "dev:api": "tsx watch api/index.ts",
         "dev": "vite",
         "build": "tsc -b && vite build",
         "preview": "vite preview",
@@ -16,6 +17,7 @@
         "@mdx-js/react": "^3.1.0",
         "@mdx-js/rollup": "^3.1.0",
         "@tabler/icons-react": "^3.11.0",
+        "dotenv": "^16.4.7",
         "i18next": "^24.2.2",
         "i18next-browser-languagedetector": "^8.0.3",
         "mantine-flagpack": "^4.1.1",
@@ -31,9 +33,12 @@
         "react-single-balloon": "^1.0.4",
         "react-use-lanyard": "^0.3.1",
         "remark-frontmatter": "^5.0.0",
-        "remark-mdx-frontmatter": "^5.0.0"
+        "remark-mdx-frontmatter": "^5.0.0",
+        "tsx": "^4.19.3",
+        "ws": "^8.18.1"
     },
     "devDependencies": {
+        "@types/dotenv": "^6.1.1",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
         "@vitejs/plugin-react": "^4.3.1",

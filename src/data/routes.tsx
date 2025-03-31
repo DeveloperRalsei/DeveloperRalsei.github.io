@@ -10,6 +10,7 @@ import {
     IconQuestionMark,
 } from "@tabler/icons-react";
 import React from "react";
+import { CHAT } from "./feature-flags";
 
 export const routes: {
     label: string;
@@ -59,6 +60,7 @@ export const routes: {
         color: "pink",
         route: "chat",
         icon: <IconMessageFilled />,
+        enabled: CHAT,
     },
     {
         label: "???",

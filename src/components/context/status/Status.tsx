@@ -1,4 +1,5 @@
 import {
+    Button,
     Group,
     Image,
     Indicator,
@@ -45,7 +46,6 @@ export const StatusCard = () => {
                 <Skeleton width={30} height={30} />
                 <Stack>
                     <Skeleton width={300} height={17} />
-
                     <Skeleton width={60} height={10} />
                 </Stack>
             </Base>
@@ -60,18 +60,55 @@ export const StatusCard = () => {
         );
     }
 
-    const appId = status.activities[0].application_id;
-    const assets = status.activities[0].assets;
+    const isCustomStatus = status.activities[0].name === "Custom Status";
+    const activeStatus = isCustomStatus
+        ? status.activities[1]
+        : status.activities[0];
+
+    const appId = activeStatus.application_id;
+    const assets = activeStatus.assets;
 
     return (
         <Paper w="100%" p="sm" withBorder>
             <Group align="center">
-                {assets?.large_image &&
-                    (assets.small_image ? (
+                {/* {assets?.large_image ? ( */}
+                {/*     assets.small_image ? ( */}
+                {/*         <Indicator */}
+                {/*             color="transparent" */}
+                {/*             position="bottom-end" */}
+                {/*             size={20} */}
+                {/*             label={ */}
+                {/*                 <Tooltip withArrow label={assets.small_text}> */}
+                {/*                     <Image */}
+                {/*                         src={`https://cdn.discordapp.com/app-assets/${appId}/${assets.small_image}`} */}
+                {/*                         alt="small_image" */}
+                {/*                         w={23} */}
+                {/*                     /> */}
+                {/*                 </Tooltip> */}
+                {/*             } */}
+                {/*         > */}
+                {/*             <Tooltip withArrow label={assets.large_text}> */}
+                {/*                 <Image */}
+                {/*                     src={`https://cdn.discordapp.com/app-assets/${appId}/${assets?.large_image}.png`} */}
+                {/*                     alt="Rich Presence" */}
+                {/*                     w={50} */}
+                {/*                 /> */}
+                {/*             </Tooltip> */}
+                {/*         </Indicator> */}
+                {/*     ) : ( */}
+                {/*         <Image */}
+                {/*             src={`https://cdn.discordapp.com/app-assets/${appId}/${assets?.large_image}.png`} */}
+                {/*             alt="Rich Presence" */}
+                {/*             w={50} */}
+                {/*         /> */}
+                {/*     ) */}
+                {/* ) : null} */}
+                {assets?.large_image ? (
+                    assets.small_image ? (
                         <Indicator
                             color="transparent"
                             position="bottom-end"
-                            size={30}
+                            size={20}
                             label={
                                 <Tooltip withArrow label={assets.small_text}>
                                     <Image
@@ -96,15 +133,17 @@ export const StatusCard = () => {
                             alt="Rich Presence"
                             w={50}
                         />
-                    ))}
+                    )
+                ) : (
+                    <></>
+                )}
                 <Stack gap={5}>
                     <Text fw="bolder" fz={20}>
-                        {status.activities[0].name}
+                        {activeStatus.name}
                     </Text>
                     <div>
-                        <Text>{status.activities[0].details}</Text>
-                        <br />
-                        <Text>{status.activities[0].state}</Text>
+                        <Text>{activeStatus.details}</Text> <br />
+                        <Text>{activeStatus.state}</Text>
                     </div>
                 </Stack>
             </Group>
