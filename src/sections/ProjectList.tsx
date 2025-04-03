@@ -1,15 +1,25 @@
-import { Tooltip, TextInput, Space, Text, Accordion } from "@mantine/core";
+import {
+    Tooltip,
+    TextInput,
+    Space,
+    Text,
+    Accordion,
+    SimpleGrid,
+} from "@mantine/core";
 import ProjectRenderer from "../components/project/ProjectRenderer";
 import { useContext, useState } from "react";
-import { Projects } from "../data/projects";
+import { projects } from "../data/projects";
 import { SecretContext } from "../components/context/secret/SecretContext";
-import { Status } from "@/types";
+import { Project } from "@/types";
 
 const ProjectList = () => {
     const [search, setSearch] = useState("");
     const { toggle } = useContext(SecretContext);
+    const [Projects, setProjects] = useState<Project[]>(
+        Object.values(projects),
+    );
 
-    let filteredProjects = search
+    let filteredprojects = search
         ? Projects.filter((p) =>
               [p.name, p.desc, p.techs]
                   .filter((x) => x)
@@ -18,21 +28,6 @@ const ProjectList = () => {
                   .includes(search.toLowerCase()),
           )
         : Projects;
-
-    const statusOrder: { [K in Status]: number } = {
-        done: 0,
-        wip: 1,
-        dead: 2,
-        "???": 3,
-    };
-
-    filteredProjects = filteredProjects.sort((p1, p2) =>
-        p1.name.localeCompare(p2.name),
-    );
-
-    filteredProjects = filteredProjects.sort(
-        (p1, p2) => statusOrder[p1.status] - statusOrder[p2.status],
-    );
 
     return (
         <>
@@ -68,29 +63,32 @@ const ProjectList = () => {
             </Tooltip>
             <Space h={15} />
             <Accordion variant="separated" chevronPosition="left">
-                {filteredProjects.map((p, i) => (
-                    <ProjectRenderer p={p} key={i} />
-                ))}
-                {search.toLocaleLowerCase() === "sus" && (
-                    <ProjectRenderer
-                        p={{
-                            name: "???",
-                            status: "???",
-                            techs: ["???"],
-                            buttons: [
-                                {
-                                    type: "custom",
-                                    color: "gray",
-                                    label: "???",
-                                    onClick: () => {
-                                        toggle();
+                <SimpleGrid cols={{ sm: 2, md: 4 }}>
+                    {filteredprojects.map((p, i) => (
+                        <ProjectRenderer project={p} key={i} />
+                    ))}
+                    {search.toLocaleLowerCase() === "sus" && (
+                        <ProjectRenderer
+                            project={{
+                                name: "???",
+                                desc: "???",
+                                status: "done",
+                                techs: ["???"],
+                                buttons: [
+                                    {
+                                        type: "custom",
+                                        color: "gray",
+                                        label: "???",
+                                        onClick: () => {
+                                            toggle();
+                                        },
                                     },
-                                },
-                            ],
-                        }}
-                    />
-                )}
-                {!filteredProjects.length &&
+                                ],
+                            }}
+                        />
+                    )}
+                </SimpleGrid>
+                {!filteredprojects.length &&
                     (search.toLocaleLowerCase() === "sus" ? (
                         ""
                     ) : (

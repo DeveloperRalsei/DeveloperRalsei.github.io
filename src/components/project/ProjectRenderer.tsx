@@ -1,90 +1,114 @@
-import { Project } from "@/types";
-import { Accordion, Box, Group, Image, Stack, Text } from "@mantine/core";
+import { Project, ProjectStatus } from "@/types";
+import {
+    Card,
+    Title,
+    Group,
+    Stack,
+    Divider,
+    Text,
+    Loader,
+    Drawer,
+    Image,
+} from "@mantine/core";
 import { TechRenderer } from "./TechRenderer";
+import { ProjectStatusRenderer } from "./StatusRenderer";
+import { getStars } from "@/helpers/utils";
+import { useEffect, useState } from "react";
+import { IconStarFilled } from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
 import { ProjectButton } from "./ProjectButton";
-import { StatusRenderer } from "./StatusRenderer";
 
-function ProjectRenderer({ p }: { p: Project }) {
+function ProjectRenderer({ project }: { project: Project }) {
+    const [stars, setStars] = useState<number | null>(null);
+    const [loading, setLoading] = useState(false);
+    const [opened, { open, close }] = useDisclosure();
+
+    useEffect(() => {
+        if (!project.sourceCodeName) return;
+
+        setLoading(true);
+        getStars(project.sourceCodeName)
+            .then(setStars)
+            .finally(() => setLoading(false));
+    }, [project.sourceCodeName]);
+
+    const openProjectDrawer = () => {
+        open();
+    };
+
     return (
-        <Accordion.Item value={p.name + p.status}>
-            <Accordion.Control>
-                <Group justify="space-between">
-                    <Text
-                        c={
-                            p.status === "done"
-                                ? "white"
-                                : p.status === "wip"
-                                  ? "yellow"
-                                  : p.status === "dead"
-                                    ? "red"
-                                    : "gray"
-                        }
-                        fw={700}
-                    >
-                        {p.name}
-                    </Text>
-                    <Box visibleFrom="xs">
-                        <StatusRenderer status={p.status} />
-                    </Box>
-                </Group>
-            </Accordion.Control>
-            <Accordion.Panel>
-                <Stack>
+        <>
+            <Card onClick={openProjectDrawer} style={{ cursor: "pointer" }}>
+                <Stack gap={4}>
+                    <Group justify="space-between" wrap="nowrap">
+                        <Title order={4}>{project.name}</Title>
+                        {project.sourceCodeName && (
+                            <Group gap={5} wrap="nowrap">
+                                {loading ? (
+                                    <Loader size={16} />
+                                ) : (
+                                    <>
+                                        <Text span>{stars ?? "—"}</Text>
+                                        <IconStarFilled size={16} />
+                                    </>
+                                )}
+                            </Group>
+                        )}
+                    </Group>
+                    <Divider my={2} />
                     <Group justify="space-between">
-                        <Text fz={"h5"}>{p.desc}</Text>
-                        {p.imgUrl && (
+                        <Group gap={3}>
+                            {project.techs.map((tech) => (
+                                <TechRenderer tech={tech} key={tech} />
+                            ))}
+                        </Group>
+                        <ProjectStatusRenderer status={project.status} />
+                    </Group>
+                </Stack>
+            </Card>
+
+            <Drawer opened={opened} onClose={close}>
+                {project.finishedAt && (
+                    <Drawer.Title>
+                        {project.finishedAt.toUTCString()}
+                    </Drawer.Title>
+                )}
+                <Drawer.Header>
+                    <Stack>
+                        {project.img && (
                             <Image
-                                src={p.imgUrl}
-                                height={200}
-                                width={200}
-                                radius={10}
+                                src={project.img}
+                                w="100%"
+                                radius="sm"
+                                alt="project image"
                             />
                         )}
-                    </Group>
-
-                    <Group w={"100%"} justify="space-between">
-                        <Group w={"100%"} justify="space-between">
-                            <Text fw={800}>Made with: </Text>
-                            <Group>
-                                {p.techs.map((tech, i) => (
-                                    <TechRenderer key={i} tech={tech} />
-                                ))}
-                            </Group>
-                        </Group>
-                        {p.status !== "done" && (
-                            <Box
-                                hiddenFrom="xs"
-                                component={Group}
-                                justify="space-between"
-                                w={"100%"}
-                            >
-                                <Text fw={800}>Project Status: </Text>
-                                <StatusRenderer status={p.status} />
-                            </Box>
-                        )}
-                    </Group>
-
-                    <Group visibleFrom="xs">
-                        {p.buttons.map((button, i) => (
+                        {project.name}
+                    </Stack>
+                </Drawer.Header>
+                <Stack>
+                    <Text>{project.desc}</Text>
+                    <Group visibleFrom="sm">
+                        {project.buttons.map((b, i) => (
                             <ProjectButton
-                                key={button.type + i}
-                                button={button}
-                                flex
+                                key={b.type + i}
+                                button={b}
+                                ghUrl={`https://github.com/developerRalsei/${project.sourceCodeName}`}
                             />
                         ))}
                     </Group>
-
-                    <Stack hiddenFrom="xs">
-                        {p.buttons.map((button, i) => (
+                    <Stack hiddenFrom="sm">
+                        {project.buttons.map((b, i) => (
                             <ProjectButton
-                                key={button.type + i}
-                                button={button}
+                                key={b.type + i}
+                                button={b}
+                                ghUrl={`https://github.com/developerRalsei/${project.sourceCodeName}`}
                             />
                         ))}
                     </Stack>
                 </Stack>
-            </Accordion.Panel>
-        </Accordion.Item>
+            </Drawer>
+        </>
     );
 }
 

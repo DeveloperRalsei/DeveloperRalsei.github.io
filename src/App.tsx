@@ -20,6 +20,7 @@ import i18n from "./i18n.ts";
 import { LangAffix } from "./components/home/languageAffix.tsx";
 import { usePage } from "./components/context/page/index.tsx";
 import { useMusicPlayer } from "./components/musicPlayer/index.tsx";
+import { GODDAMMITKRISWHERETHEHELLAREWE } from "./components/GODDAMMITKRISWHERETHEHELLAREWE.tsx";
 
 const App = () => {
     const { pathname } = useLocation();
@@ -62,6 +63,7 @@ const App = () => {
                 <Overlay
                     backgroundOpacity={0.8}
                     blur={6}
+                    pos="fixed"
                     onClick={() => {
                         disableError(), setFirstInteraction(false);
                     }}
@@ -103,7 +105,7 @@ const App = () => {
                         pathname === "/desktop"
                             ? "xl"
                             : pathname === "/projects"
-                              ? "xs"
+                              ? "lg"
                               : "sm"
                     }
                 >
@@ -113,7 +115,8 @@ const App = () => {
                     {/*     <Outlet /> */}
                     {/* </Suspense> */}
                 </Container>
-                <Space h="20vh" />
+                <Space h="300vh" />
+                <GODDAMMITKRISWHERETHEHELLAREWE />
             </AppShell.Main>
             <span
                 id="Confetti1"

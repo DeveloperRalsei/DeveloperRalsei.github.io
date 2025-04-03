@@ -60,11 +60,7 @@ export const StatusCard = () => {
         );
     }
 
-    const isCustomStatus = status.activities[0].name === "Custom Status";
-    const activeStatus = isCustomStatus
-        ? status.activities[1]
-        : status.activities[0];
-
+    const activeStatus = status.activities[0];
     const appId = activeStatus.application_id;
     const assets = activeStatus.assets;
 

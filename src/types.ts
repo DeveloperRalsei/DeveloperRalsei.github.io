@@ -16,17 +16,6 @@ export type Music = {
     coverPath: string;
 };
 
-export type page =
-    | "home"
-    | "blog"
-    | "blog-post"
-    | "aboutme"
-    | "projects"
-    | "testingArea"
-    | "desktopPreview"
-    | "birthDayPlace"
-    | "???";
-
 export type Icon = {
     label: string;
     icon: React.ReactNode;
@@ -61,7 +50,6 @@ export type ProjectButton = {
 } & (
     | {
           type: "github";
-          url: string;
       }
     | {
           type: "link";
@@ -71,44 +59,21 @@ export type ProjectButton = {
     | {
           type: "custom";
           label: string;
-          onClick: (...params: any) => void;
+          onClick: () => void;
       }
 );
 
-export type Status = "done" | "wip" | "dead" | "???";
+export type ProjectStatus = "done" | "wip" | "dead" | "???";
+export type ProjectType = "desktop" | "web" | "cli" | "mobile" | "restapi";
 
-export interface Project {
+export type Project = {
     name: string;
-    desc?: string;
-    status: Status;
-    imgUrl?: string;
+    type?: ProjectType;
+    desc: string;
+    img?: string;
     techs: Tech[];
+    status: ProjectStatus;
     buttons: ProjectButton[];
-}
-
-export type LanyardApiResponse = {
-    success: boolean;
-    data: {
-        active_on_discord_mobile: boolean;
-        active_on_discord_desktop: boolean;
-        listening_to_spotify: boolean;
-        spotify: {
-            track_id: string;
-            timestamps: {
-                start: number;
-                end: number;
-            };
-            song: string;
-            artist: string;
-            album_art_url: string;
-            album: string;
-        };
-        discord_user: {
-            username: string;
-            public_flags: number;
-            id: string;
-            avatar: "a_7484f82375f47a487f41650f36d30318";
-        };
-        discord_status: "online" | "dnd" | "active" | "idle";
-    };
+    finishedAt?: Date;
+    sourceCodeName?: string;
 };

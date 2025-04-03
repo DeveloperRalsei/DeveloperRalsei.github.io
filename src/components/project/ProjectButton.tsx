@@ -1,50 +1,49 @@
-import { ProjectButton as btnType } from "@/types";
-import { Button, Group } from "@mantine/core";
+import { ProjectButton as pb } from "@/types";
+import { Button } from "@mantine/core";
 import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
 
-export function ProjectButton({
-  button,
-  flex,
+export const ProjectButton = ({
+    button,
+    ghUrl,
 }: {
-  button: btnType;
-  flex?: boolean;
-}) {
-  const { color, type } = button;
-
-  if (type !== "custom") {
-    return (
-      <Button
-        variant={"light"}
-        color={color || "gray"}
-        component="a"
-        fz={"md"}
-        href={button.url}
-        target="_blank"
-        flex={flex ? 1 : undefined}
-        style={{
-          textDecoration: "none",
-        }}
-      >
-        {type === "link" && (
-          <Group gap={7}>
-            {button.label}
-            <IconExternalLink size={16} />
-          </Group>
-        )}
-
-        {type === "github" && (
-          <Group>
-            <IconBrandGithub size={16} />
-            {"Open on Github"}
-          </Group>
-        )}
-      </Button>
-    );
-  }
-
-  return (
-    <Button onClick={button.onClick} color={color} flex={flex ? 1 : undefined}>
-      {button.label}
-    </Button>
-  );
-}
+    button: pb;
+    ghUrl: string;
+}) => {
+    if (button.type === "github") {
+        return (
+            <Button
+                fullWidth
+                variant="light"
+                leftSection={<IconBrandGithub />}
+                component="a"
+                target="_blank"
+                href={ghUrl}
+            >
+                View on Github
+            </Button>
+        );
+    } else if (button.type === "link") {
+        return (
+            <Button
+                fullWidth
+                rightSection={<IconExternalLink size={20} />}
+                component="a"
+                href={button.url}
+                variant="light"
+            >
+                {button.label}
+            </Button>
+        );
+    } else if (button.type === "custom") {
+        return (
+            <Button
+                fullWidth
+                variant="light"
+                color={button.color || "teal"}
+                onClick={button.onClick}
+            >
+                {button.label}
+            </Button>
+        );
+    }
+};

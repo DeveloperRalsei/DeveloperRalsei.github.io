@@ -34,8 +34,11 @@ export const MusicPlayerProvider = ({
     const [volume, setVolume_] = useState(0.5);
     const [visible, setVisible_] = useState(false);
     const [error, setError_] = useState(null);
+    const [musicEnded, setMusicEnded] = useState(false);
 
     const currentSong = useRef<HTMLAudioElement | null>(null);
+
+    useEffect(() => next(), [musicEnded]);
 
     useEffect(() => {
         const song = musics.find((m) => m.id === currentSongId)?.musicPath;
@@ -53,6 +56,8 @@ export const MusicPlayerProvider = ({
 
         newAudio.ontimeupdate = () => {
             setProgress((newAudio.currentTime / newAudio.duration) * 100);
+            if (currentSong.current && currentSong.current.ended)
+                setMusicEnded(true);
         };
 
         if (playing) newAudio.play();
@@ -73,6 +78,7 @@ export const MusicPlayerProvider = ({
     }, [playing]);
 
     const setSong = (id: number) => {
+        setMusicEnded(false);
         setCurrentSongId(id);
     };
 
@@ -83,6 +89,7 @@ export const MusicPlayerProvider = ({
 
     const play = () => {
         if (currentSong.current) {
+            setMusicEnded(false);
             setPlaying(true);
             setVisible_(true);
             currentSong.current.play().catch((err) => {
@@ -113,10 +120,17 @@ export const MusicPlayerProvider = ({
     };
 
     const previous = () => {
+        setMusicEnded(false);
         if (currentSongId !== 1) setCurrentSongId((prev) => prev - 1);
+        else setCurrentSongId(musics.length);
     };
 
     const next = () => {
+        setMusicEnded(false);
+        if (currentSongId === musics.length) {
+            setCurrentSongId(1);
+            return;
+        }
         setCurrentSongId((prev) => prev + 1);
     };
 
