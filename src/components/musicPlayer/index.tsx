@@ -72,7 +72,6 @@ export const MusicPlayerProvider = ({
     useEffect(() => {
         if (currentSong.current) {
             if (playing) currentSong.current.play();
-            else if (currentSong.current.ended) next();
             else currentSong.current.pause();
         }
     }, [playing]);
