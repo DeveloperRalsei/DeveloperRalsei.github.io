@@ -3,6 +3,7 @@ import { Music } from "@/types";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 type MusicPlayerContextType = {
+    musicRef: HTMLAudioElement | null;
     music: Music | null;
     playing: boolean;
     progress: number;
@@ -10,6 +11,7 @@ type MusicPlayerContextType = {
     volume: number;
     visible: boolean;
     error: Error | null;
+    loading: boolean;
     play(): void;
     pause(): void;
     toggle(): void;
@@ -35,29 +37,32 @@ export const MusicPlayerProvider = ({
     const [visible, setVisible_] = useState(false);
     const [error, setError_] = useState(null);
     const [musicEnded, setMusicEnded] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const currentSong = useRef<HTMLAudioElement | null>(null);
+    const ref = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => next(), [musicEnded]);
 
     useEffect(() => {
-        const song = musics.find((m) => m.id === currentSongId)?.musicPath;
-        if (!song) return;
+        setLoading(true);
+        setMusicEnded(true);
+        const songName = musics.find((m) => m.id === currentSongId)?.musicPath;
+        if (!songName) return;
 
-        if (currentSong.current) {
-            currentSong.current.pause();
-            currentSong.current.src = "";
-            currentSong.current.load();
-            currentSong.current.volume = 0.5;
+        if (ref.current) {
+            ref.current.pause();
+            ref.current.src = "";
+            ref.current.load();
+            ref.current.volume = 0.5;
         }
 
-        const newAudio = new Audio(song);
-        currentSong.current = newAudio;
+        const newAudio = new Audio(`/musics/${songName}`);
+        ref.current = newAudio;
+        setLoading(false);
 
         newAudio.ontimeupdate = () => {
             setProgress((newAudio.currentTime / newAudio.duration) * 100);
-            if (currentSong.current && currentSong.current.ended)
-                setMusicEnded(true);
+            if (ref.current && ref.current.ended) setMusicEnded(true);
         };
 
         if (playing) newAudio.play();
@@ -70,28 +75,26 @@ export const MusicPlayerProvider = ({
     }, [currentSongId]);
 
     useEffect(() => {
-        if (currentSong.current) {
-            if (playing) currentSong.current.play();
-            else currentSong.current.pause();
+        if (ref.current) {
+            if (playing) ref.current.play();
+            else ref.current.pause();
         }
     }, [playing]);
 
     const setSong = (id: number) => {
-        setMusicEnded(false);
         setCurrentSongId(id);
     };
 
     const setVolume = (v: number) => {
-        if (currentSong.current) currentSong.current.volume = v;
+        if (ref.current) ref.current.volume = v;
         setVolume_(v);
     };
 
     const play = () => {
-        if (currentSong.current) {
-            setMusicEnded(false);
+        if (ref.current) {
             setPlaying(true);
             setVisible_(true);
-            currentSong.current.play().catch((err) => {
+            ref.current.play().catch((err) => {
                 console.log(err);
                 setError_(err);
             });
@@ -99,19 +102,19 @@ export const MusicPlayerProvider = ({
     };
 
     const pause = () => {
-        if (currentSong.current) {
+        if (ref.current) {
             setPlaying(false);
-            currentSong.current.pause();
+            ref.current.pause();
         }
     };
 
     const toggle = () => {
-        if (currentSong.current) {
+        if (ref.current) {
             setPlaying((prev) => {
                 if (prev) {
-                    currentSong.current!.pause();
+                    ref.current!.pause();
                 } else {
-                    currentSong.current!.play();
+                    ref.current!.play();
                 }
                 return !prev;
             });
@@ -119,13 +122,11 @@ export const MusicPlayerProvider = ({
     };
 
     const previous = () => {
-        setMusicEnded(false);
         if (currentSongId !== 1) setCurrentSongId((prev) => prev - 1);
         else setCurrentSongId(musics.length);
     };
 
     const next = () => {
-        setMusicEnded(false);
         if (currentSongId === musics.length) {
             setCurrentSongId(1);
             return;
@@ -136,6 +137,7 @@ export const MusicPlayerProvider = ({
     return (
         <MusicPlayerContext.Provider
             value={{
+                musicRef: ref.current || null,
                 music: musics.find((m) => m.id === currentSongId) || null,
                 progress,
                 playing,
@@ -143,6 +145,7 @@ export const MusicPlayerProvider = ({
                 volume,
                 visible,
                 error,
+                loading,
                 setSong,
                 setVisible: (v) => setVisible_(v),
                 disableError: () => setError_(null),

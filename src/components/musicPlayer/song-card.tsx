@@ -35,7 +35,7 @@ export const SongCard = ({
             <Grid>
                 <Grid.Col span={3}>
                     <Image
-                        src={music.coverPath}
+                        src={`/images/music/${music.coverPath}`}
                         w={"100%"}
                         radius="md"
                         alt={`music-${music.title}`}
@@ -46,7 +46,7 @@ export const SongCard = ({
                         <Title order={4} c={"cyan"}>
                             {music.title}
                         </Title>
-                        <Text c="dimmed">by {music.artist}</Text>
+                        <Text c="dimmed">{music.artist}</Text>
                     </Stack>
                 </Grid.Col>
             </Grid>

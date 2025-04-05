@@ -3,6 +3,7 @@ import {
     Box,
     Group,
     Image,
+    Loader,
     Paper,
     Stack,
     Text,
@@ -32,6 +33,7 @@ export const MusicPlayer = () => {
         volume,
         visible,
         error,
+        loading,
         setVolume,
         setVisible,
         toggle,
@@ -55,7 +57,12 @@ export const MusicPlayer = () => {
             <ActionIcon onClick={previous} variant="subtle" size="xl">
                 <IconPlayerSkipBackFilled />
             </ActionIcon>
-            <ActionIcon onClick={toggle} variant="subtle" size="xl">
+            <ActionIcon
+                onClick={toggle}
+                loading={loading}
+                variant="subtle"
+                size="xl"
+            >
                 {playing ? <IconPlayerPauseFilled /> : <IconPlayerPlayFilled />}
             </ActionIcon>
             <ActionIcon onClick={next} variant="subtle" size="xl">
@@ -70,6 +77,8 @@ export const MusicPlayer = () => {
             </ActionIcon>
         </Group>
     );
+
+    const cover = `/images/music/${musics.find((m) => m.id === currentSongId)?.coverPath}`;
 
     return (
         <Transition mounted={visible} transition="slide-up">
@@ -92,6 +101,8 @@ export const MusicPlayer = () => {
                             <Text c="yellow" fz={"h4"}>
                                 Please press anywhere to use Music Player
                             </Text>
+                        ) : loading ? (
+                            <Loader />
                         ) : (
                             <>
                                 <Box
@@ -105,11 +116,7 @@ export const MusicPlayer = () => {
                                 />
                                 <Group>
                                     <Image
-                                        src={
-                                            musics.find(
-                                                (m) => m.id === currentSongId,
-                                            )?.coverPath
-                                        }
+                                        src={cover}
                                         alt="uwu"
                                         radius="md"
                                         w={65}

@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 // import AppRenderer from "./AppRenderer.tsx";
 import { useEffect, useState, useTransition } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useRoutes } from "react-router-dom";
 import { PageLoader } from "./components/Loader.tsx";
 import Spamton from "./components/Spamton.tsx";
 import PageSwitcher from "./components/PageSwitcher.tsx";
@@ -115,8 +115,12 @@ const App = () => {
                     {/*     <Outlet /> */}
                     {/* </Suspense> */}
                 </Container>
-                <Space h="300vh" />
-                <GODDAMMITKRISWHERETHEHELLAREWE />
+                {pathname !== "/happi-birthday" && (
+                    <>
+                        <Space h="300vh" />
+                        <GODDAMMITKRISWHERETHEHELLAREWE />
+                    </>
+                )}
             </AppShell.Main>
             <span
                 id="Confetti1"

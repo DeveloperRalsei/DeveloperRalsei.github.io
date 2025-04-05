@@ -5,16 +5,16 @@ import {
     Button,
     Tooltip,
     Space,
-    Title,
     Transition,
+    Image,
 } from "@mantine/core";
 import { useBeatdrop } from "@/hooks";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useEffect, useState } from "react";
 import { IconCircleCheck } from "@tabler/icons-react";
-import { useHotkeys } from "@mantine/hooks";
 import { useReward } from "react-rewards";
 import { AnonymousForm } from "@/components/birtdayEvent/AnonymousForm";
+import { UndertaleTextBox } from "@/components/UndertaleTextBox";
 
 export default function BirthDayPlace() {
     const { timer, volume, setVolume, err, beatDidDrop, isPlaying, canvasRef } =
@@ -23,13 +23,12 @@ export default function BirthDayPlace() {
             beatDropPosition: 6 * 60 + 47,
             // beatDropOn: new Date(Date.now() + 1.1 * 6 * 1000),
             beatDropOn: import.meta.env.DEV
-                ? new Date(Date.now() + 0.1 * 60 * 1000)
+                ? new Date(Date.now() + 0.1 * 60 * 1000 - 9000)
                 : new Date("2025-04-11"),
         });
 
     const [tooltipOpened, setTooltipOpened] = useState(false);
     const isSongEnded = beatDidDrop && !isPlaying;
-    const [isTurkish, setIsTurkish] = useState(false);
     const { reward: reward2 } = useReward("Confetti1", "balloons");
     const { reward: reward1 } = useReward("Confetti2", "balloons");
 
@@ -39,8 +38,6 @@ export default function BirthDayPlace() {
             reward1();
         }
     }, [beatDidDrop]);
-
-    useHotkeys([["T", () => setIsTurkish((prev) => !prev)]]);
 
     return (
         <Stack w={"100%"} h="100%" align="center">
@@ -57,23 +54,30 @@ export default function BirthDayPlace() {
                 timingFunction="ease"
             >
                 {(styles) => (
-                    <span style={styles}>
-                        <Text fz="h2" ta="center" className="rainbowText">
-                            HAPPY BIRTHDAY TO ME
-                        </Text>
+                    <span
+                        style={{
+                            display: isSongEnded ? "hidden" : "block",
+                            ...styles,
+                        }}
+                    >
+                        <UndertaleTextBox
+                            sprite={
+                                <Image src="/images/sprites/I_dont_know_this_guy_bruh.png" />
+                            }
+                        >
+                            Now I'm 19 years old and I've already wasted my
+                            entire life. :)
+                        </UndertaleTextBox>
                     </span>
                 )}
             </Transition>
+
             {!beatDidDrop && (
                 <>
-                    <Text fz="h2" ta={"center"}>
+                    <Text fz="h2" ta={"center"} c="grape">
                         {timer}
                     </Text>
                 </>
-            )}
-
-            {isSongEnded && (
-                <Text c="dimmed">("You can press 'T' to toggle English")</Text>
             )}
 
             {err && (
@@ -137,112 +141,7 @@ export default function BirthDayPlace() {
 
             {isSongEnded && (
                 <>
-                    {isTurkish ? (
-                        <Text fz={20}>
-                            <Title ta={"center"} order={3}>
-                                🎉 Teşekkürler! 🎉
-                            </Title>
-                            Vay be, gerçekten buraya kadar geldin! Şu an bu
-                            satırları okuyorsan, benim için gerçekten özel bir
-                            anın parçası oldun. Zamanını ayırıp bu küçük
-                            kutlamaya katıldığın için içtenlikle teşekkür
-                            ederim.
-                            <br /> <br />
-                            Bugün benim doğum günüm. Her yıl sadece bir kez
-                            yaşanan, ama her seferinde farklı hissettiren özel
-                            bir gün. Dışarıdan bakınca belki sadece takvimde
-                            ilerleyen bir sayı gibi görünüyor, ama benim için
-                            çok daha fazlası. Bugün, geçmişin anılarıyla,
-                            geleceğin hayalleriyle ve şu anın güzelliğiyle dolu
-                            bir gün.
-                            <br /> <br />
-                            Eğer buraya kadar kaldıysan, demek ki sen de müziği
-                            dinledin, o ritmi hissettin, belki hafifçe başını
-                            salladın ya da ekrana gülümseyerek baktın. İşte tam
-                            olarak bunu istiyordum! Beni yalnız bırakmadığın, bu
-                            anı benimle paylaştığın için gerçekten minnettarım.
-                            🎶
-                            <br /> <br />
-                            Hayat tıpkı bir şarkı gibi… Bazı kısımları yavaş,
-                            bazı kısımları hızlı; bazen huzurlu, bazen kaotik.
-                            Ama en önemlisi, her anı hissetmek, keyfini çıkarmak
-                            ve sonunda dönüp baktığında “Bu yolculuk harikaydı”
-                            diyebilmek. Bugün, bu an, benim için işte tam olarak
-                            öyle bir şeydi.
-                            <br /> <br />
-                            Bu yüzden buradaysan, okuduysan, belki de bir
-                            tebessüm ettiysen… Teşekkür ederim. Gerçekten. 😺
-                            <br /> <br />
-                            🎂 Doğum günümü kutladığın için, bu anı paylaştığın
-                            için ve en önemlisi, buraya kadar okuduğun için
-                            teşekkürler! 🎂
-                            <br /> <br />
-                            Hadi ama, şimdiye kadar beklediysen, neden bir
-                            sonraki doğum günüme kadar da beklemeyesin? 😸
-                            Seneye aynı yerde, aynı eğlenceyle, belki de daha
-                            büyük bir sürprizle görüşmek üzere! 🎊
-                            <br /> <br />
-                            💜 Sen harikasın! 💜
-                            <br />
-                            <br />
-                            <Text c="dimmed" ta="center">
-                                Evet, bu yazının büyük bir kısmını chat gpt'den
-                                arakladım {":P"} <br />
-                                NE!? En azından tembel olduğum, salak olduğum
-                                anlamına gelmiyor. :D <br />
-                            </Text>
-                        </Text>
-                    ) : (
-                        <Text fz={20}>
-                            <Title order={3} ta={"center"}>
-                                🎉 Thank You! 🎉
-                            </Title>
-                            Wow, you actually made it to the end! If you're
-                            reading this right now, that means you've been a
-                            part of this special moment for me. Thank you from
-                            the bottom of my heart for taking the time to join
-                            this little celebration. <br /> <br />
-                            Today is my birthday. A day that happens only once a
-                            year, yet feels different every time. From the
-                            outside, it might seem like just another number on
-                            the calendar, but to me, it's so much more. Today is
-                            a day filled with memories of the past, dreams of
-                            the future, and the beauty of the present. <br />{" "}
-                            <br />
-                            If you stayed until now, it means you listened to
-                            the music, felt the rhythm, maybe nodded your head a
-                            little, or smiled at the screen. And that's exactly
-                            what I was hoping for! Thank you for being here, for
-                            sharing this moment with me. 🎶
-                            <br /> <br />
-                            Life is just like a song… Some parts are slow, some
-                            are fast; sometimes peaceful, sometimes chaotic. But
-                            the most important thing is to feel every moment,
-                            enjoy the ride, and when you look back, be able to
-                            say, “That was an amazing journey.”
-                            <br /> <br />
-                            So if you're still here, if you’ve read this far, if
-                            maybe you even smiled… Thank you. Truly. 😺
-                            <br /> <br />
-                            🎂 Thank you for celebrating my birthday, for being
-                            part of this moment, and most of all, for reading
-                            all of this! 🎂
-                            <br /> <br />
-                            Come on, if you've waited this long, why not wait
-                            until my next birthday too? 😸 Same place, same fun,
-                            maybe even bigger surprises next year! 🎊
-                            <br /> <br />
-                            💜 You're amazing! 💜
-                            <br /> <br />
-                            <Text c="dimmed" ta="center">
-                                Yeah! I copied most of this text from chat gpt
-                                {" :P "}
-                                <br />
-                                WHAT!? At least just because I'm lazy doesn't
-                                mean I'm stupid. :D <br />
-                            </Text>
-                        </Text>
-                    )}
+                    {/*rest of the text will go here*/}
                     <AnonymousForm />
                 </>
             )}
