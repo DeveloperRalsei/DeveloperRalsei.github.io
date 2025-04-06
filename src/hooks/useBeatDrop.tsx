@@ -39,6 +39,7 @@ export const useBeatdrop = ({
     const [beatDidDrop, setBeatDidDrop] = useState(new Date() > beatDropOn);
     const [volume, _setVolume] = useState(DEFAULT_VOLUME);
     const [err, setErr] = useState<any>(null);
+    const beatDidDropRef = useRef(beatDidDrop);
 
     useEffect(() => {
         ref.current = new Audio(audioSrc);
@@ -50,6 +51,10 @@ export const useBeatdrop = ({
         () => beatDropOn.getTime() - beatDropPosition * 1000 - 1000,
         [beatDropOn, beatDropPosition],
     );
+
+    useEffect(() => {
+        beatDidDropRef.current = beatDidDrop;
+    }, [beatDidDrop]);
 
     useEffect(() => {
         if (!ref.current || !canvasRef.current) return;
@@ -81,7 +86,7 @@ export const useBeatdrop = ({
 
             for (let i = 0; i < bufferLength; i++) {
                 const barHeight = (dataArray[i] / 255) * canvas.height * 1.1;
-                ctx.fillStyle = `rgb(${barHeight - 50}, ${barHeight + 50}, ${barHeight})`;
+                ctx.fillStyle = `rgb(${barHeight - 50}, ${barHeight + 50}, ${beatDidDropRef.current ? 255 : barHeight})`;
                 ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
                 x += barWidth + 1.1;
             }

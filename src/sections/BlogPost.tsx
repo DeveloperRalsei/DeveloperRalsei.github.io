@@ -1,7 +1,6 @@
 import loadMdx from "@/helpers/loadMdx";
 import { useBlogs } from "@/hooks";
-import { Loader, Stack, TypographyStylesProvider } from "@mantine/core";
-import { Suspense } from "react";
+import { Stack } from "@mantine/core";
 import { useParams } from "react-router-dom";
 
 export default function BlogPostPage() {
@@ -12,13 +11,5 @@ export default function BlogPostPage() {
 
     const Blog = loadMdx(blog?.slug || "");
 
-    return (
-        <Stack>
-            <Suspense fallback={<Loader type="dots" />}>
-                <TypographyStylesProvider>
-                    <Blog />
-                </TypographyStylesProvider>
-            </Suspense>
-        </Stack>
-    );
+    return <Stack>{Blog}</Stack>;
 }

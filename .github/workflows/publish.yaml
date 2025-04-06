@@ -21,7 +21,10 @@ jobs:
               run: npm install --force
 
             - name: Build project
-              run: npm run build
+              run: |
+                  NODE_ENV=production \
+                  VITE_API_URL=${{ secrets.API_URL }}
+                  npm run build
 
             - name: Upload production-ready build files
               uses: actions/upload-artifact@v4

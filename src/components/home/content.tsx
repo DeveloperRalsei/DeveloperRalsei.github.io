@@ -10,7 +10,22 @@ import {
     Box,
     List,
 } from "@mantine/core";
+import { startTransition } from "react";
 import { useTranslation } from "react-i18next";
+
+const BirthdayButton = () => (
+    <ActionIcon
+        size="xs"
+        onClick={() => {
+            startTransition(() => {
+                location.hash = "happi-birthday";
+            });
+        }}
+        variant="subtle"
+    >
+        {MY_AGE}
+    </ActionIcon>
+);
 
 export default function HomeContent() {
     const { t } = useTranslation();
@@ -45,18 +60,7 @@ export default function HomeContent() {
                 {t("home.items.2.prefix")}
                 <Tooltip label="2006-04-11">
                     <Text c="yellow" fw={700}>
-                        {IS_BIRTHDAY_EVENT_ACTIVE ? (
-                            <ActionIcon
-                                component="a"
-                                href="#happi-birthday"
-                                size="xs"
-                                variant="subtle"
-                            >
-                                {MY_AGE}
-                            </ActionIcon>
-                        ) : (
-                            MY_AGE
-                        )}
+                        {IS_BIRTHDAY_EVENT_ACTIVE ? <BirthdayButton /> : MY_AGE}
                     </Text>
                 </Tooltip>
                 {t("home.items.2.suffix")}

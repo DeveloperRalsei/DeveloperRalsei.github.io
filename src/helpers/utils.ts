@@ -1,8 +1,18 @@
-export const learnMyAge = () => {
-    const today = new Date().getTime();
-    const birthday = new Date("2006-04-11").getTime();
+export const learnAge = (dob: Date): number => {
+    const now = new Date();
 
-    return Math.floor((today - birthday) / (1000 * 60 * 60 * 24 * 365));
+    let age = now.getUTCFullYear() - dob.getUTCFullYear();
+
+    const hasBirthdayPassed =
+        now.getUTCMonth() > dob.getUTCMonth() ||
+        (now.getUTCMonth() === dob.getUTCMonth() &&
+            now.getUTCDate() >= dob.getUTCDate());
+
+    if (!hasBirthdayPassed) {
+        age--;
+    }
+
+    return age;
 };
 
 export const wait = (milliseconds: number) =>
