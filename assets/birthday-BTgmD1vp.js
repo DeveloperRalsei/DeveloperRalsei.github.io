@@ -1,4 +1,4 @@
-import{j as e,b as r}from"./index-6yJ_WbO5.js";const o=void 0;function s(t){const n={blockquote:"blockquote",br:"br",h1:"h1",h2:"h2",hr:"hr",li:"li",p:"p",ul:"ul",...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(n.h1,{children:"TY for being here"}),`
+import{j as e,b as r}from"./index-B3R115ve.js";const o=void 0;function s(t){const n={blockquote:"blockquote",br:"br",h1:"h1",h2:"h2",hr:"hr",li:"li",p:"p",ul:"ul",...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(n.h1,{children:"TY for being here"}),`
 `,e.jsxs(n.blockquote,{children:[`
 `,e.jsxs(n.p,{children:["I'm terrible at writing letters. Like really terrible.",e.jsx(n.br,{}),`
 `,"But it's my birthday... so you kinda have to suffer through it 😅"]}),`
@@ -17,10 +17,10 @@ import{j as e,b as r}from"./index-6yJ_WbO5.js";const o=void 0;function s(t){cons
 `,e.jsx(n.hr,{}),`
 `,e.jsx(n.h2,{children:"My thoughts about the future"}),`
 `,e.jsxs(n.ul,{children:[`
-`,e.jsx(n.li,{children:"I’m thinking about getting a drawing tablet and trying my hand at some art. (If I don’t break it during a heated osu session, of course 😁)\\n"}),`
+`,e.jsx(n.li,{children:"I’m thinking about getting a drawing tablet and trying my hand at some art. (If I don’t break it during a heated osu session, of course 😁)"}),`
 `,e.jsx(n.li,{children:"I also want to learn how to create music. I’ve always loved indie game soundtracks"}),`
-`,e.jsx(n.li,{children:"I manage to juggle all these, then... who knows? Maybe making a game will be the next step.\\n"}),`
-`,e.jsx(n.li,{children:"But first, I still need to figure out how to make some money 🥲\\n"}),`
+`,e.jsx(n.li,{children:"I manage to juggle all these, then... who knows? Maybe making a game will be the next step."}),`
+`,e.jsx(n.li,{children:"But first, I still need to figure out how to make some money 🥲"}),`
 `]}),`
 `,e.jsx(n.p,{children:`Anyway... I would love to "I'm live on twitch/yt/kick rn" but my pc doesn't let me.`}),`
 `,`
