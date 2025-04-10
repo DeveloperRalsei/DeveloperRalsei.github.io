@@ -1,1 +1,0 @@
-import{a8 as r,j as a,S as n}from"./index-TfpGwdXH.js";import{l as e}from"./loadMdx-CIY_YWQO.js";import{b as i}from"./blogs-C7fef3lB.js";import"./first-B2Ky8Rs0.js";function l(s){return i.find(o=>o.id===s)}function g(){const{id:s}=r(),o=l(Number(s));console.log(s);const t=e((o==null?void 0:o.slug)||"");return a.jsx(n,{children:t})}export{g as default};

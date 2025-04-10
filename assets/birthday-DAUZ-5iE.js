@@ -1,4 +1,4 @@
-import{j as e,b as r}from"./index-TfpGwdXH.js";const o=void 0;function s(t){const n={blockquote:"blockquote",br:"br",h1:"h1",h2:"h2",hr:"hr",li:"li",p:"p",ul:"ul",...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(n.h1,{children:"TY for being here"}),`
+import{j as e,b as r}from"./index-BG3j3CbZ.js";const o=void 0;function s(t){const n={blockquote:"blockquote",br:"br",h1:"h1",h2:"h2",hr:"hr",li:"li",p:"p",ul:"ul",...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(n.h1,{children:"TY for being here"}),`
 `,e.jsxs(n.blockquote,{children:[`
 `,e.jsxs(n.p,{children:["I'm terrible at writing letters. Like really terrible.",e.jsx(n.br,{}),`
 `,"But it's my birthday... so you kinda have to suffer through it 😅"]}),`
