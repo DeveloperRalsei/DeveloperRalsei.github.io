@@ -25,7 +25,7 @@ export default function BirthDayPlace() {
             // beatDropOn: new Date(Date.now() + 1.1 * 6 * 1000),
             beatDropOn: import.meta.env.DEV
                 ? new Date(Date.now() + 0.1 * 60 * 1000 - 900000)
-                : new Date("2025-04-11T00:00:00Z"),
+                : new Date(2025, 3, 11, 0, 0 ,0),
         });
 
     const [tooltipOpened, setTooltipOpened] = useState(false);
