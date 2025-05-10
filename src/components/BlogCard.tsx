@@ -6,7 +6,6 @@ export default function BlogCard({ blogInfo }: { blogInfo: Blog }) {
     // const { setPage } = usePage();
     return (
         <Card
-            // onClick={() => setPage("blog-post", blogInfo.id)}
             className="hover"
             component={"a"}
             href={`#blogs/${blogInfo.id}`}

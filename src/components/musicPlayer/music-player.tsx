@@ -9,6 +9,7 @@ import {
     Text,
     Title,
     Transition,
+    useMantineTheme,
 } from "@mantine/core";
 import { useMusicPlayer } from ".";
 import {
@@ -44,6 +45,7 @@ export const MusicPlayer = () => {
     const clickOutsideRef = useClickOutside(() => setMounted(false));
     const [mounted, setMounted] = useState(false);
     const [playerMounted, setPlayerMounted] = useState(false);
+    const theme = useMantineTheme();
 
     const player = (
         <Group gap={0}>
@@ -107,7 +109,7 @@ export const MusicPlayer = () => {
                             <>
                                 <Box
                                     component="div"
-                                    bg="teal"
+                                    bg={theme.primaryColor}
                                     w={`${progress}%`}
                                     h={3}
                                     pos="absolute"

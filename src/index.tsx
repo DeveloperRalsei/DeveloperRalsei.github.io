@@ -5,7 +5,6 @@ import { Notifications } from "@mantine/notifications";
 import { MusicPlayer, MusicPlayerProvider } from "@/components/musicPlayer";
 import { SecretProvider } from "./components/context/secret/SecretContext";
 import { StrictMode } from "react";
-import { IS_TODAY_MYBIRTHDAY } from "./data/constants";
 import { RouterProvider } from "react-router-dom";
 import "./i18n";
 import { router } from "./router";
@@ -18,7 +17,6 @@ import { StatusProvider } from "./components/context/status";
 import { PageProvider } from "./components/context/page";
 
 const theme = createTheme({
-    primaryColor: IS_TODAY_MYBIRTHDAY ? "orange" : "teal",
     fontFamily: "undertale",
     colors: {
         dark: [

@@ -20,7 +20,7 @@ export default function NotFound() {
                 <Text c="dimmed">JK! You lost!</Text>
                 <Text>
                     Also since there's no "go back" button in this page you're
-                    stuck with me
+                    stuck here with me
                 </Text>
                 <Container
                     style={{

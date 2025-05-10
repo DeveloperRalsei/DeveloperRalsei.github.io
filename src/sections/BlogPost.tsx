@@ -1,6 +1,6 @@
 import loadMdx from "@/helpers/loadMdx";
 import { useBlogs } from "@/hooks";
-import { Stack } from "@mantine/core";
+import { Paper, Stack } from "@mantine/core";
 import { useParams } from "react-router-dom";
 
 export default function BlogPostPage() {
@@ -11,5 +11,9 @@ export default function BlogPostPage() {
 
     const Blog = loadMdx(blog?.slug || "");
 
-    return <Stack>{Blog}</Stack>;
+    return (
+        <Stack>
+            <Paper p="sm">{Blog}</Paper>
+        </Stack>
+    );
 }

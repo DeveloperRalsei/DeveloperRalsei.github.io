@@ -8,10 +8,11 @@ import {
     Space,
     Text,
     Title,
+    useMantineTheme,
 } from "@mantine/core";
 // import AppRenderer from "./AppRenderer.tsx";
 import { useEffect, useState, useTransition } from "react";
-import { Outlet, useLocation, useRoutes } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { PageLoader } from "./components/Loader.tsx";
 import Spamton from "./components/Spamton.tsx";
 import PageSwitcher from "./components/PageSwitcher.tsx";
@@ -21,14 +22,16 @@ import { LangAffix } from "./components/home/languageAffix.tsx";
 import { usePage } from "./components/context/page/index.tsx";
 import { useMusicPlayer } from "./components/musicPlayer/index.tsx";
 import { GODDAMMITKRISWHERETHEHELLAREWE } from "./components/GODDAMMITKRISWHERETHEHELLAREWE.tsx";
+import PageBg from "./components/bg/index.tsx";
 
 const App = () => {
     const { pathname } = useLocation();
     const { setSong, play, error, disableError } = useMusicPlayer();
     const [firstInteraction, setFirstInteraction] = useState(true);
+    const theme = useMantineTheme();
 
     const [pending, startTransition] = useTransition();
-    const { pageLabel, color: titleColor } = usePage();
+    const { pageLabel } = usePage();
 
     useEffect(() => {
         const handleUserInteraction = () => {
@@ -75,6 +78,7 @@ const App = () => {
                     </Center>
                 </Overlay>
             )}
+            <PageBg dreaming={true} />
             <AppShell.Header withBorder={false}>
                 <Group align="center" h={"100%"} justify="space-around">
                     <Group>
@@ -87,7 +91,7 @@ const App = () => {
                             radius={0}
                             style={{ cursor: "pointer" }}
                         />
-                        <Title ta={"center"} order={3} c={"teal"}>
+                        <Title ta={"center"} order={3} c={theme.primaryColor}>
                             Developer Ralsei
                         </Title>
                     </Group>
@@ -96,7 +100,7 @@ const App = () => {
 
             <AppShell.Main px={{ md: "xs" }}>
                 <PageSwitcher startTranitionFunc={startTransition} />
-                <Title c={titleColor} mt={5} order={3} ta="center">
+                <Title c={theme.primaryColor} mt={5} order={3} ta="center">
                     {pageLabel}
                 </Title>
                 <Container
@@ -110,17 +114,8 @@ const App = () => {
                     }
                 >
                     {pending ? <PageLoader /> : <Outlet />}
-
-                    {/* <Suspense fallback={<PageLoader />}> */}
-                    {/*     <Outlet /> */}
-                    {/* </Suspense> */}
                 </Container>
-                {pathname !== "/happi-birthday" && (
-                    <>
-                        <Space h="300vh" />
-                        <GODDAMMITKRISWHERETHEHELLAREWE />
-                    </>
-                )}
+                <Space h="30vh" />
             </AppShell.Main>
             <span
                 id="Confetti1"

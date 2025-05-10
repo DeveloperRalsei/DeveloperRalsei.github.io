@@ -22,12 +22,7 @@ export default defineConfig(({ mode }) => {
             tsconfigPaths(),
         ],
         optimizeDeps: {
-            include: [
-                "@tabler/icons-react",
-                "@mantine/core",
-                "@mantine/notifications",
-                "@mantine/hooks",
-            ],
+            include: ["@tabler/icons-react"],
         },
         server: {
             cors: true,
@@ -40,6 +35,12 @@ export default defineConfig(({ mode }) => {
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api/, ""),
                 },
+            },
+        },
+        resolve: {
+            alias: {
+                "@tabler/icons-react":
+                    "@tabler/icons-react/dist/esm/icons/index.mjs",
             },
         },
         base: "/",

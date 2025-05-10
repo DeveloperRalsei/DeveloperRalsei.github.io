@@ -8,6 +8,7 @@ import {
 } from "@mantine/core";
 import { useSecret } from "@/hooks";
 import { usePage } from "./context/page";
+import { useLocation } from "react-router-dom";
 
 export const PageSwitcher = ({
     startTranitionFunc,
@@ -16,11 +17,11 @@ export const PageSwitcher = ({
 }) => {
     const { secret } = useSecret();
     const { setPage } = usePage();
+    const { pathname } = useLocation();
 
-    const handleClick = (route: string, label: string, color: MantineColor) => {
+    const handleClick = (route: string, label: string) => {
         startTranitionFunc(() => {
             setPage({
-                color: color,
                 pageLabel: label,
             });
             window.location.hash = route;
@@ -36,30 +37,29 @@ export const PageSwitcher = ({
                             ? secret
                             : (route.enabled ?? true),
                     )
-                    .map((route) => (
-                        <Tooltip
-                            key={route.route + route.color}
-                            label={route.label}
-                            withArrow
-                        >
-                            <ActionIcon
-                                variant="light"
-                                onClick={() =>
-                                    handleClick(
-                                        route.route,
-                                        route.label,
-                                        route.color,
-                                    )
-                                }
-                                component="a"
-                                radius={"sm"}
-                                size={"lg"}
-                                color={route.color}
+                    .map((route) => {
+                        const active = pathname === `/${route.route}`;
+                        return (
+                            <Tooltip
+                                key={route.route}
+                                label={route.label}
+                                withArrow
                             >
-                                {route.icon}
-                            </ActionIcon>
-                        </Tooltip>
-                    ))}
+                                <ActionIcon
+                                    variant="light"
+                                    onClick={() =>
+                                        handleClick(route.route, route.label)
+                                    }
+                                    component="a"
+                                    radius={"sm"}
+                                    size={"lg"}
+                                    color={active ? "blue" : "gray"}
+                                >
+                                    {route.icon}
+                                </ActionIcon>
+                            </Tooltip>
+                        );
+                    })}
             </Group>
         </Container>
     );

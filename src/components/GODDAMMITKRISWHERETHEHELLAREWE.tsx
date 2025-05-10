@@ -1,4 +1,4 @@
-import { Group, Image, Text, Tooltip } from "@mantine/core";
+import { Group, Image, Paper, Text, Tooltip } from "@mantine/core";
 import { useMusicPlayer } from "./musicPlayer";
 
 export const GODDAMMITKRISWHERETHEHELLAREWE = () => {
@@ -14,6 +14,7 @@ export const GODDAMMITKRISWHERETHEHELLAREWE = () => {
                 withArrow
                 arrowSize={30}
                 opened
+                zIndex={99999}
                 multiline
             >
                 <Image

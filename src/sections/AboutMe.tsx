@@ -12,7 +12,7 @@ import {
     List,
 } from "@mantine/core";
 import Card from "../components/Card";
-import { StatusBadge, StatusCard } from "../components/context/status/Status";
+import { StatusBadge } from "../components/context/status/Status";
 import { IconDeviceDesktop } from "@tabler/icons-react";
 import { IconLinks, ProfileLinks } from "../data/icons";
 import { CurrentyLearning, PcSpecifications } from "../data/data";
@@ -36,7 +36,6 @@ const MySituation = () => {
                         <Title order={5}>Status</Title>:<StatusBadge />
                     </Group>
                 </Group>
-                <StatusCard />
                 <Group gap={12}>
                     {"I'm currently learning: "}
                     {CurrentyLearning.map((item, i) => (
@@ -51,14 +50,6 @@ const MySituation = () => {
                         </>
                     ))}
                 </Group>
-                <Title order={5} c="teal">
-                    My Github Activity
-                </Title>
-                <Divider />
-                <Image
-                    src="https://ghchart.rshah.org/008764/developerralsei"
-                    alt="meow"
-                />
                 <Space h={20} />
                 <Title order={4} c={"grape"}>
                     I Use These Techs

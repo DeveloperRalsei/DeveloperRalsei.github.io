@@ -44,14 +44,6 @@ export const projects: Project[] = [
         type: "web",
     },
     {
-        name: "Devrals Community",
-        desc: "DON'T LOOK DON'T LOOOOKK!!",
-        buttons: [],
-        status: "wip",
-        techs: ["ts", "mongodb", "react", "nodejs"],
-        type: "web",
-    },
-    {
         name: "Web app script",
         desc: "This was my first coding project that I load into github. So I thouth it should take a place in here :D",
         buttons: [{ type: "github" }],

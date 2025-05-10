@@ -27,7 +27,7 @@ export const SongCard = ({
             style={{
                 cursor: "pointer",
                 boxShadow: active
-                    ? "0 0 0px 2px var(--mantine-color-teal-filled)"
+                    ? "0 0 0px 2px var(--mantine-primary-color-filled)"
                     : undefined,
             }}
             onClick={onClick}

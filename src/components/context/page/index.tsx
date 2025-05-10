@@ -3,7 +3,6 @@ import { createContext, useContext, useState } from "react";
 
 type page = {
     pageLabel: string;
-    color: MantineColor;
 };
 
 type PageContextType = page & {
@@ -12,14 +11,12 @@ type PageContextType = page & {
 
 const PageContext = createContext<PageContextType>({
     pageLabel: "",
-    color: "red",
     setPage() {},
 });
 
 export const PageProvider = ({ children }: { children: React.ReactNode }) => {
     const [page, setPage_] = useState<page>({
         pageLabel: "",
-        color: "red",
     });
 
     const setPage = (v: page) => {
