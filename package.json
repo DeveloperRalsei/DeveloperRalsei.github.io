@@ -6,7 +6,7 @@
     "scripts": {
         "dev:api": "tsx watch api/index.ts",
         "dev": "vite",
-        "build": "tsc -b && vite build",
+        "build": "vite build",
         "preview": "vite preview",
         "deploy": "gh-pages -d dist"
     },
