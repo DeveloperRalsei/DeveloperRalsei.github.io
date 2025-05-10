@@ -179,7 +179,7 @@
         nekoEl.id = "oneko";
         nekoEl.style.width = "32px";
         nekoEl.style.height = "32px";
-        nekoEl.style.position = "absolute";
+        nekoEl.style.position = "fixed";
         // nekoEl.style.pointerEvents = "none";
         nekoEl.style.backgroundImage = `url("/oneko/assets/oneko-${variant}.gif")`;
         nekoEl.style.imageRendering = "pixelated";
